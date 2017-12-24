@@ -1,0 +1,13 @@
+{
+	"name" : "alternatePositions",
+	"description" : "alternatePositions",
+	"defaultStatus" : true,
+	"channels" : [
+		"49",
+		"51",
+		"53",
+		"55",
+		"MasterDimmerMH",
+		"MasterDimmerPar"
+	]
+}

@@ -1,0 +1,67 @@
+{
+	"effects" : [
+		{
+			"effectName" : "Sin",
+			"groupName" : "dimmerEffect Pars + Movingheads",
+			"name" : "Smooth"
+		},
+		{
+			"effectName" : "OnOff",
+			"groupName" : "dimmerEffect Pars + Movingheads",
+			"name" : "Binary"
+		}
+	],
+	"phases" : [
+		{
+			"start" : 0,
+			"end" : 360
+		},
+		{
+			"start" : 0,
+			"end" : 180
+		},
+		{
+			"start" : 0,
+			"end" : 90
+		},
+		{
+			"start" : 0,
+			"end" : 45
+		}
+	],
+	"directions" : [
+		"<",
+		">"
+	],
+	"groups" : [
+		0,
+		1,
+		2
+	],
+	"blocks" : [
+		0,
+		2
+	],
+	"wings" : [
+		0,
+		2
+	],
+	"keys" : {
+		"effectKey" : "Q",
+		"phaseKey" : "W",
+		"directionKey" : "E",
+		"groupsKey" : "R",
+		"blocksKey" : "T",
+		"wingsKey" : "Y",
+		"resetKey" : "UNDEFINED"
+	},
+	"speedChannelName" : "dimmerEffectSpeed",
+	"amountChannelName" : "dimmerEffectAmount",
+	"effectData" : {
+		"min" : 240,
+		"max" : 0,
+		"width" : 360,
+		"minSpeed" : 0,
+		"relative" : true
+	}
+}

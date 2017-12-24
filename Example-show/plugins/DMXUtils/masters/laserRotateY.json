@@ -1,0 +1,14 @@
+{
+	"channels" : [
+		"41"
+	],
+	"limits" : {
+		"min" : 0,
+		"max" : 63
+	},
+	"source" : "laserRotateY",
+	"modifierSourceIndex" : 1,
+	"modifierIndex" : -1,
+	"invertValue" : false,
+	"mode" : 4
+}

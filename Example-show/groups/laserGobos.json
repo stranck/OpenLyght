@@ -1,0 +1,8 @@
+{
+	"name" : "laser gobos",
+	"description" : "laser forms",
+	"defaultStatus" : true,
+	"channels" : [
+		"34"
+	]
+}

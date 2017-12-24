@@ -1,0 +1,13 @@
+{
+	"name" : "colors",
+	"description" : "Pars",
+	"defaultStatus" : false,
+	"channels" : [
+		"1",
+		"2",
+		"3",
+		"17",
+		"18",
+		"19"
+	]
+}

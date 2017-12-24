@@ -1,0 +1,10 @@
+{
+	"name" : "Tilt Movingheads",
+	"description" : "MovingHeads",
+	"defaultStatus" : true,
+	"channels" : [
+		"51",
+		"EmptyVirtualChannel",
+		"55"
+	]
+}

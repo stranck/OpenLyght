@@ -1,0 +1,9 @@
+{
+	"scene" : "alternateDimmer",
+	"onPress" : [
+		"setStatus true"
+	],
+	"onRelease" : [
+		"setStatus false"
+	]
+}

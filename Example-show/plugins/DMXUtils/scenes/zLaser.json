@@ -1,0 +1,60 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 45,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 60,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 125,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 155,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 195,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 235,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false
+			}
+		]
+	],
+	"channels" : [
+		"34"
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "laser gobos",
+	"absolute" : true,
+	"defaultStatus" : true
+}

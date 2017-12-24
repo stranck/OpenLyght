@@ -1,0 +1,11 @@
+{
+	"name" : "dimmerEffect Pars + Movingheads",
+	"description" : "Pars + MovingHeads",
+	"defaultStatus" : true,
+	"channels" : [
+		"MasterDimmerEffectPar1",
+		"MasterDimmerEffectMH2",
+		"MasterDimmerEffectMH1",
+		"MasterDimmerEffectPar2"
+	]
+}

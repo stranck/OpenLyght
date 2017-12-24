@@ -1,0 +1,58 @@
+[
+	[
+		{
+			"channelName" : "58",
+			"min" : 16,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "59",
+			"min" : 16,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "40",
+			"min" : 16,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "41",
+			"min" : 16,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "42",
+			"min" : 16,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "alternateSpeed",
+			"min" : 16,
+			"max" : 255
+		},
+	],
+	[
+		{
+			"channelName" : "65",
+			"min" : 0,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "64",
+			"min" : 0,
+			"max" : 255
+		}
+	],
+]

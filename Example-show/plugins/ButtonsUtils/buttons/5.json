@@ -1,0 +1,9 @@
+{
+	"scene" : "blackoutScene",
+	"onPress" : [
+		"setStatus true"
+	],
+	"onRelease" : [
+		"setStatus false"
+	]
+}

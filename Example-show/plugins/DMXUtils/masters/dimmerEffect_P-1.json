@@ -1,0 +1,12 @@
+{
+	"channels" : [
+		"1",
+		"2",
+		"3",
+	],
+	"source" : "MasterDimmerEffectPar1",
+	"modifierSourceIndex" : 4,
+	"modifierIndex" : -1,
+	"invertValue" : false,
+	"mode" : 3
+}

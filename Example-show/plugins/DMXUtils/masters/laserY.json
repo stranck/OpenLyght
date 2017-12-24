@@ -1,0 +1,11 @@
+{
+	"channels" : [
+		"39"
+	],
+	"limits" : {
+		"min" : 32,
+		"max" : 95
+	},
+	"source" : "laserY",
+	"mode" : 0
+}

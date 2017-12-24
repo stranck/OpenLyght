@@ -1,0 +1,11 @@
+{
+	"name" : "positions",
+	"description" : "Beams",
+	"defaultStatus" : false,
+	"channels" : [
+		"49",
+		"51",
+		"53",
+		"55"
+	]
+}

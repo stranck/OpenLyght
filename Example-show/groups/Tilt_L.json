@@ -1,0 +1,8 @@
+{
+	"name" : "Tilt Laser",
+	"description" : "Laser",
+	"defaultStatus" : true,
+	"channels" : [
+		"laserY"
+	]
+}

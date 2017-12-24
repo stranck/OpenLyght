@@ -1,0 +1,34 @@
+package openLyghtPlugins.DMXUtils;
+
+import java.io.File;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
+import dmx.OpenLyght.Utils.Scene;
+
+public class Button {
+	
+	public static ArrayList<Scene> scenes = new ArrayList<Scene>();
+	private int[] currentScenes;
+	
+	public Button() throws Exception {
+		File[] dir = new File(Main.defaultPath + "scenes" + File.separator).listFiles(File::isFile);
+		for(File f : dir){
+			System.out.println("Loading scene " + f.getAbsolutePath());
+			scenes.add(new Scene(Paths.get(f.getAbsolutePath())));
+			PagePanel.buttons.add(f.getName());
+		}
+		currentScenes = new int[scenes.size()];
+		for(int i = 0; i < currentScenes.length; i++)
+			currentScenes[i] = 0;
+	}
+	
+	public void buttonPressed(int value){
+		int scene = (value - 31) / 28;
+		//System.out.println("BUTTON PRESSED " + scene + " " + value + " " + Main.buttonPage + " " + currentScenes[Main.buttonPage]);
+		if(value > 31 && scene != currentScenes[Main.buttonPage]) {
+			currentScenes[Main.buttonPage] = scene;
+			scenes.get(Main.buttonPage).gotoStep(scene); 
+		} else scenes.get(Main.buttonPage).gotoStep(currentScenes[Main.buttonPage]); 
+	}
+}

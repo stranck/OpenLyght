@@ -1,0 +1,52 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			}
+		]
+	],
+	"channels" : [
+		"MasterDimmerEffectPar1",
+		"MasterDimmerEffectMH1",
+		"MasterDimmerEffectMH2",
+		"MasterDimmerEffectPar2"
+	],
+	"priority" : 1,
+	"speedChannel" : "alternateSpeed",
+	"group" : "dimmerEffect Pars + Movingheads",
+	"absolute" : true,
+	"name" : "alternateDimmer",
+	"defaultStatus" : false
+}

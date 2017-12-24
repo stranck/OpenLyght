@@ -1,0 +1,9 @@
+{
+	"scene" : "maxMH",
+	"onPress" : [
+		"setStatus true"
+	],
+	"onRelease" : [
+		"setStatus false"
+	]
+}

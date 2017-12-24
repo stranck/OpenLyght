@@ -1,0 +1,16 @@
+{
+	"buttons" : [
+		"F9",
+		"F10",
+		"F11",
+		"F12"
+	],
+	"faders" : [
+		"F1",
+		"F2"
+	],
+	"reset" : [
+		"DELETE",
+		"INSERT"
+	]
+}

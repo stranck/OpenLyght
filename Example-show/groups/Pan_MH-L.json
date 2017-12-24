@@ -1,0 +1,10 @@
+{
+	"name" : "Pan Laser + Movingheads",
+	"description" : "Pan Laser + MovingHeads",
+	"defaultStatus" : true,
+	"channels" : [
+		"49",
+		"laserX",
+		"53"
+	]
+}

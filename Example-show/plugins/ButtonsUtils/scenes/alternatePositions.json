@@ -1,0 +1,70 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 165,
+				"smooth" : true
+			},
+			{
+				"value" : 85,
+				"smooth" : true
+			},
+			{
+				"value" : 90,
+				"smooth" : true
+			},
+			{
+				"value" : 85,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 85,
+				"smooth" : true
+			},
+			{
+				"value" : 15,
+				"smooth" : true
+			},
+			{
+				"value" : 170,
+				"smooth" : true
+			},
+			{
+				"value" : 15,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			}
+		]
+	],
+	"channels" : [
+		"49",
+		"51",
+		"53",
+		"55",
+		"MasterDimmerMH",
+		"MasterDimmerPar"
+	],
+	"priority" : 1,
+	"speedChannel" : "alternateFadeSpeed",
+	"group" : "alternatePositions",
+	"absolute" : true,
+	"name" : "alternatePositions",
+	"defaultStatus" : false
+}

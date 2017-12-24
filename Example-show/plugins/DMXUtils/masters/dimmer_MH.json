@@ -1,0 +1,8 @@
+{
+	"channels" : [
+		"60",
+		"61"
+	],
+	"source" : "MasterDimmerMH",
+	"mode" : 0
+}
