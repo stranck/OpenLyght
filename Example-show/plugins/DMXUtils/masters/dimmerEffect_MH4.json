@@ -1,0 +1,10 @@
+{
+	"channels" : [
+		"156"
+	],
+	"source" : "MasterDimmerEffectMH4",
+	"modifierSourceIndex" : 4,
+	"modifierIndex" : 2,
+	"invertValue" : false,
+	"mode" : 3
+}

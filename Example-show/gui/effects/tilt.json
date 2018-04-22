@@ -2,18 +2,18 @@
 	"effects" : [
 		{
 			"effectName" : "Sin",
-			"groupName" : "Tilt Laser + Movingheads",
-			"name" : "Laser + MovingHeads"
+			"groupName" : "Tilt123456",
+			"name" : "mhl TILT: 123 456"
 		},
 		{
 			"effectName" : "Sin",
-			"groupName" : "Tilt Movingheads",
-			"name" : "MovingHeads"
+			"groupName" : "Tilt162534",
+			"name" : "mhl TILT: 162 534"
 		},
 		{
 			"effectName" : "Sin",
-			"groupName" : "Pan Laser",
-			"name" : "Laser"
+			"groupName" : "Tilt-1234-",
+			"name" : "mhl TILT: -12 34-"
 		}
 	],
 	"phases" : [
@@ -28,33 +28,27 @@
 		{
 			"start" : 0,
 			"end" : 90
-		},
-		{
-			"start" : 0,
-			"end" : 45
 		}
 	],
 	"directions" : [
-		"<",
-		">"
+		">",
+		"<"
 	],
 	"groups" : [
-		3,
-		4,
 		0,
-		1,
-		2
+		2,
+		1
 	],
 	"blocks" : [
 		0,
 		2
 	],
 	"wings" : [
-		0,
-		2
+		2,
+		0
 	],
 	"keys" : {
-		"effectKey" : "2",
+		"effectKey" : "1",
 		"phaseKey" : "3",
 		"directionKey" : "4",
 		"groupsKey" : "5",
@@ -65,10 +59,14 @@
 	"speedChannelName" : "movmentSpeed",
 	"amountChannelName" : "movementTiltAmount",
 	"effectData" : {
-		"min" : -60,
-		"max" : 60,
+		"min" : -35,
+		"max" : 35,
 		"width" : 360,
 		"minSpeed" : 4,
-		"relative" : true
+		"relative" : true,
+		"amountIncreaser" : {
+			"amount" : 232,
+			"startSpeed" : 250
+		}
 	}
 }

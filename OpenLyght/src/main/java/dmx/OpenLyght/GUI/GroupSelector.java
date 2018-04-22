@@ -79,9 +79,10 @@ public class GroupSelector extends JPanel {
 				    if(newStatus) {
 				        	setAllGroupsAndButtons(false);
 				        	groupButton.setForeground(ENABLED);
-				    } else groupButton.setForeground(DISABLED);
+				        	g.setStatus(true);
+				    } //else groupButton.setForeground(DISABLED);
 				    
-				    g.setStatus(newStatus);
+				    //g.setStatus(newStatus);
 				}
 			});
 		}

@@ -1,8 +1,6 @@
 package openLyghtPlugins.DMXUtils;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -21,7 +19,7 @@ public class Input {
 	private static boolean enableInputs = false;
 	
 	public Input(File f) throws Exception{
-		JSONArray fadersData = new JSONArray(new String(Files.readAllBytes(Paths.get(f.getAbsolutePath()))));
+		JSONArray fadersData = new JSONArray(Main.openLyght.read(f.getAbsolutePath()));
 		PagePanel.faders.add(f.getName());
 		
 		for(int i = 0; i < fadersData.length(); i++){
@@ -39,7 +37,7 @@ public class Input {
 		
 		if(fadersNO + 2 > blackoutFaderID)
 			blackoutFaderID = fadersNO + 2;
-		blackOutScene = new Scene(Paths.get(Main.defaultPath + "blackoutScene.json"));
+		blackOutScene = new Scene(Main.defaultPath + "blackoutScene.json");
 	}
 	
 	public void setFaderStatus(short value, short fader){

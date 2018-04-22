@@ -14,10 +14,10 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 	private Group activeGroup;
 	private boolean relative, requestReload = true, reloadingGroup = false;
 	private Effect effect;
-	private Channel speedChannel, amount;
+	private Channel speedChannel, amount, incAmount = null;
 	private char direction; //>, <, s (>), S (<)
-	private short diff, mid, min;
-	private int startPhase, endPhase, currentPhase, width, groups, blocks, wings, minSpeed;
+	private short diff, mid, min, startIncSpeed = 256, incInterval, incAmountSpeed, outValue;
+	private int startPhase, endPhase, currentPhase, width, groups, blocks, wings, minSpeed, inc;
 	private int[] basePhase;
 	private BasicChannel[] channels = new BasicChannel[0];
 	//private ArrayList<Integer> phase = new ArrayList<Integer>();
@@ -32,6 +32,21 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 		width = data.getInt("width");
 		minSpeed = data.getInt("minSpeed");
 		relative = data.getBoolean("relative");
+		
+		if(data.has("amountIncreaser")){
+			JSONObject increaser = data.getJSONObject("amountIncreaser");
+			incAmountSpeed = (short) increaser.getInt("amount");
+			startIncSpeed = (short) increaser.getInt("startSpeed");
+			incInterval = (short) (255 - startIncSpeed);
+		}
+		
+		if(data.has("incAmountChannel")) {
+			incAmount = App.utils.getChannel(data.getString("incAmountChannel"));
+			if(data.has("incAmountChannelValue")) 
+				incAmount.setOriginalValue((short) data.getInt("incAmountChannelValue"));
+			else
+				incAmount.setOriginalValue((short) 1);
+		}
 		
 		speedChannel = speed;
 		this.amount = amount;
@@ -92,7 +107,7 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 		int phaseLength = channels.length;
 		if(groups == 0){
 			if(blocks > 1 && phaseLength >= blocks) phaseLength /= blocks;
-			if(wings > 1 && phaseLength >= Math.abs(wings)) phaseLength /= Math.abs(wings);
+			if(Math.abs(wings) > 1 && phaseLength >= Math.abs(wings)) phaseLength /= Math.abs(wings);
 		} else phaseLength = groups;
 		basePhase = new int[channels.length];
 		
@@ -102,10 +117,11 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 			phase += phaseDifference;
 		}
 		
+		//System.out.println(Arrays.toString(basePhase) + " " + phaseLength + " " + phaseDifference);
 		if(groups > 0) basePhase = applyGroups(groups, basePhase);
 		if(blocks > 1) basePhase = applyBlocks(blocks, basePhase);
 		if(Math.abs(wings) > 1) basePhase = applyWings(wings, basePhase);
-		
+		//System.out.println(Arrays.toString(basePhase) + " " + phaseLength + " " + phaseDifference);
 		/*for(int i = 0; i < basePhase.length; i++){
 			//resizePhase(basePhase[i]);
 			System.out.println(basePhase[i]);
@@ -118,18 +134,55 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 	@Override
 	public void run() {
 		currentPhase = 0;
+		BasicChannel bc;
+		int i, n, phase;
+		short speed, value;
+		
 		while(!Thread.interrupted()) {
 			try{
 				if(requestReload) reloadEffect();
-				for(int i = 0; i < basePhase.length; i++){
-					BasicChannel bc = channels[i];
-					updateValue(bc, resizePhase(currentPhase + basePhase[i]));
+				speed = speedChannel.getValue();
+				value = amount.getValue();
+				if(startIncSpeed < 256 && speed > startIncSpeed && value > 0)//(speed - start) : incInterval = inc : incAmount
+					inc = (speed - startIncSpeed) * incAmountSpeed / incInterval * value / 0xFF;
+				else inc = 0;
+				//System.out.println(inc + " " + speed + " " + startIncSpeed);
+				
+				for(i = 0; i < basePhase.length; i++){
+					bc = channels[i];
+					
+					phase = (currentPhase + basePhase[i]) % 360;
+					if(phase < 0) phase += 360;
+					
+					if(phase > width) bc.setValue(min); //newPhase : width = phase : 360
+						else bc.setValue((short) (effect.getValue(width * phase / 360) * diff + mid));
 					bc.getChannel().reportReload();
 				}
 				//System.out.println(amount.getValue() + "\t" + speedChannel.getValue());
-				updatePhase();
+				if(speed > 8) {
+					if(incAmount == null) n = 1;
+						else n = incAmount.getValue();
+					switch(direction){
+						case '>': {
+							if((currentPhase += n) >= 360) currentPhase = 0;
+							break;
+						}
+						case '<': {
+							if((currentPhase -= n) <= 0) currentPhase = 360;
+							break;
+						}
+						case 's': {
+							if((currentPhase += n) >= 360) direction = 'S';
+							break;
+						}
+						case 'S': {
+							if((currentPhase -= n) <= 0) direction = 's';
+							break;
+						}
+					}
+				}
 				//while(speedChannel.getValue() < 16) App.utils.wait(20);
-				App.wait(256 + minSpeed - speedChannel.getValue());
+				App.wait(256 + minSpeed - speed);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -138,42 +191,13 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 	
 	@Override
 	public short getChannelValue(short originalValue, int index, Channel ch) {
-		short effectValue = originalValue;
+		outValue = originalValue;
 		try{
-			effectValue = (short) (App.getBasicChannel(channels, ch).getValue() * amount.getValue() / 0xFF);
+			outValue = (short) (App.getBasicChannel(channels, ch).getValue() * (amount.getValue() + inc) / 0xFF);
 		}catch(Exception e) {}
-		short value = effectValue;
 		//System.out.println("Channel: " + value + " " + originalValue + " " + App.getBasicChannel(channels, ch).getValue() + " " + amount.getValue() + " " + ch.hashCode());
-		if(relative) value += originalValue;
-		return value;
-	}
-	
-	private void updatePhase(){
-		if(speedChannel.getValue() > 8) {
-			switch(direction){
-				case '>': {
-					if(++currentPhase >= 360) currentPhase = 0;
-					break;
-				}
-				case '<': {
-					if(--currentPhase <= 0) currentPhase = 360;
-					break;
-				}
-				case 's': {
-					if(++currentPhase >= 360) direction = 'S';
-					break;
-				}
-				case 'S': {
-					if(--currentPhase <= 0) direction = 's';
-					break;
-				}
-			}
-		}
-	}
-	
-	private void updateValue(BasicChannel bc, int phase){
-		if(phase > width) bc.setValue(min); //newPhase : width = phase : 360
-			else bc.setValue((short) (effect.getValue(width * phase / 360) * diff + mid));
+		if(relative) outValue += originalValue;
+		return outValue;
 	}
 	
 	private int[] applyGroups(int value, int[] phase){
@@ -181,6 +205,7 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 			for(int i = value + baseIndex; i < phase.length; i += value)
 				phase[i] = phase[baseIndex];			
 		}
+		//System.out.println("GROUPS=" + value + Arrays.toString(phase));
 		return phase;
 	}
 	
@@ -191,6 +216,7 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 				newPhase[i] = phase[blockIndex];
 			}
 		}
+		//System.out.println("BLOCKS=" + value + Arrays.toString(newPhase));
 		return newPhase;
 	}
 	
@@ -215,12 +241,7 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 			
 			i += segmentLength;
 		}
-		return phase;
-	}
-	
-	private int resizePhase(int phase){
-		while(phase > 360) phase -= 360;
-		while(phase < 0) phase += 360;
+		//System.out.println("WINGS=" + value + Arrays.toString(phase));
 		return phase;
 	}
 }

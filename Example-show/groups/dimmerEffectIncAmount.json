@@ -1,0 +1,8 @@
+{
+	"name" : "dimmerEffectIncAmount",
+	"description" : "dimmerEffectIncAmount",
+	"defaultStatus" : true,
+	"channels" : [
+		"dimmerEffectIncAmount"
+	]
+}

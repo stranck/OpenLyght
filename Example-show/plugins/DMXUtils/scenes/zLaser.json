@@ -4,9 +4,17 @@
 			{
 				"value" : 0,
 				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
 			}
 		],
 		[
+			{
+				"value" : 45,
+				"smooth" : false
+			},
 			{
 				"value" : 45,
 				"smooth" : false
@@ -16,9 +24,17 @@
 			{
 				"value" : 60,
 				"smooth" : false
+			},
+			{
+				"value" : 60,
+				"smooth" : false
 			}
 		],
 		[
+			{
+				"value" : 125,
+				"smooth" : false
+			},
 			{
 				"value" : 125,
 				"smooth" : false
@@ -28,9 +44,17 @@
 			{
 				"value" : 155,
 				"smooth" : false
+			},
+			{
+				"value" : 155,
+				"smooth" : false
 			}
 		],
 		[
+			{
+				"value" : 195,
+				"smooth" : false
+			},
 			{
 				"value" : 195,
 				"smooth" : false
@@ -40,9 +64,17 @@
 			{
 				"value" : 235,
 				"smooth" : false
+			},
+			{
+				"value" : 235,
+				"smooth" : false
 			}
 		],
 		[
+			{
+				"value" : 255,
+				"smooth" : false
+			},
 			{
 				"value" : 255,
 				"smooth" : false
@@ -50,7 +82,8 @@
 		]
 	],
 	"channels" : [
-		"34"
+		"34",
+		"130"
 	],
 	"priority" : 0,
 	"speedChannel" : "blackOutSpeedChannel",

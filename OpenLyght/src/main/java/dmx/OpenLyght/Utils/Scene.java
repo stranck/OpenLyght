@@ -1,7 +1,5 @@
 package dmx.OpenLyght.Utils;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -20,16 +18,18 @@ public class Scene implements ChannelModifiers {
 	private Channel speedChannel;
 	private Step currentStep;
 	private boolean absolute, status;
-	private int priority, maxEnable = Integer.MAX_VALUE, maxSpeed = 4000;
+	private int priority, speedChanelPriority, maxEnable = Integer.MAX_VALUE, maxSpeed = 4000;
 	
-	public Scene(Path p) {
+	public Scene(String path) {
 		try{
-			JSONObject data = new JSONObject(new String(Files.readAllBytes(p)));
+			JSONObject data = new JSONObject(App.utils.read(path));
 			JSONArray steps = data.getJSONArray("steps");
 			JSONArray channels = data.getJSONArray("channels");
 			priority = data.getInt("priority");
+			if(data.has("speedChanelPriority")) speedChanelPriority = data.getInt("speedChanelPriority");
 			speedChannel = App.utils.getChannel(data.getString("speedChannel"));
-			speedChannel.addChannelModifier(this);
+			if(speedChanelPriority != 0) speedChannel.addChannelModifier(this, speedChanelPriority);
+				else speedChannel.addChannelModifier(this);
 			groupName = data.getString("group");
 			status = data.getBoolean("defaultStatus");
 			absolute = data.getBoolean("absolute");

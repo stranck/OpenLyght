@@ -3,6 +3,7 @@
 	"description" : "MH forms",
 	"defaultStatus" : true,
 	"channels" : [
-		"59"
+		"59",
+		"155"
 	]
 }

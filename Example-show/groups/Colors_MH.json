@@ -3,6 +3,7 @@
 	"description" : "Beams",
 	"defaultStatus" : false,
 	"channels" : [
-		"58"
+		"58",
+		"154"
 	]
 }

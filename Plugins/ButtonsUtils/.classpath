@@ -22,7 +22,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Cartelle varie/Programming/java/serci merda/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar"/>
-	<classpathentry kind="lib" path="E:/Cartelle varie/Programming/java/Open Lyght/OpenLyght.jar"/>
+	<classpathentry kind="lib" path="D:/Cartelle varie/Programming/java/serci merda/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar"/>
+	<classpathentry kind="lib" path="D:/Cartelle varie/Programming/java/Open Lyght/OpenLyght.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

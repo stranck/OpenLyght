@@ -3,9 +3,11 @@
 	"description" : "Pars + MovingHeads",
 	"defaultStatus" : true,
 	"channels" : [
-		"MasterDimmerEffectPar1",
 		"MasterDimmerEffectMH2",
 		"MasterDimmerEffectMH1",
-		"MasterDimmerEffectPar2"
+		"MasterDimmerEffectPar1",
+		"MasterDimmerEffectPar2",
+		"MasterDimmerEffectMH4",	
+		"MasterDimmerEffectMH3"
 	]
 }

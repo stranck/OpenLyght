@@ -16,6 +16,10 @@
 			{
 				"value" : 255,
 				"smooth" : false
+			},
+			{
+				"value" : 255,
+				"smooth" : false
 			}
 		],
 		[
@@ -29,6 +33,10 @@
 			},
 			{
 				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 70,
 				"smooth" : false
 			},
 			{
@@ -52,6 +60,10 @@
 			{
 				"value" : 76,
 				"smooth" : false
+			},
+			{
+				"value" : 76,
+				"smooth" : false
 			}
 		]
 	],
@@ -59,7 +71,8 @@
 		"5",
 		"21",
 		"36",
-		"62"
+		"62",
+		"158"
 	],
 	"priority" : 4,
 	"speedChannel" : "blackOutSpeedChannel",

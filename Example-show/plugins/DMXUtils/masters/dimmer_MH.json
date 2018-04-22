@@ -1,7 +1,9 @@
 {
 	"channels" : [
 		"60",
-		"61"
+		"61",
+		"156",
+		"157"
 	],
 	"source" : "MasterDimmerMH",
 	"mode" : 0

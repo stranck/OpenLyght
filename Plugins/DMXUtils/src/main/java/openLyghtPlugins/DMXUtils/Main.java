@@ -1,8 +1,6 @@
 package openLyghtPlugins.DMXUtils;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -36,7 +34,7 @@ public class Main implements Plugin, Runnable {
 			defaultPath = ol.deafaultPath + "plugins" + File.separator + name + File.separator;
 			channels = ol.channels;
 
-			JSONObject comPorts = new JSONObject(new String(Files.readAllBytes(Paths.get(defaultPath + "serialPorts.json"))));			
+			JSONObject comPorts = new JSONObject(openLyght.read(defaultPath + "serialPorts.json"));			
 			out = new Arduino(comPorts.getString("sender")){
 				@Override
 				public void newData(ArrayList<Data> data){
@@ -58,7 +56,7 @@ public class Main implements Plugin, Runnable {
 			for(File f : dir)
 				faders.add(new Input(f));
 			
-			JSONObject keys = new JSONObject(new String(Files.readAllBytes(Paths.get(defaultPath + "keys.json"))));
+			JSONObject keys = new JSONObject(openLyght.read(defaultPath + "keys.json"));
 			buttonKeys = loadKeys(keys.getJSONArray("buttons"));
 			faderKeys = loadKeys(keys.getJSONArray("faders"));
 			resetKeys =loadKeys(keys.getJSONArray("reset"));
@@ -81,7 +79,7 @@ public class Main implements Plugin, Runnable {
 		File[] dir = new File(defaultPath + "masters" + File.separator).listFiles(File::isFile);
 		for(File f : dir){
 			System.out.println("Loading master: " + f.getAbsolutePath());
-			JSONObject master = new JSONObject(new String(Files.readAllBytes(Paths.get(f.getAbsolutePath()))));
+			JSONObject master = new JSONObject(openLyght.read(f.getAbsolutePath()));
 			JSONArray channels = master.getJSONArray("channels");
 			ArrayList<Channel> ch = new ArrayList<Channel>();
 			
@@ -129,11 +127,12 @@ public class Main implements Plugin, Runnable {
 	public void run() {
 		String data = "";
 		boolean sendValues = false;
+		int i;
 		App.wait(2500);
 		//out.writeData(codeOutput((short) 62) + codeOutput((short) 255));
 		while(true){
 			openLyght.reloadVirtualChannels();
-			for(int i = 0; i < 512; i++){
+			for(i = 0; i < 512; i++){
 				
 				if(channels[i].reloadValue()){
 					data += codeOutput((short) (i)) + codeOutput(channels[i].getDMXValue());

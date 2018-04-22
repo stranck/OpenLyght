@@ -1,0 +1,13 @@
+{
+	"name" : "Pan162534",
+	"description" : "Pan162534",
+	"defaultStatus" : true,
+	"channels" : [
+		"laserX",
+		"laserX2",
+		"53",
+		"145",
+		"49",
+		"149"
+	]
+}

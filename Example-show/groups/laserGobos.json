@@ -3,6 +3,7 @@
 	"description" : "laser forms",
 	"defaultStatus" : true,
 	"channels" : [
-		"34"
+		"34",
+		"130"
 	]
 }

@@ -20,6 +20,11 @@
 			"max" : -1
 		},
 		{
+			"channelName" : "129",
+			"min" : 0,
+			"max" : -1
+		},
+		{
 			"channelName" : "LaserColors",
 			"min" : 0,
 			"max" : 255

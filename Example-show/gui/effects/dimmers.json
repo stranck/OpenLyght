@@ -23,15 +23,11 @@
 		{
 			"start" : 0,
 			"end" : 90
-		},
-		{
-			"start" : 0,
-			"end" : 45
 		}
 	],
 	"directions" : [
 		"<",
-		">"
+		"s"
 	],
 	"groups" : [
 		0,
@@ -62,6 +58,7 @@
 		"max" : 0,
 		"width" : 360,
 		"minSpeed" : 0,
-		"relative" : true
+		"relative" : true,
+		"incAmountChannel" : "dimmerEffectIncAmount"
 	}
 }

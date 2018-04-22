@@ -1,8 +1,6 @@
 package openLyghtPlugins.ButtonsUtils;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.json.JSONObject;
@@ -31,15 +29,15 @@ public class Main implements Plugin {
 			File[] dir = new File(defaultPath + "scenes" + File.separator).listFiles(File::isFile);
 			for(File f : dir){
 				System.out.println("Loading scene: " + f.getAbsolutePath());
-				scenes.add(new Scene(Paths.get(f.getAbsolutePath())));
+				scenes.add(new Scene(f.getAbsolutePath()));
 			}
 			
 			for(int i = 0; i < 12; i++)
 				buttons[i] = new Button();
 			for(int i = 0; i < 12; i++)
-				buttons[i].load(new JSONObject(new String(Files.readAllBytes(Paths.get(defaultPath + "buttons" + File.separator + i + ".json")))));
+				buttons[i].load(new JSONObject(openLyght.read(defaultPath + "buttons" + File.separator + i + ".json")));
 			
-			JSONObject comPorts = new JSONObject(new String(Files.readAllBytes(Paths.get(defaultPath + "serialPorts.json"))));
+			JSONObject comPorts = new JSONObject(openLyght.read(defaultPath + "serialPorts.json"));
 			//System.out.println(new String(Files.readAllBytes(Paths.get(defaultPath + "serialPorts.json"))));
 			new Arduino(comPorts.getString("buttons")){
 				@Override
@@ -78,7 +76,7 @@ public class Main implements Plugin {
 				
 				File[] dir = new File(defaultPath + "sequences" + File.separator).listFiles(File::isFile);
 				for(File f : dir){
-					sequences.add(new Sequence(new JSONObject(new String(Files.readAllBytes(Paths.get(f.getAbsolutePath()))))));
+					sequences.add(new Sequence(new JSONObject(openLyght.read(f.getAbsolutePath()))));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

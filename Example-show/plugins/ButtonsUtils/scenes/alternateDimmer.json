@@ -2,7 +2,93 @@
 	"steps" : [
 		[
 			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
 				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
 				"smooth" : true
 			},
 			{
@@ -24,7 +110,7 @@
 				"smooth" : true
 			},
 			{
-				"value" : 255,
+				"value" : 0,
 				"smooth" : true
 			},
 			{
@@ -34,6 +120,40 @@
 			{
 				"value" : 255,
 				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
 			}
 		]
 	],
@@ -41,6 +161,8 @@
 		"MasterDimmerEffectPar1",
 		"MasterDimmerEffectMH1",
 		"MasterDimmerEffectMH2",
+		"MasterDimmerEffectMH3",
+		"MasterDimmerEffectMH4",
 		"MasterDimmerEffectPar2"
 	],
 	"priority" : 1,

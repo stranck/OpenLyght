@@ -1,7 +1,6 @@
 package openLyghtPlugins.DMXUtils;
 
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import dmx.OpenLyght.Utils.Scene;
@@ -15,7 +14,7 @@ public class Button {
 		File[] dir = new File(Main.defaultPath + "scenes" + File.separator).listFiles(File::isFile);
 		for(File f : dir){
 			System.out.println("Loading scene " + f.getAbsolutePath());
-			scenes.add(new Scene(Paths.get(f.getAbsolutePath())));
+			scenes.add(new Scene(f.getAbsolutePath()));
 			PagePanel.buttons.add(f.getName());
 		}
 		currentScenes = new int[scenes.size()];

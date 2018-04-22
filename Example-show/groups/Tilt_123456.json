@@ -1,0 +1,13 @@
+{
+	"name" : "Tilt123456",
+	"description" : "Tilt123456",
+	"defaultStatus" : true,
+	"channels" : [
+		"laserY",
+		"55",
+		"51",
+		"151",
+		"147",
+		"laserY2"
+	]
+}

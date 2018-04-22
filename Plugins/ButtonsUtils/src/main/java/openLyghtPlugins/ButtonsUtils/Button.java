@@ -11,9 +11,10 @@ public class Button {
 	private boolean status = true, flash = true, fix = false;
 	private ArrayList<Command> onPress = new ArrayList<Command>();
 	private ArrayList<Command> onRelease = new ArrayList<Command>();
+	private Scene scene;
 	
 	public void load(JSONObject button){
-		Scene scene = Main.getScene(button.getString("scene"));
+		scene = Main.getScene(button.getString("scene"));
 		
 		if(button.has("onPress")) {
 			JSONArray actions = button.getJSONArray("onPress");
@@ -29,6 +30,17 @@ public class Button {
 			flash = button.getBoolean("flash");
 			System.out.println("FLASHSTATUS: " + button.getBoolean("flash") + " " + flash + " " + hashCode());
 		}
+	}
+	
+	public void setCommand(Command cmd, boolean press, int index){
+		System.out.println(onPress.get(index));
+		if(press) onPress.set(index, cmd);
+			else  onRelease.set(index, cmd);
+		System.out.println(onPress.get(index));
+	}
+	
+	public Scene getScene(){
+		return scene;
 	}
 	
 	public void setFix(boolean b){

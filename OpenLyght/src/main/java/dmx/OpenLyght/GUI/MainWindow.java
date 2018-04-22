@@ -5,8 +5,6 @@ import java.awt.Dimension;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -62,18 +60,18 @@ public class MainWindow extends JFrame implements WindowListener {
 	}
 	
 	private void loadElements() throws Exception {
-			JSONObject data = new JSONObject(new String(Files.readAllBytes(Paths.get(App.utils.deafaultPath + "guiElements.json"))));
+			JSONObject data = new JSONObject(App.utils.read(App.utils.deafaultPath + "guiElements.json"));
 			JSONArray effects = data.getJSONArray("effects");
 			for(int i = 0; i < effects.length(); i++)
 				panel.add(
-						new EffectController(this, new JSONObject(new String(
-							Files.readAllBytes(Paths.get(App.utils.deafaultPath + effects.getString(i)))))));
+						new EffectController(this, new JSONObject(
+								App.utils.read(App.utils.deafaultPath + effects.getString(i)))));
 			
 			JSONArray groups = data.getJSONArray("groups");
 			for(int i = 0; i < groups.length(); i++)
 				panel.add(
-						new GroupSelector(this, new JSONObject(new String(
-							Files.readAllBytes(Paths.get(App.utils.deafaultPath + groups.getString(i)))))));
+						new GroupSelector(this, new JSONObject(
+								App.utils.read(App.utils.deafaultPath + groups.getString(i)))));
 	}
 	
 	public void addPanel(JPanel panel){
@@ -82,20 +80,22 @@ public class MainWindow extends JFrame implements WindowListener {
 	}
 	
 	public void addListener(Action listener, String keyName) throws Exception{
-		Listener l = null;
-		int key = App.getKeyEvent(keyName);
-		for(Listener ls : listeners)
-			if(ls.getKeyCode() == key){
-				l = ls;
-				break;
+		if(!keyName.equalsIgnoreCase("null")){
+			Listener l = null;
+			int key = App.getKeyEvent(keyName);
+			for(Listener ls : listeners)
+				if(ls.getKeyCode() == key){
+					l = ls;
+					break;
+				}
+			if(l == null){
+				l = new Listener(key);
+				listeners.add(l);
+			    input.put(KeyStroke.getKeyStroke(key, 0), keyName);
+			    action.put(keyName, l);
 			}
-		if(l == null){
-			l = new Listener(key);
-			listeners.add(l);
-		    input.put(KeyStroke.getKeyStroke(key, 0), keyName);
-		    action.put(keyName, l);
+			l.addAction(listener);
 		}
-		l.addAction(listener);
 	}
 	
 	public void addListener(KeyListener listener){

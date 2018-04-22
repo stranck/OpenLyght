@@ -1,0 +1,11 @@
+{
+	"channels" : [
+		"134"
+	],
+	"limits" : {
+		"min" : 32,
+		"max" : 95
+	},
+	"source" : "laserX2",
+	"mode" : 0
+}

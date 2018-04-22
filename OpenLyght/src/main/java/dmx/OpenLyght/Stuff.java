@@ -7,19 +7,23 @@ import java.lang.reflect.Constructor;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.swing.UIManager;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import dmx.OpenLyght.GUI.MainWindow;
 import dmx.OpenLyght.GUI.PathProjectSelector;
 import dmx.OpenLyght.Utils.Effect;
+import dmx.OpenLyght.Utils.Variable;
 
 public class Stuff {
 	
 	private ArrayList<Channel> virtualChannel = new ArrayList<Channel>();
+	public ArrayList<Variable> variables = new ArrayList<Variable>();
 	public ArrayList<Plugin> plugins = new ArrayList<Plugin>();
 	private ArrayList<Group> groups = new ArrayList<Group>();
 	public Channel[] channels = new Channel[512];
@@ -38,7 +42,22 @@ public class Stuff {
     	//testMasterFader();
     }
     
+    public String read(String path) throws Exception{
+    	String s = new String(Files.readAllBytes(Paths.get(path)));
+    	for(Variable v : variables)
+    		s = v.apply(s);
+    	return s;
+    }
+    
+    public void reloadVariables() throws Exception {
+    	JSONArray data = new JSONArray(new String(Files.readAllBytes(Paths.get(deafaultPath + "variables.json"))));
+    	System.out.println("Loading variables");
+    	for(int i = 0; i < data.length(); i++)
+    		variables.add(new Variable(data.getJSONObject(i)));
+    }
+    
     public void start() throws Exception{
+    	reloadVariables();
     	reloadGroups();
     	reloadPlugins();
     	mainWindow = new MainWindow();
@@ -46,7 +65,7 @@ public class Stuff {
     }
     
     public void reloadPlugins() throws Exception {
-    	File[] dir = new File(deafaultPath + "plugins" + File.separator).listFiles(File::isFile);
+    	File[] dir = new File("plugins" + File.separator).listFiles(File::isFile);
     	for(File f : dir)
     		plugins.add(getPlugin(f));
     }
@@ -69,7 +88,7 @@ public class Stuff {
     	File[] dir = new File(deafaultPath + "groups" + File.separator).listFiles(File::isFile);
     	for(File f : dir){
     		try{
-        		groups.add(new Group(new JSONObject(new String(Files.readAllBytes(f.toPath())))));
+        		groups.add(new Group(new JSONObject(read(f.getAbsolutePath()))));
     		} catch (Exception e){
     			e.printStackTrace();
     		}

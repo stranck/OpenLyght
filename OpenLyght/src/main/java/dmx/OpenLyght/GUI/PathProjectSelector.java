@@ -1,5 +1,6 @@
 package dmx.OpenLyght.GUI;
 
+import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 
 import java.awt.BorderLayout;
@@ -83,7 +84,16 @@ public class PathProjectSelector extends JFrame {
 		for(int i = paths.length() - 1; i >= 0; i--)
 			v.addElement(paths.getString(i));
 		as = new AutoSuggestor(v);
-		if(paths.length() > 0) as.setText(paths.getString(paths.length() - 1));
+		if(paths.length() > 0) {
+			Path p = Paths.get("recentPathIndex.ini");
+			if(Files.exists(p))
+				as.setText(new String(Files.readAllBytes(p)));
+			else {
+				String s = paths.getString(paths.length() - 1);
+				Files.write(p, s.getBytes(), CREATE, TRUNCATE_EXISTING);
+				as.setText(s);
+			}
+		}
 		pathPanel.add(as, BorderLayout.CENTER);
 		
 		/*JPanel pathButtonPanel = new JPanel();
@@ -110,6 +120,7 @@ public class PathProjectSelector extends JFrame {
 			if(paths.length() > 10) paths.remove(0);
 		}
 		Files.write(configFile, paths.toString().getBytes(), TRUNCATE_EXISTING);
+		Files.write(Paths.get("recentPathIndex.ini"), s.getBytes(), CREATE, TRUNCATE_EXISTING);
 	}
 	
 	private boolean notContains(String s){

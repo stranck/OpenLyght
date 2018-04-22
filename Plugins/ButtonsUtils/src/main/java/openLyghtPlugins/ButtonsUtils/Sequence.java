@@ -16,7 +16,7 @@ import dmx.OpenLyght.GUI.Action;
 
 public class Sequence {
 	
-	private ArrayList<Command> commands = new ArrayList<Command>();
+	private ArrayList<ArrayList<Command>> commands = new ArrayList<ArrayList<Command>>();
 	private ArrayList<String> labels = new ArrayList<String>();
 	private JComboBox<String> comboBox;
 	private String name;
@@ -25,9 +25,15 @@ public class Sequence {
 	public Sequence(JSONObject sequence) throws Exception{
 		name = sequence.getString("name");
 		
-		JSONArray cmds = sequence.getJSONArray("commands");
-		for(int i = 0; i < cmds.length(); i++)
-			commands.add(new Command(cmds.getString(i), Main.getScene(sequence.getString("scene"))));
+		JSONArray sequences = sequence.getJSONArray("commands");
+		for(int i = 0; i < sequences.length(); i++){
+			ArrayList<Command> cmd = new ArrayList<Command>();
+			JSONArray cmds = sequences.getJSONArray(i);
+			for(int n = 0; n < cmds.length(); n++)
+				cmd.add(new Command(cmds.getString(n), Main.getScene(sequence.getString("scene"))));
+			System.out.println(this + " CMD[" + i + "] SIZE = " + cmd.size() + " " + cmds.length());
+			commands.add(cmd);
+		}
 		
 		JSONArray lbs = sequence.getJSONArray("labels");
 		for(int i = 0; i < lbs.length(); i++)
@@ -40,7 +46,7 @@ public class Sequence {
 			public void actionPerformed() {
 				index++;
 				if(index >= commands.size()) index = 0;
-				commands.get(index).execute(false);
+				//commands.get(index).execute(false);
 				comboBox.setSelectedIndex(index);
 			}
 		}, sequence.getString("goKey"));
@@ -50,12 +56,12 @@ public class Sequence {
 			public void actionPerformed() {
 				System.out.println("resetting");
 				index = 0;
-				commands.get(0).execute(false);
+				//commands.get(0).execute(false);
 				comboBox.setSelectedIndex(0);
 			}
 		}, sequence.getString("resetKey"));
 
-		commands.get(index).execute(false);
+		execute(commands.get(index));
 	}
 	
 	public void gui(){
@@ -70,10 +76,16 @@ public class Sequence {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				index = comboBox.getSelectedIndex();
-				commands.get(index).execute(false);
+				//System.out.println("Pressed: " + this);
+				execute(commands.get(index));
 			}
 		});
 		
 		Main.sequencePanel.addSequence(panel);
+	}
+	
+	private void execute(ArrayList<Command> cmds){
+		//System.out.println(cmds.size() + " " + commands.size());
+		for(Command c : cmds) c.execute(false);
 	}
 }

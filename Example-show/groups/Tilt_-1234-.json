@@ -1,0 +1,11 @@
+{
+	"name" : "Tilt-1234-",
+	"description" : "Tilt-1234-",
+	"defaultStatus" : true,
+	"channels" : [
+		"55",
+		"51",
+		"151",
+		"147"
+	]
+}

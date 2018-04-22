@@ -4,6 +4,8 @@
 	"defaultStatus" : false,
 	"channels" : [
 		"laserX",
-		"laserY"
+		"laserY",
+		"laserX2",
+		"laserY2"
 	]
 }

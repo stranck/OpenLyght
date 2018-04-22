@@ -1,0 +1,11 @@
+{
+	"channels" : [
+		"135"
+	],
+	"limits" : {
+		"min" : 32,
+		"max" : 95
+	},
+	"source" : "laserY2",
+	"mode" : 0
+}
