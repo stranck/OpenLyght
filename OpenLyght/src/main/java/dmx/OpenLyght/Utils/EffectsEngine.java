@@ -9,19 +9,18 @@ import dmx.OpenLyght.BasicChannel;
 import dmx.OpenLyght.Channel;
 import dmx.OpenLyght.ChannelModifiers;
 import dmx.OpenLyght.Group;
+import dmx.OpenLyght.Utils.Effects.Off;
  
 public class EffectsEngine implements Runnable, ChannelModifiers {
 	private Group activeGroup;
 	private boolean relative, requestReload = true, reloadingGroup = false;
-	private Effect effect;
+	private Effect effect = new Off();
 	private Channel speedChannel, amount, incAmount = null;
 	private char direction; //>, <, s (>), S (<)
 	private short diff, mid, min, startIncSpeed = 256, incInterval, incAmountSpeed, outValue;
 	private int startPhase, endPhase, currentPhase, width, groups, blocks, wings, minSpeed, inc;
 	private int[] basePhase;
 	private BasicChannel[] channels = new BasicChannel[0];
-	//private ArrayList<Integer> phase = new ArrayList<Integer>();
-	//private ArrayList<BasicChannel> channels = new ArrayList<BasicChannel>();
 	
 	public EffectsEngine(JSONObject data, Channel speed, Channel amount){
 		min = (short) data.getInt("min");
@@ -57,12 +56,16 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 	}
 	
 	public void setGroup(Group g){
+		effect.removeGroup(activeGroup);
+		effect.setGroup(g);
 		activeGroup = g;
 		reloadingGroup = true;
 		requestReload = true;
 	}
 	public void setEffect(Effect e){
+		effect.removeGroup(activeGroup);
 		effect = e;
+		e.setGroup(activeGroup);
 	}
 	public void setDirection(char direction){
 		this.direction = direction;
@@ -127,7 +130,6 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 			System.out.println(basePhase[i]);
 		}
 		System.out.println("pl: " + phaseLength);*/
-		
 		requestReload = false;
 	}
 	
@@ -155,10 +157,10 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 					if(phase < 0) phase += 360;
 					
 					if(phase > width) bc.setValue(min); //newPhase : width = phase : 360
-						else bc.setValue((short) (effect.getValue(width * phase / 360) * diff + mid));
+						else bc.setValue((short) (effect.getValue(width * phase / 360, bc) * diff + mid));
 					bc.getChannel().reportReload();
 				}
-				//System.out.println(amount.getValue() + "\t" + speedChannel.getValue());
+				//System.out.println(amount.getValue() + "\t" + speedChannel.getValue() + "\t" + diff + "\t" + mid);
 				if(speed > 8) {
 					if(incAmount == null) n = 1;
 						else n = incAmount.getValue();
@@ -181,7 +183,7 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 						}
 					}
 				}
-				//while(speedChannel.getValue() < 16) App.utils.wait(20);
+
 				App.wait(256 + minSpeed - speed);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -192,6 +194,7 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 	@Override
 	public short getChannelValue(short originalValue, int index, Channel ch) {
 		outValue = originalValue;
+		effect.setOriginalValue(originalValue, ch);
 		try{
 			outValue = (short) (App.getBasicChannel(channels, ch).getValue() * (amount.getValue() + inc) / 0xFF);
 		}catch(Exception e) {}

@@ -117,39 +117,4 @@ public class Scene implements ChannelModifiers {
 		//System.out.println("val " + value + " " + status + " " + ch.hashCode() + " " + hashCode());
 		return value;
 	}
-	
-	/*private void replaceSteps(Step original, Step replace){
-		for(int i = 0; i < channels.size(); i++)
-			if(App.getGroup(groupName).getChannels().contains(channels.get(i)))
-				original.getBasicChannel(i).setValue(replace.getBasicChannel(i).getValue());
-	}
-	
-	public void runOLD() {
-		//SISTEMARE VErIFICA VELOCITA' MENTRE GIA' IN ESECUZIONE
-		int crossLoop = (15000 * speedChannel.getValue() / 255) / 20;
-		short variationPerLoop[] = new short[channels.size()];
-		Step nextStep = steps.get(nextStepIndex);
-		
-		for(int i = 0; i < variationPerLoop.length && !Thread.interrupted(); i++){
-			if(App.getGroup(groupName).getChannels().contains(channels.get(i))) {
-				if(nextStep.getBasicChannel(i).getSmooth()){
-					variationPerLoop[i] = (short)((currentStep.getBasicChannel(i).getValue() - nextStep.getBasicChannel(i).getValue()) / crossLoop * -1);
-				} else currentStep.getBasicChannel(i).setValue(nextStep.getBasicChannel(i).getValue());
-			}
-		}
-		
-		while(crossLoop-- > 0 && !Thread.interrupted())
-			for(int i = 0; i < variationPerLoop.length && !Thread.interrupted(); i++){
-				if(App.getGroup(groupName).getChannels().contains(channels.get(i))) {
-					short value = currentStep.getBasicChannel(i).getValue();
-					if(value != nextStep.getBasicChannel(i).getValue()){
-						
-						currentStep.getBasicChannel(i).setValue((short) (value + variationPerLoop[i]));
-						if(priority) channels.get(i).setOriginalValue(currentStep.getBasicChannel(i).getValue());
-						channels.get(i).reportReload();
-					}
-				}
-			}
-		if(!Thread.interrupted()) replaceSteps(currentStep, nextStep);
-	}*/
 }

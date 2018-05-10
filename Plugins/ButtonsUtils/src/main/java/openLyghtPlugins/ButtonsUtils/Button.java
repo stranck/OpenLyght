@@ -44,12 +44,10 @@ public class Button {
 	}
 	
 	public void setFix(boolean b){
-		//System.out.println("Fixing: " + b + " "+ hashCode());
 		fix = b;
 	}
 	
 	public void update(boolean b){
-		//System.out.println(b + " " + status + " " + flash + " " + fix + " " + hashCode());
 		if(!flash) if(b){
 			b = !status;
 		} else b = status;

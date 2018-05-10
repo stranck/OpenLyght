@@ -37,9 +37,6 @@ public class Stuff {
     	}
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
     	new PathProjectSelector();
-    	
-    	//System.out.println(new Integer(5).toString());
-    	//testMasterFader();
     }
     
     public String read(String path) throws Exception{
@@ -81,6 +78,16 @@ public class Stuff {
     	Class<?> clazz = Class.forName(new JSONObject(s).getString("pluginClass"), true, cl);
     	Constructor<?> ctor = clazz.getConstructor(Stuff.class);
     	return (Plugin) ctor.newInstance(this);
+    }
+    
+    public Plugin getPlugin(String name){
+    	Plugin plugin = null;
+    	for(Plugin p : plugins)
+    		if(p.getName().equals(name)){
+    			plugin = p;
+    			break;
+    		}
+    	return plugin;
     }
     
     public void reloadGroups(){

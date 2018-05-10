@@ -1,8 +1,6 @@
 package dmx.OpenLyght.GUI;
 
-public class Action {
+public interface Action {
 	
-	public void actionPerformed(){
-		
-	}
+	public void actionPerformed();
 }

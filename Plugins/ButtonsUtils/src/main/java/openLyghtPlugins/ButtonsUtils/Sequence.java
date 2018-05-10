@@ -46,7 +46,6 @@ public class Sequence {
 			public void actionPerformed() {
 				index++;
 				if(index >= commands.size()) index = 0;
-				//commands.get(index).execute(false);
 				comboBox.setSelectedIndex(index);
 			}
 		}, sequence.getString("goKey"));
@@ -56,7 +55,6 @@ public class Sequence {
 			public void actionPerformed() {
 				System.out.println("resetting");
 				index = 0;
-				//commands.get(0).execute(false);
 				comboBox.setSelectedIndex(0);
 			}
 		}, sequence.getString("resetKey"));
@@ -85,7 +83,6 @@ public class Sequence {
 	}
 	
 	private void execute(ArrayList<Command> cmds){
-		//System.out.println(cmds.size() + " " + commands.size());
 		for(Command c : cmds) c.execute(false);
 	}
 }

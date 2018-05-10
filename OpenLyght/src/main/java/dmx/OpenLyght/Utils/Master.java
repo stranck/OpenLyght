@@ -12,6 +12,8 @@ public class Master implements ChannelModifiers {
 	private ArrayList<Channel> channels;
 	private Channel value;
 	
+	private short val, masterValue;
+	
 	public Master(Channel sourceValue, ArrayList<Channel> channels, int mode){
 		this.channels = channels;
 		this.mode = mode;
@@ -47,7 +49,8 @@ public class Master implements ChannelModifiers {
 	@Override
 	public short getChannelValue(short originalValue, int index, Channel ch) {
 		//newValue : diff = originalValue : 0xFF   
-		short value = originalValue, masterValue = this.value.getValue();
+		val = originalValue;
+		masterValue = this.value.getValue();
 		//System.out.println(originalValue + " " + masterValue);
 		try{
 			if(ch == this.value){
@@ -57,32 +60,32 @@ public class Master implements ChannelModifiers {
 				}
 				//System.out.println("MASTER " + hashCode() + ": All reload reported");
 			} else if(masterValue >= enableLimit) {
-				if(invertValue) value = (short) (0xFF - value);
+				if(invertValue) val = (short) (0xFF - val);
 				switch(mode){
 					case 0: {
-						value = (short) (masterValue * diff / 0xFF + min);
+						val = (short) (masterValue * diff / 0xFF + min);
 						break;
 					}
 					case 1: {
-						value = (short) (originalValue * masterValue / 0xFF * diff / 0xFF + min);
+						val = (short) (originalValue * masterValue / 0xFF * diff / 0xFF + min);
 						break;
 					}
 					case 2: {
 						//System.out.println(value + " " + originalValue + " " + masterValue + " " + ch.hashCode());
-						value += masterValue * diff / 0xFF + min;
+						val += masterValue * diff / 0xFF + min;
 						break;
 					}
 					case 3: {
 						//System.out.println("MASTER TYPE: 3 " + ch.hashCode() + " " + hashCode());
-						value -= masterValue * diff / 0xFF + min;
+						val -= masterValue * diff / 0xFF + min;
 						break;
 					}
 					case 4: {
-						value = (short) (value * diff / 0xFF + masterValue);
+						val = (short) (val * diff / 0xFF + masterValue);
 						break;
 					}
 					case 5: {
-						value =  (short) (value * diff / 0xFF - masterValue);
+						val = (short) (val * diff / 0xFF - masterValue);
 						break;
 					}
 				}
@@ -92,6 +95,6 @@ public class Master implements ChannelModifiers {
 			e.printStackTrace();
 		}
 		//System.out.println("MASTER DONE " + mode + " " + hashCode() + " " + ch.hashCode());
-		return value;
+		return val;
 	}
 }

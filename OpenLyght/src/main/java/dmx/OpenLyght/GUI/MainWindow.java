@@ -1,6 +1,7 @@
 package dmx.OpenLyght.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -18,6 +19,7 @@ import org.json.JSONObject;
 import dmx.OpenLyght.App;
 
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.ActionMap;
 import javax.swing.BoxLayout;
@@ -35,13 +37,12 @@ public class MainWindow extends JFrame implements WindowListener {
 	private InputMap input;
 	
 	public MainWindow() throws Exception {
-		super("Open Lyght");
+		super("Open Lyght - " + App.utils.deafaultPath);
 		
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		addWindowListener(this);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -62,21 +63,44 @@ public class MainWindow extends JFrame implements WindowListener {
 	private void loadElements() throws Exception {
 			JSONObject data = new JSONObject(App.utils.read(App.utils.deafaultPath + "guiElements.json"));
 			JSONArray effects = data.getJSONArray("effects");
+			System.out.println(effects.toString());
 			for(int i = 0; i < effects.length(); i++)
-				panel.add(
+				addPanel(
 						new EffectController(this, new JSONObject(
-								App.utils.read(App.utils.deafaultPath + effects.getString(i)))));
+								App.utils.read(App.utils.deafaultPath + effects.getString(i)))), "effectPanel" + i);
 			
 			JSONArray groups = data.getJSONArray("groups");
 			for(int i = 0; i < groups.length(); i++)
-				panel.add(
+				addPanel(
 						new GroupSelector(this, new JSONObject(
-								App.utils.read(App.utils.deafaultPath + groups.getString(i)))));
+								App.utils.read(App.utils.deafaultPath + groups.getString(i)))), "groupPanel" + i);
 	}
 	
-	public void addPanel(JPanel panel){
+	public void addPanel(JPanel panel, String panelID){
+		JTextField jtf = new JTextField(panelID);
+		jtf.setVisible(false);
+		panel.add(jtf, 0);
 		this.panel.add(panel);
 		scrollPane.validate();
+	}
+	
+	public JPanel getJPanel(String panelID){
+		Component[] components = panel.getComponents();
+		JPanel panel = null;
+		for(Component c : components){
+			if(c instanceof JPanel){
+				JPanel jp = (JPanel) c;
+				if(jp.getComponent(0) instanceof JTextField){
+					JTextField jtf = (JTextField) jp.getComponent(0);
+					if(jtf.getText().equals(panelID)){
+						panel = jp;
+						break;
+					}
+				}
+			}
+		}
+		System.out.println(panel);
+		return panel;
 	}
 	
 	public void addListener(Action listener, String keyName) throws Exception{

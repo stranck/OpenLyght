@@ -28,6 +28,7 @@ import dmx.OpenLyght.Utils.EffectsEngine;
 @SuppressWarnings("serial")
 public class EffectController extends JPanel {
 	private JComboBox<EffectCombo> effectComboBox;
+	private JComboBox<GroupCombo> lightsGroupComboBox;
 	private JComboBox<PhaseCombo> phaseComboBox;
 	private JComboBox<CharacterZ> directionComboBox;
 	private JComboBox<Numbers> groupsComboBox;
@@ -39,6 +40,7 @@ public class EffectController extends JPanel {
 	private JSpinner blocksSpinner;
 	private JSpinner wingsSpinner;
 	private JTextField directionTextField;
+	private JButton resetButton;
 	
 	private MainWindow mw;
 	private EffectsEngine effect;
@@ -50,6 +52,7 @@ public class EffectController extends JPanel {
 	private Numbers customNumbers = new Numbers("Custom");
 	
 	private int effectIndex = 0;
+	private int lightsGroupIndex = 0;
 	private int phaseIndex = 0;
 	private int directionIndex = 0;
 	private int groupsIndex = 0;
@@ -61,6 +64,23 @@ public class EffectController extends JPanel {
 		
 		setMaximumSize(new Dimension(Integer.MAX_VALUE, 100));
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		
+		JPanel lightsGroup = new JPanel();
+		add(lightsGroup);
+		lightsGroup.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lightsGroupText = new JLabel("Light group:");
+		lightsGroup.add(lightsGroupText, BorderLayout.NORTH);
+		
+		lightsGroupComboBox = new JComboBox<GroupCombo>();
+		lightsGroup.add(lightsGroupComboBox, BorderLayout.CENTER);
+		loadGroupList(lightsGroupComboBox, data.getJSONArray("lightsGroups"));
+		lightsGroupComboBox.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				lightsGroupChange();
+			}
+		});
 		
 		JPanel effectType = new JPanel();
 		add(effectType);
@@ -86,10 +106,7 @@ public class EffectController extends JPanel {
 		JPanel phaseSubPanel = new JPanel();
 		phaseRange.add(phaseSubPanel, BorderLayout.SOUTH);
 		phaseSubPanel.setLayout(new BoxLayout(phaseSubPanel, BoxLayout.X_AXIS));
-		Dimension subPanelDimension = new Dimension(40, 20);
-		//phaseSubPanel.setMaximumSize(subPanelDimension);
-		//phaseSubPanel.setMinimumSize(subPanelDimension);
-		phaseSubPanel.setPreferredSize(subPanelDimension);
+		phaseSubPanel.setPreferredSize(new Dimension(40, 20));
 		
 		phaseStartSpinner = new JSpinner();
 		phaseSubPanel.add(phaseStartSpinner);
@@ -260,7 +277,7 @@ public class EffectController extends JPanel {
 		add(reset);
 		reset.setLayout(new BorderLayout(0, 0));
 		
-		JButton resetButton = new JButton("Reset");
+		resetButton = new JButton("Reset");
 		reset.add(resetButton);
 		resetButton.addActionListener(new ActionListener() {
 			@Override
@@ -282,6 +299,7 @@ public class EffectController extends JPanel {
 		thread.start();
 	}
 	
+	
 	private void loadKeys(JSONObject keys) throws Exception{
 		
 		mw.addListener(new Action() {
@@ -291,6 +309,14 @@ public class EffectController extends JPanel {
 				effectComboBox.setSelectedIndex(effectIndex);
 			}
 		}, keys.getString("effectKey"));
+		
+		mw.addListener(new Action() {
+			@Override
+			public void actionPerformed() {
+				if(++lightsGroupIndex > lightsGroupComboBox.getItemCount() - 1) lightsGroupIndex = 0;
+				lightsGroupComboBox.setSelectedIndex(lightsGroupIndex);
+			}
+		}, keys.getString("lightsGroupKey"));
 		
 		mw.addListener(new Action() {
 			@Override
@@ -335,53 +361,18 @@ public class EffectController extends JPanel {
 		mw.addListener(new Action() {
 			@Override
 			public void actionPerformed() {
-				reset();
+				resetButton.doClick();
 			}
 		}, keys.getString("resetKey"));
 		
-		/*mw.addListener(new KeyListener() {
-			private final int effectKey = keys.getInt("effectKey");
-			private final int phaseKey = keys.getInt("phaseKey");
-			private final int directionKey = keys.getInt("directionKey");
-			private final int groupsKey = keys.getInt("groupsKey");
-			private final int blocksKey = keys.getInt("blocksKey");
-			private final int wingsKey = keys.getInt("wingsKey");
-			private final int resetKey = keys.getInt("resetKey");
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == effectKey){
-					if(++effectIndex > effectComboBox.getItemCount() - 1) effectIndex = 0;
-					effectComboBox.setSelectedIndex(effectIndex);
-				} else if(e.getKeyCode() == phaseKey){
-					if(++phaseIndex > phaseComboBox.getItemCount() - 1) phaseIndex = 0;
-					phaseComboBox.setSelectedIndex(phaseIndex);
-				} else if(e.getKeyCode() == directionKey){
-					if(++directionIndex > directionComboBox.getItemCount() - 1) directionIndex = 0;
-					directionComboBox.setSelectedIndex(directionIndex);
-				} else if(e.getKeyCode() == groupsKey){
-					if(++groupsIndex > groupsComboBox.getItemCount() - 1) groupsIndex = 0;
-					groupsComboBox.setSelectedIndex(groupsIndex);
-				} else if(e.getKeyCode() == blocksKey){
-					if(++blocksIndex > blocksComboBox.getItemCount() - 1) blocksIndex = 0;
-					blocksComboBox.setSelectedIndex(blocksIndex);
-				} else if(e.getKeyCode() == wingsKey){
-					if(++wingsIndex > wingsComboBox.getItemCount() - 1) wingsIndex = 0;
-					wingsComboBox.setSelectedIndex(wingsIndex);
-				} else if(e.getKeyCode() == resetKey){
-					reset();
-				}
-			}
-			@Override
-			public void keyTyped(KeyEvent e) {}
-			@Override
-			public void keyReleased(KeyEvent e) {}
-		});*/
 	}
+	
 	
 	private void reset(){
 		effectIndex = 0;
 		effectComboBox.setSelectedIndex(0);
+		lightsGroupIndex = 0;
+		lightsGroupComboBox.setSelectedIndex(0);
 		phaseIndex = 0;
 		phaseComboBox.setSelectedIndex(0);
 		directionIndex = 0;
@@ -434,11 +425,17 @@ public class EffectController extends JPanel {
 	private void effectChange(){
 		allowChangeListener = false;
 		effectIndex = effectComboBox.getSelectedIndex();
-		System.out.println(effectIndex);
 		EffectCombo ec = (EffectCombo) effectComboBox.getSelectedItem();
-		System.out.println(ec.getGroup().toString());
-		effect.setGroup(ec.getGroup());
 		effect.setEffect(ec.getEffect());
+		allowChangeListener = true;
+	}
+	
+	private void lightsGroupChange(){
+		allowChangeListener = false;
+		lightsGroupIndex = lightsGroupComboBox.getSelectedIndex();
+		GroupCombo gc = (GroupCombo) lightsGroupComboBox.getSelectedItem();
+		System.out.println(gc.getGroup().toString());
+		effect.setGroup(gc.getGroup());
 		allowChangeListener = true;
 	}
 	
@@ -448,8 +445,21 @@ public class EffectController extends JPanel {
 				JSONObject effect = effects.getJSONObject(i);
 				effectComboBox.addItem(new EffectCombo(
 						App.utils.getEffectByName(effect.getString("effectName")),
-						App.utils.getGroup(effect.getString("groupName")),
 						effect.getString("name")
+						));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private void loadGroupList(JComboBox<GroupCombo> groupsComboBox, JSONArray groups){
+		for(int i = 0; i < groups.length(); i++){
+			try{
+				JSONObject group = groups.getJSONObject(i);
+				lightsGroupComboBox.addItem(new GroupCombo(
+						App.utils.getGroup(group.getString("groupName")),
+						group.getString("name")
 						));
 			} catch (Exception e) {
 				e.printStackTrace();

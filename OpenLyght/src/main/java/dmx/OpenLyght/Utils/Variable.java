@@ -10,11 +10,15 @@ public class Variable {
 	public Variable(JSONObject data){
 		value = data.getString("value");
 		name = data.getString("name");
+		System.out.println("--> " + toString());
 	}
 	
 	public String apply(String s){
-		//System.out.println("Checking variable" + s.replaceAll("%" + name + "%", value));
-		//System.out.println(("\"{[:\t\n%" + name + "%]}\"").replaceAll("%" + name + "%", value));
 		return s.replaceAll("%" + name + "%", value);
+	}
+	
+	@Override
+	public String toString(){
+		return "{\"name\" : \"" + name +  "\",\t\"value\" : \"" + value + "\"}";
 	}
 }

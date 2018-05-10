@@ -13,7 +13,7 @@ public class Main implements Plugin {
 
 	private final String[] tags = { "buttons", "Input", "keyboard" };
 	private final String name = "ButtonsUtils";
-	public static SequencePanel sequencePanel;
+	public static SequencePanel sequencePanel = new SequencePanel();
 	public static ArrayList<Scene> scenes = new ArrayList<Scene>();
 	public static ArrayList<Sequence> sequences = new ArrayList<Sequence>();
 	public static Button[] buttons = new Button[12];
@@ -38,7 +38,6 @@ public class Main implements Plugin {
 				buttons[i].load(new JSONObject(openLyght.read(defaultPath + "buttons" + File.separator + i + ".json")));
 			
 			JSONObject comPorts = new JSONObject(openLyght.read(defaultPath + "serialPorts.json"));
-			//System.out.println(new String(Files.readAllBytes(Paths.get(defaultPath + "serialPorts.json"))));
 			new Arduino(comPorts.getString("buttons")){
 				@Override
 				public void newData(int button, boolean status){
@@ -71,18 +70,20 @@ public class Main implements Plugin {
 	public void message(String message) {
 		if(message.equalsIgnoreCase("openlyght started")){
 			try{
-				sequencePanel = new SequencePanel();
-				openLyght.mainWindow.addPanel(sequencePanel);
+				System.out.println("Buttons utils: loading window panels");
+				openLyght.mainWindow.addPanel(sequencePanel, "sequencePanel");
 				
 				File[] dir = new File(defaultPath + "sequences" + File.separator).listFiles(File::isFile);
 				for(File f : dir){
 					sequences.add(new Sequence(new JSONObject(openLyght.read(f.getAbsolutePath()))));
 				}
-			} catch (Exception e) {
+			} catch(Exception e){
 				e.printStackTrace();
 			}
-				
 		}
 	}
 
+	public SequencePanel getSequencePanel(){
+		return sequencePanel;
+	}
 }

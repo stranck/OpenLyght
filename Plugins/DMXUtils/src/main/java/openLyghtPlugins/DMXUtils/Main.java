@@ -44,7 +44,6 @@ public class Main implements Plugin, Runnable {
 			in = new Arduino(comPorts.getString("reciver")){
 				@Override
 				public void newData(ArrayList<Data> data){
-					//System.out.println(data.size());
 					for(Data d : data)
 						faders.get(faderPage).setFaderStatus(d.value, d.channel);
 				}
@@ -129,7 +128,6 @@ public class Main implements Plugin, Runnable {
 		boolean sendValues = false;
 		int i;
 		App.wait(2500);
-		//out.writeData(codeOutput((short) 62) + codeOutput((short) 255));
 		while(true){
 			openLyght.reloadVirtualChannels();
 			for(i = 0; i < 512; i++){
@@ -151,8 +149,8 @@ public class Main implements Plugin, Runnable {
 	@Override
 	public void message(String message) {
 		if(message.equalsIgnoreCase("openlyght started")){
-			openLyght.mainWindow.addPanel(new PagePanel());
 			System.out.println("Loading dafers/buttons pages");
+			openLyght.mainWindow.addPanel(new PagePanel(), "pagePanel");
 			for(n = 0; n < buttonKeys.length; n++){
 				try {
 					openLyght.mainWindow.addListener(new Action() {
@@ -196,22 +194,7 @@ public class Main implements Plugin, Runnable {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-			}			
-			/*openLyght.mainWindow.addListener(new KeyListener() {
-				
-				@Override
-				public void keyPressed(KeyEvent e) {
-					for(int i = 0; i < buttonKeys.length; i++)
-						if(e.getKeyCode() == buttonKeys[i]) buttonPage = i;
-					for(int i = 0; i < faderKeys.length; i++)
-						if(e.getKeyCode() == faderKeys[i]) faderPage = i;
-				}
-				
-				@Override
-				public void keyTyped(KeyEvent e) {}
-				@Override
-				public void keyReleased(KeyEvent e) {}
-			});*/
+			}
 		}
 	}
 

@@ -94,23 +94,8 @@ public class PathProjectSelector extends JFrame {
 				as.setText(s);
 			}
 		}
-		pathPanel.add(as, BorderLayout.CENTER);
 		
-		/*JPanel pathButtonPanel = new JPanel();
-		as.add(pathButtonPanel, BorderLayout.EAST);
-		
-		JButton pathButton = new JButton("Choose");
-		pathButtonPanel.add(pathButton);
-		pathButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				FileDialog fd = new FileDialog((Frame) null, "OpenLyght - Choose project directory", FileDialog.SAVE);
-				fd.setFile("guiElements.josn");
-				fd.setVisible(true);
-				if(fd.getFile() != null) as.setText(fd.getDirectory() + fd.getFile());
-			}
-		});*/
-		
+		pathPanel.add(as, BorderLayout.CENTER);		
 		setVisible(true);
 	}
 

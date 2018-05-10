@@ -65,15 +65,12 @@ public class Arduino implements SerialPortEventListener {
 				String s = null;
 				while((s = input.readLine()) != null){
 					char[] in = s.toCharArray();
-					//System.out.println(s);
 					ArrayList<Data> data = new ArrayList<Data>();
 					for(int i = 0; i < in.length; i += 4)
 						data.add(new Data(Main.decodeInput(in, i + 0), Main.decodeInput(in, i + 2)));
 					newData(data);
 				}
-			} catch (Exception e) {
-				//e.printStackTrace();
-			}
+			} catch (Exception e) {}
 		}
 	}
 	

@@ -67,12 +67,9 @@ public class Arduino implements SerialPortEventListener {
 					for(char c : in){
 						c -= 63;
 						newData(c / 2 - 1, c % 2 == 1);
-						//System.out.println(c % 2 + " " + c / 2);
 					}						
 				}
-			} catch (Exception e) {
-				//e.printStackTrace();
-			}
+			} catch (Exception e) {}
 		}
 	}
 	

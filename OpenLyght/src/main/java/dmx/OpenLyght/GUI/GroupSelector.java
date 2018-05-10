@@ -80,9 +80,7 @@ public class GroupSelector extends JPanel {
 				        	setAllGroupsAndButtons(false);
 				        	groupButton.setForeground(ENABLED);
 				        	g.setStatus(true);
-				    } //else groupButton.setForeground(DISABLED);
-				    
-				    //g.setStatus(newStatus);
+				    }
 				}
 			});
 		}
@@ -108,23 +106,6 @@ public class GroupSelector extends JPanel {
 			}
 			mw.addListener(a, keys.get(i));
 		}
-
-		
-		/*mw.addListener(new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				int key = e.getKeyCode();
-				if(keys.size() > 0){
-					if(key == keys.get(0)) superGroupButton.doClick();
-					else for(int i = 1; i < keys.size() && i < buttons.size(); i++)
-						if(key == keys.get(i)) buttons.get(i - 1).doClick();
-				}
-			}
-			@Override
-			public void keyTyped(KeyEvent e) {}
-			@Override
-			public void keyReleased(KeyEvent e) {}
-		});*/
 	}
 
 	public void clear(){

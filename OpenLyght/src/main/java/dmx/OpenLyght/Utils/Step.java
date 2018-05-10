@@ -7,7 +7,6 @@ import org.json.JSONArray;
 import dmx.OpenLyght.*;
 
 public class Step {
-	//private ArrayList<BasicChannel> bc = new ArrayList<BasicChannel>();
 	private BasicChannel[] bc;
 	
 	public Step(JSONArray data, ArrayList<Channel> c){

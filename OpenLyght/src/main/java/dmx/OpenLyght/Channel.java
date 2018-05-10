@@ -2,18 +2,14 @@ package dmx.OpenLyght;
 
 import java.util.ArrayList;
 
-//import dmx.OpenLyght.Utils.EmptyChannelModifier;
-
 public class Channel {
 	
 	private int modifierIndex;
 	private boolean reloadReported = false;
 	private short originalValue = 0;
-	private short value = 0;
+	private short value = 0, tempValue;
 	private ArrayList<ChannelModifiers> modifiers = new ArrayList<ChannelModifiers>();
-	//private EmptyChannelModifier emptyModifier = new EmptyChannelModifier();
 	private String description = "";
-	//public Plugin test;
 	
 	public synchronized boolean reloadValue(){
 		if(reloadReported){
@@ -83,10 +79,10 @@ public class Channel {
 	}
 	
 	public short getDMXValue(){
-		short value = this.value;
-		if(value < 0) value = 0;
-		if(value > 255) value = 255;
-		return value;
+		tempValue = this.value;
+		if(tempValue < 0) tempValue = 0;
+		if(tempValue > 255) tempValue = 255;
+		return tempValue;
 	}
 	
 	public short getValue(){
