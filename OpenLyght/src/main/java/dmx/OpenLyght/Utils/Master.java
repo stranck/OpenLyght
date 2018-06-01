@@ -7,7 +7,7 @@ import dmx.OpenLyght.*;
 public class Master implements ChannelModifiers {
 	
 	private int diff = 0xFF, min = 0, enableLimit = Integer.MIN_VALUE;
-	private int mode; //0 = absolute, 1 = relative, 2 = relative remove, 3 = relative add, 4 = add, 5 = remove, others = nothing
+	private int mode; //0 = absolute, 1 = relative, 2 = relative remove, 3 = relative add, 4 = add, 5 = remove, 6 = biggerThan, others = nothing
 	private boolean invertValue;
 	private ArrayList<Channel> channels;
 	private Channel value;
@@ -86,6 +86,12 @@ public class Master implements ChannelModifiers {
 					}
 					case 5: {
 						val = (short) (val * diff / 0xFF - masterValue);
+						break;
+					}
+					case 6: {
+						int v = masterValue * diff / 0xFF + min;
+						//System.out.println("MASTER TYPE: 6 " + v + " " + val + " " + ch.hashCode());
+						if(v > val) val = (short) v;
 						break;
 					}
 				}
