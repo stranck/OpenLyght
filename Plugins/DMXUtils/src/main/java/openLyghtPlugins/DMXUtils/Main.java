@@ -133,7 +133,7 @@ public class Main implements Plugin, Runnable {
 			openLyght.reloadVirtualChannels();
 			for(i = 0; i < 512; i++){
 				
-				if(channels[i].reloadValue()){
+				if(channels[i] != null && channels[i].reloadValue()){
 					data += codeOutput((short) (i)) + codeOutput(channels[i].getDMXValue());
 					sendValues = true;
 				}					

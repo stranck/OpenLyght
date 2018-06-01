@@ -32,9 +32,6 @@ public class Stuff {
 	public boolean freeze = false;
 	
     public Stuff() throws Exception{
-    	for(int i = 0; i < 512; i++){
-    		channels[i] = new Channel();
-    	}
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
     	new PathProjectSelector();
     }
@@ -122,7 +119,12 @@ public class Stuff {
         		c.setDescription(name);
         		virtualChannel.add(c);
         	}
-    	} else c = channels[channelID];
+    	} else {
+    		if(channels[channelID] == null)
+    			channels[channelID] = new Channel();
+    		c = channels[channelID];
+    		
+    	}
     	return c;
     }
    
