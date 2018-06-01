@@ -8,6 +8,7 @@ import dmx.OpenLyght.Utils.Scene;
 public class Button {
 	
 	public static ArrayList<Scene> scenes = new ArrayList<Scene>();
+	private static int globalSelctedScene;
 	private int[] currentScenes;
 	
 	public Button() throws Exception {
@@ -26,8 +27,9 @@ public class Button {
 		int scene = (value - 31) / 28;
 		//System.out.println("BUTTON PRESSED " + scene + " " + value + " " + Main.buttonPage + " " + currentScenes[Main.buttonPage]);
 		if(value > 31 && scene != currentScenes[Main.buttonPage]) {
+			globalSelctedScene = scene;
 			currentScenes[Main.buttonPage] = scene;
 			scenes.get(Main.buttonPage).gotoStep(scene); 
-		} else scenes.get(Main.buttonPage).gotoStep(currentScenes[Main.buttonPage]); 
+		} else scenes.get(Main.buttonPage).gotoStep(globalSelctedScene); 
 	}
 }
