@@ -1,4 +1,4 @@
-package openLyghtPlugins.DMXUtils;
+package dmx.OpenLyght.Utils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,18 +9,16 @@ import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent; 
 import gnu.io.SerialPortEventListener;
 
-import java.util.ArrayList;
 import java.util.Enumeration;
 
 
-public class Arduino implements SerialPortEventListener {
+public abstract class Arduino implements SerialPortEventListener {
 	SerialPort serialPort;
-	private BufferedReader input;
+	protected BufferedReader input;
 	private OutputStream output;
 	private static final int TIME_OUT = 2000;
-	private static final int DATA_RATE = 76800;
 
-	public Arduino(String portName) {
+	public Arduino(String portName, int dataRate) {
 		CommPortIdentifier portId = null;
 		Enumeration<?> portEnum = CommPortIdentifier.getPortIdentifiers();
 
@@ -37,7 +35,7 @@ public class Arduino implements SerialPortEventListener {
 		try {
 			serialPort = (SerialPort) portId.open(this.getClass().getName(), TIME_OUT);
 
-			serialPort.setSerialPortParams(DATA_RATE,
+			serialPort.setSerialPortParams(dataRate,
 					SerialPort.DATABITS_8,
 					SerialPort.STOPBITS_1,
 					SerialPort.PARITY_NONE);
@@ -59,25 +57,7 @@ public class Arduino implements SerialPortEventListener {
 		}
 	}
 
-	public synchronized void serialEvent(SerialPortEvent oEvent) {
-		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-			try {
-				String s = null;
-				while((s = input.readLine()) != null){
-					char[] in = s.toCharArray();
-					ArrayList<Data> data = new ArrayList<Data>();
-					for(int i = 0; i < in.length; i += 4)
-						data.add(new Data(Main.decodeInput(in, i + 0), Main.decodeInput(in, i + 2)));
-					newData(data);
-				}
-			} catch (Exception e) {}
-		}
-	}
-	
-	public void newData(ArrayList<Data> data){
-		for(Data d : data)
-			System.out.println("Address: " + d.channel + " Value: " + d.value);
-	}
+	public abstract void serialEvent(SerialPortEvent spEvent);
 
 	public void writeData(String data) {
 		try {

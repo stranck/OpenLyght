@@ -25,7 +25,7 @@ public class Main implements Plugin, Runnable {
 	public static ArrayList<Master> masters = new ArrayList<Master>();
 	public static Button buttons;
 	public static Channel[] channels;
-	public static Arduino in, out;
+	public static DMXInput in, out;
 	
 	public Main(Stuff ol){	
 		try{
@@ -34,14 +34,15 @@ public class Main implements Plugin, Runnable {
 			defaultPath = ol.deafaultPath + "plugins" + File.separator + name + File.separator;
 			channels = ol.channels;
 
-			JSONObject comPorts = new JSONObject(openLyght.read(defaultPath + "serialPorts.json"));			
-			out = new Arduino(comPorts.getString("sender")){
+			JSONObject comPorts = new JSONObject(openLyght.read(defaultPath + "serialPorts.json"));	
+			
+			out = new DMXInput(comPorts.getString("sender")){
 				@Override
 				public void newData(ArrayList<Data> data){
 					
 				}
 			};
-			in = new Arduino(comPorts.getString("reciver")){
+			in = new DMXInput(comPorts.getString("reciver")){
 				@Override
 				public void newData(ArrayList<Data> data){
 					for(Data d : data)

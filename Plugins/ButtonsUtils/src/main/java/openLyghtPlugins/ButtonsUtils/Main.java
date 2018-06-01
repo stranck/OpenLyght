@@ -38,7 +38,7 @@ public class Main implements Plugin {
 				buttons[i].load(new JSONObject(openLyght.read(defaultPath + "buttons" + File.separator + i + ".json")));
 			
 			JSONObject comPorts = new JSONObject(openLyght.read(defaultPath + "serialPorts.json"));
-			new Arduino(comPorts.getString("buttons")){
+			new ButtonInput(comPorts.getString("buttons")){
 				@Override
 				public void newData(int button, boolean status){
 					buttons[button].update(status);

@@ -60,7 +60,7 @@ public class Scene implements ChannelModifiers {
 		Step nextStep = steps.get(step);
 		fe.clear();
 
-		//System.out.println("step: " + step + " channel size: " + channels.size());
+		System.out.println("step: " + step + " channel size: " + channels.size());
 		for(int i = 0; i < channels.size(); i++){
 			try{
 				if(groupChannels.contains(channels.get(i))) {
