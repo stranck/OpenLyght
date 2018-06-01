@@ -12,7 +12,7 @@ public class DMXInput extends Arduino {
 	}
 
 	@Override
-	public void serialEvent(SerialPortEvent spEvent) {
+	public synchronized void serialEvent(SerialPortEvent spEvent) {
 		if (spEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 			try {
 				String s = null;
