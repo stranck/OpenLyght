@@ -6,13 +6,13 @@ public class Channel {
 	
 	private int modifierIndex;
 	private boolean reloadReported = false;
-	private short originalValue = 0;
-	private short value = 0, tempValue;
+	private short originalValue = 0, previousValue, value = 0, tempValue;
 	private ArrayList<ChannelModifiers> modifiers = new ArrayList<ChannelModifiers>();
 	private String description = "";
 	
 	public synchronized boolean reloadValue(){
 		if(reloadReported){
+			previousValue = value;
 			value = originalValue;
 			modifierIndex = 0;
 			for(ChannelModifiers cm : modifiers){
@@ -23,7 +23,7 @@ public class Channel {
 			//if(!description.isEmpty()) System.out.println("reloaded: " + description + "(" + hashCode() + ")" + "@" + value);
 			//System.out.println("reloaded: " + description + "(" + hashCode() + ")" + "@" + value);
 			reloadReported = false;
-			return true;
+			return value != previousValue;
 		}
 		return false;
 	}
