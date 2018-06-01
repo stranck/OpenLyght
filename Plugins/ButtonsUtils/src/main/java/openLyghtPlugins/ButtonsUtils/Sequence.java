@@ -30,7 +30,7 @@ public class Sequence {
 			ArrayList<Command> cmd = new ArrayList<Command>();
 			JSONArray cmds = sequences.getJSONArray(i);
 			for(int n = 0; n < cmds.length(); n++)
-				cmd.add(new Command(cmds.getString(n), Main.getScene(sequence.getString("scene"))));
+				cmd.add(new Command(cmds.getString(n), Main.getScene(sequence.getString("scene")), this, i));
 			System.out.println(this + " CMD[" + i + "] SIZE = " + cmd.size() + " " + cmds.length());
 			commands.add(cmd);
 		}
@@ -58,7 +58,7 @@ public class Sequence {
 				comboBox.setSelectedIndex(0);
 			}
 		}, sequence.getString("resetKey"));
-
+		
 		execute(commands.get(index));
 	}
 	
@@ -84,5 +84,12 @@ public class Sequence {
 	
 	private void execute(ArrayList<Command> cmds){
 		for(Command c : cmds) c.execute(false);
+	}
+	
+	public JComboBox<String> getComboBox(){
+		return comboBox;
+	}
+	public String getName(){
+		return name;
 	}
 }
