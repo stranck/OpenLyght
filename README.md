@@ -1,5 +1,5 @@
 # OpenLyght
-An oper source lighting software, for control your lights over DMX512
+An oper source lighting software, to control your lights over DMX512
 
 
 ## Libraries used:
