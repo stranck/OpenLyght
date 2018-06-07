@@ -1,19 +1,19 @@
 # OpenLyght
-An oper source lighting software, to control your lights over DMX512
+An Open Source lighting software, to control your lights over DMX512
 
 ## About the project:
 
-Openlyght was born from the idea of trasforming entry-level dmx console to something better, a semi-professional setup, ideal for run lights in mid-level shows.
+Openlyght was born from the idea of trasforming entry-level dmx console into something better, a semi-professional setup, ideal for run lights in mid-level shows.
 
-Openlyght is based on two ideas:
-- **Versatility:** Openlyght by its own it's just an of interface, a sort of kernel, that manages everything and offers some basics function to the user. It's like an empty box that helps you in build your own show, your own gui, as easy as writing on your keyboard. You can integrate more elaborate function and effects thanks to plugins.  
-Openlyght provides you 3 useful plugins: [DMXUtils](https://github.com/stranck/OpenLyght/tree/master/Plugins/DMXUtils) _(for reciving input from your console and sending the output to your lights)_,  [ButtonUtils](https://github.com/stranck/OpenLyght/tree/master/Plugins/ButtonsUtils) _(for getting the input from some buttons mounted on an Arduino. Usefull for having some exec buttons and sequences)_ and [ColorEffect](https://github.com/stranck/OpenLyght/tree/master/Plugins/ColorEffect) _(A special effect made for work with the color of your lights)_.
+Openlyght is based on two main ideas:
+- **Versatility:** Openlyght by its own it's just an interface, a sort of kernel, that manages everything and offers some basic functions to the user. It's like an empty box that helps you build your own show, your own gui, as easy as writing on your keyboard. You can integrate more elaborate functions and effects thanks to plugins.  
+Openlyght provides you 3 useful plugins: [DMXUtils](https://github.com/stranck/OpenLyght/tree/master/Plugins/DMXUtils) _(for reciving input from your console and sending the output to your lights)_,  [ButtonUtils](https://github.com/stranck/OpenLyght/tree/master/Plugins/ButtonsUtils) _(for getting the input from some buttons mounted on an Arduino. Useful for having some exec buttons and sequences)_ and [ColorEffect](https://github.com/stranck/OpenLyght/tree/master/Plugins/ColorEffect) _(A special effect made to work with the color of your lights)_.
 
 - **Channels and channels modifiers:** Openlyght has 512 physical channels (A dmx universe that should be outputted to lights) and an infinite amount of virtual channels (That can be used internally by the software/showfile). You can add an infinite number of channels modifier to each channel. A channel modifier it's just an object that recives a dmx value in input and returns another elaborated value in output. 
 
-Taking a cue from the grandMa's engines _(the top tier of the lighting consolle imho)_, OpenLyght offers professional solutions for create all the effects you need to make your shows unforgettable.
+Taking a cue from the grandMa's engines _(the top tier of the lighting consolle imho)_, OpenLyght offers professional solutions to create all the effects you need to make your shows unforgettable.
 
-Make sure to be subscribed to my [Telegram channel](https://t.me/Stranck) for recive all of the updates of that project!
+Make sure to subscribe on my [Telegram channel](https://t.me/Stranck) to receive all the poject's updates!
 
 ### Demo videos:
 - _\[24/12/2017]_ [First livestream. Some random music](https://www.facebook.com/stranck/videos/1588491717897907)
