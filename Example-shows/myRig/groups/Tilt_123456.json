@@ -1,0 +1,13 @@
+{
+	"name" : "Tilt123456",
+	"description" : "Tilt123456",
+	"defaultStatus" : true,
+	"channels" : [
+		"laserY",
+		"%tiltXS2.1.2%",
+		"%tiltXS2.1.1%",
+		"%tiltXS2.2.2%",
+		"%tiltXS2.2.1%",
+		"laserY2"
+	]
+}

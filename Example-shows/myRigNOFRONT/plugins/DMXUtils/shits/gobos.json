@@ -1,0 +1,14 @@
+{
+	"channels" : [
+		"59"
+	],
+	"limits" : {
+		"min" : 0,
+		"max" : 63
+	},
+	"source" : "gobosFade",
+	"modifierSourceIndex" : 1,
+	"modifierIndex" : -1,
+	"invertValue" : false,
+	"mode" : 4
+}

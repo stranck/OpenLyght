@@ -1,0 +1,9 @@
+{
+	"scene" : "shutters",
+	"flash" : true,
+	"onPress" : [
+		"fix true 6 7"
+	],
+	"onRelease" : [
+	]
+}

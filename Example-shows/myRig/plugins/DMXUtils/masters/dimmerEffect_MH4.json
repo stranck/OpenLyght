@@ -1,0 +1,10 @@
+{
+	"channels" : [
+		"%dimmerXS2.2.1%"
+	],
+	"source" : "MasterDimmerEffectMH4",
+	"modifierSourceIndex" : 4,
+	"modifierIndex" : 2,
+	"invertValue" : false,
+	"mode" : 3
+}

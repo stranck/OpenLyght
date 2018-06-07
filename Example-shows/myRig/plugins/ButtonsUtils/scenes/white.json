@@ -1,0 +1,69 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : false
+			},
+			{
+				"value" : 255,
+				"smooth" : false
+			},
+			{
+				"value" : 255,
+				"smooth" : false
+			},
+			{
+				"value" : 255,
+				"smooth" : false
+			},
+			{
+				"value" : 255,
+				"smooth" : false
+			},
+			{
+				"value" : 255,
+				"smooth" : false
+			},
+			{
+				"value" : 255,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			}
+		]
+	],
+	"channels" : [
+		"%redPar1%",
+		"%greenPar1%",
+		"%bluePar1%",
+		"%redPar2%",
+		"%greenPar2%",
+		"%bluePar2%",
+		"MasterDimmerPar",
+		"%shuttersPar1%",
+		"%shuttersPar2%",
+		"MasterDimmerMH",
+		"LaserColors"
+	],
+	"priority" : 8,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "white",
+	"absolute" : true,
+	"name" : "white",
+	"defaultStatus" : false
+}

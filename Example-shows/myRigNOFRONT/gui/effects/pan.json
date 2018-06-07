@@ -1,0 +1,72 @@
+{
+	"effects" : [
+		{
+			"effectName" : "Cos",
+			"name" : "Cos"
+		}
+	],
+	"lightsGroups" : [
+		{
+			"groupName" : "Pan123456",
+			"name" : "mhl PAN: 123 456"
+		},
+		{
+			"groupName" : "Pan162534",
+			"name" : "mhl PAN: 162 534"
+		},
+		{
+			"groupName" : "Pan-1234-",
+			"name" : "mhl PAN: -12 34-"
+		}
+	],
+	"phases" : [
+		{
+			"start" : 0,
+			"end" : 360
+		},
+		{
+			"start" : 0,
+			"end" : 180
+		}
+	],
+	"directions" : [
+		">",
+		"<"
+	],
+	"groups" : [
+		0,
+		2,
+		1
+	],
+	"blocks" : [
+		0,
+		2
+	],
+	"wings" : [
+		-2,
+		0
+	],
+	"keys" : {
+		"lightsGroupKey" : "1",
+		"effectKey" : "2",
+		"phaseKey" : "3",
+		"directionKey" : "4",
+		"groupsKey" : "5",
+		"blocksKey" : "6",
+		"wingsKey" : "7",
+		"resetKey" : "BACK_SPACE"
+	},
+	"speedChannelName" : "movmentSpeed",
+	"amountChannelName" : "movementPanAmount",
+	"effectData" : {
+		"min" : -35,
+		"max" : 35,
+		"width" : 360,
+		"minSpeed" : 4,
+		"relative" : true,
+		"amountIncreaser" : {
+			"amount" : 192,
+			"startSpeed" : 250
+		}
+	}
+}

@@ -1,0 +1,357 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 60,
+				"smooth" : false
+			},
+			{
+				"value" : 60,
+				"smooth" : false
+			},
+			{
+				"value" : 60,
+				"smooth" : false
+			},
+			{
+				"value" : 60,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 72,
+				"smooth" : false
+			},
+			{
+				"value" : 72,
+				"smooth" : false
+			},
+			{
+				"value" : 72,
+				"smooth" : false
+			},
+			{
+				"value" : 72,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 119,
+				"smooth" : false
+			},
+			{
+				"value" : 119,
+				"smooth" : false
+			},
+			{
+				"value" : 119,
+				"smooth" : false
+			},
+			{
+				"value" : 119,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 102,
+				"smooth" : false
+			},
+			{
+				"value" : 102,
+				"smooth" : false
+			},
+			{
+				"value" : 102,
+				"smooth" : false
+			},
+			{
+				"value" : 102,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 40,
+				"smooth" : false
+			},
+			{
+				"value" : 40,
+				"smooth" : false
+			},
+			{
+				"value" : 40,
+				"smooth" : false
+			},
+			{
+				"value" : 40,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 86,
+				"smooth" : false
+			},
+			{
+				"value" : 86,
+				"smooth" : false
+			},
+			{
+				"value" : 86,
+				"smooth" : false
+			},
+			{
+				"value" : 86,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 32,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 32,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 24,
+				"smooth" : false
+			},
+			{
+				"value" : 24,
+				"smooth" : false
+			},
+			{
+				"value" : 24,
+				"smooth" : false
+			},
+			{
+				"value" : 24,
+				"smooth" : false
+			}
+		],
+	],
+	"channels" : [
+		"%redPar1%",
+		"%greenPar1%",
+		"%bluePar1%",
+		"%redPar2%",
+		"%greenPar2%",
+		"%bluePar2%",
+		"%colorXS2.1.1%",
+		"%colorXS2.1.2%",
+		"%colorXS2.2.1%",
+		"%colorXS2.2.2%"
+	],
+	"priority" : 0,
+	"speedChannel" : "fadeSpeed",
+	"group" : "colors",
+	"absolute" : true,
+	"defaultStatus" : true
+}

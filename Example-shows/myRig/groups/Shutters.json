@@ -1,0 +1,13 @@
+{
+	"name" : "shutters",
+	"description" : "Beams",
+	"defaultStatus" : true,
+	"channels" : [
+		"%shuttersPar1%",
+		"%shuttersPar2%",
+		"%shutterXS2.1.1%",
+		"%shutterXS2.1.2%",
+		"%shutterXS2.2.1%",
+		"%shutterXS2.2.2%"
+	]
+}

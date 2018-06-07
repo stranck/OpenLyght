@@ -1,0 +1,37 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 128,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 165,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 191,
+				"smooth" : false
+			}
+		]
+	],
+	"channels" : [
+		"laserRotateX"
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "laserRotateX",
+	"absolute" : true,
+	"name" : "laserRotateX",
+	"defaultStatus" : true
+}

@@ -1,0 +1,9 @@
+{
+	"superGroupName" : "positions",
+	"description" : "Positions",
+	"keys" : [
+		"NUMPAD4",
+		"NUMPAD5",
+		"NUMPAD6"
+	]
+}

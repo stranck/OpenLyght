@@ -1,0 +1,9 @@
+{
+	"name" : "dimmerEffect Pars",
+	"description" : "Pars",
+	"defaultStatus" : true,
+	"channels" : [
+		"MasterDimmerEffectPar1",
+		"MasterDimmerEffectPar2"
+	]
+}

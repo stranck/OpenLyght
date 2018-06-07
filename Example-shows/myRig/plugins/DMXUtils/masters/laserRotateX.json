@@ -1,0 +1,15 @@
+{
+	"channels" : [
+		"%rotateXLaser1%",
+		"%rotateXLaser2%"
+	],
+	"limits" : {
+		"min" : 0,
+		"max" : 63
+	},
+	"source" : "laserRotateX",
+	"modifierSourceIndex" : 1,
+	"modifierIndex" : -1,
+	"invertValue" : false,
+	"mode" : 4
+}

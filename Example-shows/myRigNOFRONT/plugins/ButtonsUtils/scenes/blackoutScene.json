@@ -1,0 +1,29 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+		]
+	],
+	"channels" : [
+		"MasterDimmerPar",
+		"MasterDimmerMH",
+		"LaserColors"
+	],
+	"priority" : 4,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "blackout",
+	"absolute" : true,
+	"name" : "blackoutScene",
+	"defaultStatus" : false
+}

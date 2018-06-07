@@ -1,0 +1,12 @@
+{
+	"effects" : [
+		"\\gui\\effects\\pan.json",
+		"\\gui\\effects\\tilt.json",
+		"\\gui\\effects\\dimmers.json",
+		"\\gui\\effects\\colors.json"
+	],
+	"groups" : [
+		"\\gui\\groups\\color.json",
+		"\\gui\\groups\\positions.json"
+	]
+}

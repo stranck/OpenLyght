@@ -1,0 +1,18 @@
+{
+	"name" : "white",
+	"description" : "Full white",
+	"defaultStatus" : true,
+	"channels" : [
+		"%redPar1%",
+		"%greenPar1%",
+		"%bluePar1%",
+		"%redPar2%",
+		"%greenPar2%",
+		"%bluePar2%",
+		"MasterDimmerPar",
+		"%shuttersPar1%",
+		"%shuttersPar2%",
+		"MasterDimmerMH",
+		"LaserColors"
+	]
+}

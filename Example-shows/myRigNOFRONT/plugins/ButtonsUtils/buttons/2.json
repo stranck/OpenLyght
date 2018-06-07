@@ -1,0 +1,9 @@
+{
+	"scene" : "maxLaser",
+	"onPress" : [
+		"setStatus true"
+	],
+	"onRelease" : [
+		"setStatus false"
+	]
+}

@@ -1,0 +1,25 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false
+			}
+		]
+	],
+	"channels" : [
+		"colorEffectSwitch"
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "effectSwitch",
+	"absolute" : true,
+	"name" : "colorEffectSwitch",
+	"defaultStatus" : true
+}

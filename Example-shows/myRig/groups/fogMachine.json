@@ -1,0 +1,9 @@
+{
+	"name" : "fogMachine",
+	"description" : "fogMachine",
+	"defaultStatus" : true,
+	"channels" : [
+		"%fogMachine%",
+		"FogMachineMaster"
+	]
+}

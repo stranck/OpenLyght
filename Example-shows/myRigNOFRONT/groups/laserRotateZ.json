@@ -1,0 +1,8 @@
+{
+	"name" : "laserRotateZ",
+	"description" : "laserRotateZ",
+	"defaultStatus" : true,
+	"channels" : [
+		"laserRotateZ"
+	]
+}

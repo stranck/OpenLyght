@@ -1,0 +1,31 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 128,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false
+			}
+		]
+	],
+	"channels" : [
+		"FogMachineMaster"
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "fogMachine",
+	"absolute" : true,
+	"name" : "fogMachine",
+	"defaultStatus" : true
+}

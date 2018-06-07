@@ -1,0 +1,10 @@
+{
+	"name" : "Pan Movingheads",
+	"description" : "MovingHeads",
+	"defaultStatus" : true,
+	"channels" : [
+		"49",
+		"53",
+		"EmptyVirtualChannel"
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"name" : "Tilt-1234-",
+	"description" : "Tilt-1234-",
+	"defaultStatus" : true,
+	"channels" : [
+		"%tiltXS2.1.2%",
+		"%tiltXS2.1.1%",
+		"%tiltXS2.2.2%",
+		"%tiltXS2.2.1%"
+	]
+}

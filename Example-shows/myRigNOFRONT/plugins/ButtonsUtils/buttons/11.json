@@ -1,0 +1,9 @@
+{
+	"scene" : "alternatePositions",
+	"onPress" : [
+		"setStatus true"
+	],
+	"onRelease" : [
+		"setStatus false"
+	]
+}

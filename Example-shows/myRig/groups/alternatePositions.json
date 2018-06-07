@@ -1,0 +1,17 @@
+{
+	"name" : "alternatePositions",
+	"description" : "alternatePositions",
+	"defaultStatus" : true,
+	"channels" : [
+		"%panXS2.1.1%",
+		"%tiltXS2.1.1%",
+		"%panXS2.1.2%",
+		"%tiltXS2.1.2%",
+		"MasterDimmerMH",
+		"MasterDimmerPar",
+		"%panXS2.2.1%",
+		"%tiltXS2.2.1%",
+		"%panXS2.2.2%",
+		"%tiltXS2.2.2%"
+	]
+}

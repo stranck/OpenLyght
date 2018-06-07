@@ -1,0 +1,11 @@
+{
+	"name" : "Pan-1234-",
+	"description" : "Pan-1234-",
+	"defaultStatus" : true,
+	"channels" : [
+		"%panXS2.1.2%",
+		"%panXS2.1.1%",
+		"%panXS2.2.2%",
+		"%panXS2.2.1%"
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"channels" : [
+		"dimmerEffectSpeed"
+	],
+	"limits" : {
+		"min" : 232,
+		"max" : 255
+	},
+	"source" : "dimmerEffectSpeedMaster",
+	"mode" : 0
+}

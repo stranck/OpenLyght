@@ -1,0 +1,79 @@
+{
+	"go+Key" : "NUMPAD8",
+	"go-Key" : "NUMPAD7",
+	"resetKey" : "UNDEFINED",
+	"colors" : [
+		{
+			"label" : "Red",
+			"value" : 60,
+			"rgb" : {
+				"red" : 255,
+				"green" :0,
+				"blue" : 0
+			}
+		},
+		{
+			"label" : "Green",
+			"value" : 72,
+			"rgb" : {
+				"red" : 0,
+				"green" :192,
+				"blue" : 0
+			}
+		},
+		{
+			"label" : "Blue",
+			"value" : 119,
+			"rgb" : {
+				"red" : 0,
+				"green" :0,
+				"blue" : 255
+			}
+		},
+		{
+			"label" : "Yellow",
+			"value" : 102,
+			"rgb" : {
+				"red" : 255,
+				"green" :192,
+				"blue" : 0
+			}
+		},
+		{
+			"label" : "Cyan",
+			"value" : 40,
+			"rgb" : {
+				"red" : 0,
+				"green" :192,
+				"blue" : 192
+			}
+		},
+		{
+			"label" : "Magenta",
+			"value" : 86,
+			"rgb" : {
+				"red" : 255,
+				"green" :0,
+				"blue" : 255
+			}
+		},
+		{
+			"label" : "White",
+			"value" : 0,
+			"rgb" : {
+				"red" : 0,
+				"green" : 0,
+				"blue" : 0
+			}
+		},
+		{
+			"label" : "Orange",
+			"value" : 24,
+			"rgb" : {
+				"red" : 255,
+				"green" :64,
+				"blue" : 0	
+			}
+		},
+	]
+}

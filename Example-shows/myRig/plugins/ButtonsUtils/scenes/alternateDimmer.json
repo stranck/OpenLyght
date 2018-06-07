@@ -1,0 +1,124 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 255,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			},
+			{
+				"value" : 0,
+				"smooth" : true
+			}
+		]
+	],
+	"channels" : [
+		"MasterDimmerEffectMH1",
+		"MasterDimmerEffectMH2",
+		"MasterDimmerEffectMH3",
+		"MasterDimmerEffectMH4"
+	],
+	"priority" : 1,
+	"speedChannel" : "alternateSpeed",
+	"group" : "dimmerEffect Movingheads",
+	"absolute" : true,
+	"name" : "alternateDimmer",
+	"defaultStatus" : false
+}

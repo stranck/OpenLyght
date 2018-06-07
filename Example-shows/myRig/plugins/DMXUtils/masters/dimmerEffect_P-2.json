@@ -1,0 +1,12 @@
+{
+	"channels" : [
+		"%redPar2%",
+		"%greenPar2%",
+		"%bluePar2%"
+	],
+	"source" : "MasterDimmerEffectPar2",
+	"modifierSourceIndex" : 4,
+	"modifierIndex" : -1,
+	"invertValue" : false,
+	"mode" : 3
+}

@@ -1,0 +1,10 @@
+{
+	"name" : "Pan Laser",
+	"description" : "Laser",
+	"defaultStatus" : true,
+	"channels" : [
+		"laserX",
+		"EmptyVirtualChannel",
+		"EmptyVirtualChannel"
+	]
+}

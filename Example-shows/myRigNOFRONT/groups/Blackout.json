@@ -1,0 +1,10 @@
+{
+	"name" : "blackout",
+	"description" : "Blackout",
+	"defaultStatus" : true,
+	"channels" : [
+		"MasterDimmerPar",
+		"MasterDimmerMH",
+		"LaserColors"
+	]
+}
