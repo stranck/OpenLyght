@@ -25,11 +25,14 @@ public class Button {
 	
 	public void buttonPressed(int value){
 		int scene = (value - 31) / 28;
-		//System.out.println("BUTTON PRESSED " + scene + " " + value + " " + Main.buttonPage + " " + currentScenes[Main.buttonPage]);
-		if(value > 31 && scene != currentScenes[Main.buttonPage]) {
+		//System.out.println("BUTTON PRESSED " + scene + " " + value + " " + Main.buttonPage + " " + currentScenes[Main.buttonPage] + " " + globalSelctedScene);
+		if(value < 31)
+			scene = globalSelctedScene;
+		else
 			globalSelctedScene = scene;
+		if(scene != currentScenes[Main.buttonPage]) {
 			currentScenes[Main.buttonPage] = scene;
 			scenes.get(Main.buttonPage).gotoStep(scene); 
-		} else scenes.get(Main.buttonPage).gotoStep(globalSelctedScene); 
+		}
 	}
 }

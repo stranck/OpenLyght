@@ -36,17 +36,15 @@ public class Main implements Plugin, Runnable {
 
 			JSONObject comPorts = new JSONObject(openLyght.read(defaultPath + "serialPorts.json"));	
 			
-			out = new DMXInput(comPorts.getString("sender")){
-				@Override
-				public void newData(ArrayList<Data> data){
-					
-				}
-			};
+			out = new DMXInput(comPorts.getString("sender"));
+			
 			in = new DMXInput(comPorts.getString("reciver")){
 				@Override
 				public void newData(ArrayList<Data> data){
-					for(Data d : data)
+					for(Data d : data){
 						faders.get(faderPage).setFaderStatus(d.value, d.channel);
+						//System.out.println(d.toString());
+					}
 				}
 			};
 			loadMasters();

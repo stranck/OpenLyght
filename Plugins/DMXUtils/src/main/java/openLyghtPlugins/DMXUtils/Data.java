@@ -9,4 +9,8 @@ public class Data {
 		this.value = value;
 	}
 	
+	@Override
+	public String toString(){
+		return "Channel: " + channel + "\tValue: " + value;
+	}
 }
