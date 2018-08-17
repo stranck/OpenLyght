@@ -15,6 +15,8 @@ Taking a cue from the grandMa's engines _(the top tier of the lighting consolle 
 
 Make sure to subscribe on my [Telegram channel](https://t.me/Stranck) to receive all the poject's updates!
 
+![A screenshot from my showfile](https://i.imgur.com/TGXK6ft.png)
+
 ### Demo videos:
 - _\[24/12/2017]_ [First livestream. Some random music](https://www.facebook.com/stranck/videos/1588491717897907)
 - _\[25/12/2017]_ [Debut of OpenLyght in a real show. Christmas conert. Mainly rock version of cartoon's opening](https://youtu.be/tTs-XiNoE8I)
@@ -25,6 +27,10 @@ Make sure to subscribe on my [Telegram channel](https://t.me/Stranck) to receive
 - _\[21/04/2018]_ [A clip from the previous live stream](https://twitter.com/LStranck/status/987823769644302336)
 - _\[27/05/2018]_ [First outdoor show. Mainly rock version of cartoon's opening](https://youtu.be/JpoVJbuO4jA)
 - _\[27/05/2018]_ [A clip of the previous show. Rock version of Dragonball's opening](https://www.facebook.com/stranck/videos/1749767935103617)
+- _\[04/07/2018]_ [First show with a faze machine. Mainly rock version of cartoon's opening](https://youtu.be/9YO8UPDB3ck)
+- _\[04/07/2018]_ [A clip of the previous show. Rock version of Dragonball's opening](https://www.facebook.com/44008514630/videos/10156384365914631)
+- _\[04/07/2018]_ [A clip from the previous show. Bohemian Rhapsody - Queen.](https://www.facebook.com/CdACartoonBoyBand/videos/834316146762842/)
+- _\[04/07/2018]_ [A clip from the previous show. Rock version of italian Pokémon's opening.](https://www.facebook.com/stranck/videos/1809841142429629)
 
 ###### Why openl**Y**ght?
 Simple: there are a lot of projects of lighting softwares already called openl**I**ght lmao
