@@ -3,13 +3,15 @@ package dmx.OpenLyght.GUI;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
-import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -27,13 +29,13 @@ import dmx.OpenLyght.Utils.EffectsEngine;
 
 @SuppressWarnings("serial")
 public class EffectController extends JPanel {
-	private JComboBox<EffectCombo> effectComboBox;
-	private JComboBox<GroupCombo> lightsGroupComboBox;
-	private JComboBox<PhaseCombo> phaseComboBox;
-	private JComboBox<CharacterZ> directionComboBox;
-	private JComboBox<Numbers> groupsComboBox;
-	private JComboBox<Numbers> blocksComboBox;
-	private JComboBox<Numbers> wingsComboBox;
+	private ButtonList effectBtn;
+	private ButtonList lightsGroupBtn;
+	private ButtonList phaseBtn;
+	private ButtonList directionBtn;
+	private ButtonList groupsBtn;
+	private ButtonList blocksBtn;
+	private ButtonList wingsBtn;
 	private JSpinner phaseStartSpinner;
 	private JSpinner phaseEndSpinner;
 	private JSpinner groupsSpinner;
@@ -43,26 +45,20 @@ public class EffectController extends JPanel {
 	private JButton resetButton;
 	
 	private MainWindow mw;
-	private EffectsEngine effect;
-	private Thread thread;
+	private ArrayList<EffectsEngine> effect = new ArrayList<EffectsEngine>();
+	private ArrayList<Thread> thread = new ArrayList<Thread>();
 	private boolean allowChangeListener = true;
+	private int efctN;
 	
 	private PhaseCombo customPhaseCombo = new PhaseCombo("Custom");
 	private CharacterZ customDirection = new CharacterZ("Custom");
 	private Numbers customNumbers = new Numbers("Custom");
-	
-	private int effectIndex = 0;
-	private int lightsGroupIndex = 0;
-	private int phaseIndex = 0;
-	private int directionIndex = 0;
-	private int groupsIndex = 0;
-	private int blocksIndex = 0;
-	private int wingsIndex = 0;
 
 	public EffectController(MainWindow mw, JSONObject data) throws Exception {
 		this.mw = mw;
 		
-		setMaximumSize(new Dimension(Integer.MAX_VALUE, 100));
+		System.out.println("Loading effect controller");
+		setMaximumSize(new Dimension(Integer.MAX_VALUE, mw.getVerticalSlotSize()));
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		JPanel lightsGroup = new JPanel();
@@ -72,12 +68,20 @@ public class EffectController extends JPanel {
 		JLabel lightsGroupText = new JLabel("Light group:");
 		lightsGroup.add(lightsGroupText, BorderLayout.NORTH);
 		
-		lightsGroupComboBox = new JComboBox<GroupCombo>();
-		lightsGroup.add(lightsGroupComboBox, BorderLayout.CENTER);
-		loadGroupList(lightsGroupComboBox, data.getJSONArray("lightsGroups"));
-		lightsGroupComboBox.addActionListener(new ActionListener() {	
+		
+		
+		JSONArray effectsData = data.getJSONArray("effectData");
+		efctN = effectsData.length();
+		
+		lightsGroupBtn = new ButtonList();
+		lightsGroup.add(lightsGroupBtn, BorderLayout.CENTER);
+		JSONArray lightsGroupJumps = null;
+		if(data.has("lightsGroupJumps"))
+			data.getJSONArray("lightsGroupJumps");
+		loadGroupList(lightsGroupBtn, data.getJSONArray("lightsGroups"), lightsGroupJumps);
+		lightsGroupBtn.addAction(new Action() {	
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed() {
 				lightsGroupChange();
 			}
 		});
@@ -89,12 +93,15 @@ public class EffectController extends JPanel {
 		JLabel effectTypeText = new JLabel("Effect:");
 		effectType.add(effectTypeText, BorderLayout.NORTH);
 		
-		effectComboBox = new JComboBox<EffectCombo>();
-		effectType.add(effectComboBox, BorderLayout.CENTER);
-		loadEffectsList(effectComboBox, data.getJSONArray("effects"));
-		effectComboBox.addActionListener(new ActionListener() {	
+		effectBtn = new ButtonList();
+		effectType.add(effectBtn, BorderLayout.CENTER);
+		JSONArray effectTypeJumps = null;
+		if(data.has("effectTypeJumps"))
+			data.getJSONArray("effectTypeJumps");
+		loadEffectsList(effectBtn, data.getJSONArray("effects"), effectTypeJumps);
+		effectBtn.addAction(new Action() {	
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed() {
 				effectChange();
 			}
 		});
@@ -114,8 +121,9 @@ public class EffectController extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				if(allowChangeListener){
-					phaseComboBox.setSelectedItem(customPhaseCombo);
-					effect.setPhaseStart((int) phaseStartSpinner.getValue());
+					phaseBtn.setIndex(customPhaseCombo);
+					for(int i = 0; i < efctN; i++)
+						effect.get(i).setPhaseStart((int) phaseStartSpinner.getValue());
 				}
 			}
 		});
@@ -126,8 +134,9 @@ public class EffectController extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				if(allowChangeListener){
-					phaseComboBox.setSelectedItem(customPhaseCombo);
-					effect.setPhaseEnd((int) phaseEndSpinner.getValue());
+					phaseBtn.setIndex(customPhaseCombo);
+					for(int i = 0; i < efctN; i++)
+						effect.get(i).setPhaseEnd((int) phaseEndSpinner.getValue());
 				}
 			}
 		});
@@ -135,12 +144,15 @@ public class EffectController extends JPanel {
 		JLabel phaseText = new JLabel("Phase:");
 		phaseRange.add(phaseText, BorderLayout.NORTH);
 		
-		phaseComboBox = new JComboBox<PhaseCombo>();
-		phaseRange.add(phaseComboBox, BorderLayout.CENTER);
-		loadPhaseList(phaseComboBox, data.getJSONArray("phases"));
-		phaseComboBox.addActionListener(new ActionListener() {
+		phaseBtn = new ButtonList();
+		phaseRange.add(phaseBtn, BorderLayout.CENTER);
+		JSONArray phaseRangeJumps = null;
+		if(data.has("phaseRangeJumps"))
+			data.getJSONArray("phaseRangeJumps");
+		loadPhaseList(phaseBtn, data.getJSONArray("phases"), phaseRangeJumps);
+		phaseBtn.addAction(new Action() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed() {
 				phaseChange();
 			}
 		});
@@ -152,12 +164,15 @@ public class EffectController extends JPanel {
 		JLabel directionText = new JLabel("Direction:");
 		direction.add(directionText, BorderLayout.NORTH);
 		
-		directionComboBox = new JComboBox<CharacterZ>();
-		direction.add(directionComboBox, BorderLayout.CENTER);
-		loadDirectionsList(directionComboBox, data.getJSONArray("directions"));
-		directionComboBox.addActionListener(new ActionListener() {
+		directionBtn = new ButtonList();
+		direction.add(directionBtn, BorderLayout.CENTER);
+		JSONArray directionJumps = null;
+		if(data.has("directionJumps"))
+			data.getJSONArray("directionJumps");
+		loadDirectionsList(directionBtn, data.getJSONArray("directions"), directionJumps);
+		directionBtn.addAction(new Action() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed() {
 				directionChange();
 			}
 		});
@@ -172,8 +187,9 @@ public class EffectController extends JPanel {
 				if(allowChangeListener){
 					char c = directionTextField.getText().charAt(0);
 					if(c == '<' || c == '>' || c == 'S' || c == 's'){
-						directionComboBox.setSelectedItem(customDirection);
-						effect.setDirection(c);
+						directionBtn.setIndex(customDirection);
+						for(int i = 0; i < efctN; i++)
+							effect.get(i).setDirection(c);
 					}
 				}
 			}
@@ -196,20 +212,24 @@ public class EffectController extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				if(allowChangeListener){
-					groupsComboBox.setSelectedItem(customNumbers);
-					effect.setGroups((int) groupsSpinner.getValue());
+					groupsBtn.setIndex(customNumbers);
+					for(int i = 0; i < efctN; i++)
+						effect.get(i).setGroups((int) groupsSpinner.getValue());
 				}
 			}
 		});
 		
-		groupsComboBox = new JComboBox<Numbers>();
-		groups.add(groupsComboBox, BorderLayout.CENTER);
-		loadNumbersList(groupsComboBox, data.getJSONArray("groups"));
-		groupsComboBox.addActionListener(new ActionListener() {
+		groupsBtn = new ButtonList();
+		groups.add(groupsBtn, BorderLayout.CENTER);
+		JSONArray groupsJumps = null;
+		if(data.has("groupsJumps"))
+			data.getJSONArray("groupsJumps");
+		loadNumbersList(groupsBtn, data.getJSONArray("groups"), groupsJumps);
+		groupsBtn.addAction(new Action() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				groupsIndex = groupsComboBox.getSelectedIndex();
-				effect.setGroups(numbersChange(groupsComboBox, groupsSpinner));
+			public void actionPerformed() {
+				for(int i = 0; i < efctN; i++)
+					effect.get(i).setGroups(numbersChange(groupsBtn, groupsSpinner, i));
 			}
 		});
 		
@@ -226,20 +246,24 @@ public class EffectController extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				if(allowChangeListener){
-					blocksComboBox.setSelectedItem(customNumbers);
-					effect.setBlocks((int) blocksSpinner.getValue());
+					blocksBtn.setIndex(customNumbers);
+					for(int i = 0; i < efctN; i++)
+						effect.get(i).setBlocks((int) blocksSpinner.getValue());
 				}
 			}
 		});
 		
-		blocksComboBox = new JComboBox<Numbers>();
-		blocks.add(blocksComboBox, BorderLayout.CENTER);
-		loadNumbersList(blocksComboBox, data.getJSONArray("blocks"));
-		blocksComboBox.addActionListener(new ActionListener() {
+		blocksBtn = new ButtonList();
+		blocks.add(blocksBtn, BorderLayout.CENTER);
+		JSONArray blocksJumps = null;
+		if(data.has("blocksJumps"))
+			data.getJSONArray("blocksJumps");
+		loadNumbersList(blocksBtn, data.getJSONArray("blocks"), blocksJumps);
+		blocksBtn.addAction(new Action() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				blocksIndex = blocksComboBox.getSelectedIndex();
-				effect.setBlocks(numbersChange(blocksComboBox, blocksSpinner));
+			public void actionPerformed() {
+				for(int i = 0; i < efctN; i++)
+					effect.get(i).setBlocks(numbersChange(blocksBtn, blocksSpinner, i));
 			}
 		});
 		
@@ -256,20 +280,24 @@ public class EffectController extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				if(allowChangeListener){
-					wingsComboBox.setSelectedItem(customNumbers);
-					effect.setWings((int) wingsSpinner.getValue());
+					wingsBtn.setIndex(customNumbers);
+					for(int i = 0; i < efctN; i++)
+						effect.get(i).setWings((int) wingsSpinner.getValue());
 				}
 			}
 		});
 		
-		wingsComboBox = new JComboBox<Numbers>();
-		wings.add(wingsComboBox, BorderLayout.CENTER);
-		loadNumbersList(wingsComboBox, data.getJSONArray("wings"));
-		wingsComboBox.addActionListener(new ActionListener() {
+		wingsBtn = new ButtonList();
+		wings.add(wingsBtn, BorderLayout.CENTER);
+		JSONArray wingsJumps = null;
+		if(data.has("wingsJumps"))
+			data.getJSONArray("wingsJumps");
+		loadNumbersList(wingsBtn, data.getJSONArray("wings"), wingsJumps);
+		wingsBtn.addAction(new Action() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				wingsIndex = wingsComboBox.getSelectedIndex();
-				effect.setWings(numbersChange(wingsComboBox, wingsSpinner));
+			public void actionPerformed() {
+				for(int i = 0; i < efctN; i++)
+					effect.get(i).setWings(numbersChange(wingsBtn, wingsSpinner, i));
 			}
 		});
 		
@@ -282,79 +310,112 @@ public class EffectController extends JPanel {
 		resetButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				reset();
+				new Thread(){
+					public void run(){
+						reset();
+					}
+				}.start();
 			}
 		});
+		//ButtonList.addMouseListener(resetButton); //ADDSDDDDDDDDDDDDDDDDDDDDDddddddddddd
 		
 		JLabel resetText = new JLabel("<- Raw values");
 		reset.add(resetText, BorderLayout.SOUTH);
 		
 		loadKeys(data.getJSONObject("keys"));
-		effect = new EffectsEngine(
-				data.getJSONObject("effectData"),
-				App.utils.getChannel(data.getString("speedChannelName")),
-				App.utils.getChannel(data.getString("amountChannelName")));
+		JSONArray channels = data.getJSONArray("channels");
+		for(int i = 0; i < efctN; i++){
+			JSONObject obj = channels.getJSONObject(i);
+			effect.add(new EffectsEngine(effectsData.getJSONObject(i),
+					App.utils.getChannel(obj.getString("speedChannelName")),
+					App.utils.getChannel(obj.getString("amountChannelName"))));
+		}
 		reset();
-		thread = new Thread(effect);
-		thread.start();
+		for(int i = 0; i < efctN; i++){
+			Thread t = new Thread(effect.get(i));
+			thread.add(t);
+			t.start();
+		}
+		
+		App.utils.mainWindow.addComponentListener(new ComponentListener() {
+			@Override
+			public void componentShown(ComponentEvent e) {}
+			@Override
+			public void componentMoved(ComponentEvent e) {}
+			@Override
+			public void componentHidden(ComponentEvent e) {}
+			@Override
+			public void componentResized(ComponentEvent e) {
+				setMaximumSize(new Dimension(Integer.MAX_VALUE, mw.getVerticalSlotSize()));
+				double slotSize = e.getComponent().getSize().getWidth() / 20;
+				resizePanel(lightsGroup, slotSize, 3);
+				resizePanel(effectType, slotSize, 3);
+				resizePanel(phaseRange, slotSize, 3);
+				resizePanel(direction, slotSize, 2);
+				resizePanel(groups, slotSize, 2);
+				resizePanel(blocks, slotSize, 2);
+				resizePanel(wings, slotSize, 2);
+				//resizePanel(reset, slotSize, 3);
+			}
+		});
 	}
 	
+		
+	private void resizePanel(JPanel panel, double slotSize, int slot){
+		Dimension d = new Dimension((int) slotSize * slot, mw.getVerticalSlotSize());
+		panel.setPreferredSize(d);
+		panel.setMaximumSize(d);
+		panel.setMinimumSize(d);
+	}
 	
 	private void loadKeys(JSONObject keys) throws Exception{
 		
 		mw.addListener(new Action() {
 			@Override
 			public void actionPerformed() {
-				if(++effectIndex > effectComboBox.getItemCount() - 1) effectIndex = 0;
-				effectComboBox.setSelectedIndex(effectIndex);
+				effectBtn.doClick();
 			}
 		}, keys.getString("effectKey"));
 		
 		mw.addListener(new Action() {
 			@Override
 			public void actionPerformed() {
-				if(++lightsGroupIndex > lightsGroupComboBox.getItemCount() - 1) lightsGroupIndex = 0;
-				lightsGroupComboBox.setSelectedIndex(lightsGroupIndex);
+				lightsGroupBtn.doClick();
 			}
 		}, keys.getString("lightsGroupKey"));
 		
 		mw.addListener(new Action() {
 			@Override
 			public void actionPerformed() {
-				if(++phaseIndex > phaseComboBox.getItemCount() - 2) phaseIndex = 0;
-				phaseComboBox.setSelectedIndex(phaseIndex);
+				phaseBtn.doClick();
 			}
 		}, keys.getString("phaseKey"));
 		
 		mw.addListener(new Action() {
 			@Override
 			public void actionPerformed() {
-				if(++directionIndex > directionComboBox.getItemCount() - 2) directionIndex = 0;
-				directionComboBox.setSelectedIndex(directionIndex);
+				directionBtn.doClick();
 			}
 		}, keys.getString("directionKey"));
 		
 		mw.addListener(new Action() {
 			@Override
 			public void actionPerformed() {
-				if(++groupsIndex > groupsComboBox.getItemCount() - 2) groupsIndex = 0;
-				groupsComboBox.setSelectedIndex(groupsIndex);
+				groupsBtn.doClick();
 			}
 		}, keys.getString("groupsKey"));
 
 		mw.addListener(new Action() {
 			@Override
 			public void actionPerformed() {
-				if(++blocksIndex > blocksComboBox.getItemCount() - 2) blocksIndex = 0;
-				blocksComboBox.setSelectedIndex(blocksIndex);
+				blocksBtn.doClick();
 			}
 		}, keys.getString("blocksKey"));
 		
 		mw.addListener(new Action() {
 			@Override
 			public void actionPerformed() {
-				if(++wingsIndex > wingsComboBox.getItemCount() - 2) wingsIndex = 0;
-				wingsComboBox.setSelectedIndex(wingsIndex);
+				wingsBtn.doClick();
 			}
 		}, keys.getString("wingsKey"));
 		
@@ -369,29 +430,23 @@ public class EffectController extends JPanel {
 	
 	
 	private void reset(){
-		effectIndex = 0;
-		effectComboBox.setSelectedIndex(0);
-		lightsGroupIndex = 0;
-		lightsGroupComboBox.setSelectedIndex(0);
-		phaseIndex = 0;
-		phaseComboBox.setSelectedIndex(0);
-		directionIndex = 0;
-		directionComboBox.setSelectedIndex(0);
-		groupsIndex = 0;
-		groupsComboBox.setSelectedIndex(0);
-		blocksIndex = 0;
-		blocksComboBox.setSelectedIndex(0);
-		wingsIndex = 0;
-		wingsComboBox.setSelectedIndex(0);	
-		effect.reset();
+		effectBtn.reset();
+		lightsGroupBtn.reset();
+		phaseBtn.reset();
+		directionBtn.reset();
+		groupsBtn.reset();
+		blocksBtn.reset();
+		wingsBtn.reset();
+		for(int i = 0; i < efctN; i++)
+			effect.get(i).reset();
 	}
 	
-	private int numbersChange(JComboBox<Numbers> comboBox, JSpinner spinner){
+	private int numbersChange(ButtonList comboBox, JSpinner spinner, int index){
 		allowChangeListener = false;
 		Numbers n = (Numbers) comboBox.getSelectedItem();
 		int i = 0;
 		if(n != customNumbers){
-			i = n.getNumber();
+			i = n.getNumber(index);
 			spinner.setValue(i);
 		}
 		allowChangeListener = true;
@@ -400,90 +455,109 @@ public class EffectController extends JPanel {
 	
 	private void directionChange(){
 		allowChangeListener = false;
-		directionIndex = directionComboBox.getSelectedIndex();
-		CharacterZ cz = (CharacterZ) directionComboBox.getSelectedItem();
-		if(cz != customDirection){
-			effect.setDirection(cz.getChar());
-			directionTextField.setText(cz.getChar() + "");
-		}
+		CharacterZ cz = (CharacterZ) directionBtn.getSelectedItem();
+		for(int i = 0; i < efctN; i++)
+			if(cz != customDirection){
+				effect.get(i).setDirection(cz.getChar(i));
+				directionTextField.setText(cz.getChar(i) + "");
+			}
 		allowChangeListener = true;
 	}
 	
 	private void phaseChange(){
 		allowChangeListener = false;
-		phaseIndex = phaseComboBox.getSelectedIndex();
-		PhaseCombo pc = (PhaseCombo) phaseComboBox.getSelectedItem();
-		if(pc != customPhaseCombo){
-			phaseStartSpinner.setValue(pc.getStart());
-			effect.setPhaseStart(pc.getStart());
-			phaseEndSpinner.setValue(pc.getEnd());
-			effect.setPhaseEnd(pc.getEnd());
-		}
+		PhaseCombo pc = (PhaseCombo) phaseBtn.getSelectedItem();
+		for(int i = 0; i < efctN; i++)
+			if(pc != customPhaseCombo){
+				phaseStartSpinner.setValue(pc.getStart(i));
+				effect.get(i).setPhaseStart(pc.getStart(i));
+				phaseEndSpinner.setValue(pc.getEnd(i));
+				effect.get(i).setPhaseEnd(pc.getEnd(i));
+			}
 		allowChangeListener = true;
 	}
 	
 	private void effectChange(){
 		allowChangeListener = false;
-		effectIndex = effectComboBox.getSelectedIndex();
-		EffectCombo ec = (EffectCombo) effectComboBox.getSelectedItem();
-		effect.setEffect(ec.getEffect());
+		EffectCombo ec = (EffectCombo) effectBtn.getSelectedItem();
+		for(int i = 0; i < efctN; i++)
+			effect.get(i).setEffect(ec.getEffect(i));
 		allowChangeListener = true;
 	}
 	
 	private void lightsGroupChange(){
 		allowChangeListener = false;
-		lightsGroupIndex = lightsGroupComboBox.getSelectedIndex();
-		GroupCombo gc = (GroupCombo) lightsGroupComboBox.getSelectedItem();
-		System.out.println(gc.getGroup().toString());
-		effect.setGroup(gc.getGroup());
+		GroupCombo gc = (GroupCombo) lightsGroupBtn.getSelectedItem();
+		//System.out.println(gc.getGroup().toString());
+		for(int i = 0; i < efctN; i++)
+			effect.get(i).setGroup(gc.getGroup(i));
 		allowChangeListener = true;
 	}
 	
-	private void loadEffectsList(JComboBox<EffectCombo> effectComboBox, JSONArray effects){
+	private void loadEffectsList(ButtonList effectBtn, JSONArray effects, JSONArray jumps){
 		for(int i = 0; i < effects.length(); i++){
 			try{
-				JSONObject effect = effects.getJSONObject(i);
-				effectComboBox.addItem(new EffectCombo(
-						App.utils.getEffectByName(effect.getString("effectName")),
-						effect.getString("name")
-						));
+				effectBtn.addItem(new EffectCombo(effects.getJSONArray(i), efctN));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		if(jumps != null)
+			for(int i = 0; i < jumps.length(); i++){
+				JSONObject jmp = jumps.getJSONObject(i);
+				effectBtn.setJump(jmp.getInt("position"), jmp.getInt("loop"));
+			}
 	}
 	
-	private void loadGroupList(JComboBox<GroupCombo> groupsComboBox, JSONArray groups){
+	private void loadGroupList(ButtonList groupsBtn, JSONArray groups, JSONArray jumps){
 		for(int i = 0; i < groups.length(); i++){
 			try{
-				JSONObject group = groups.getJSONObject(i);
-				lightsGroupComboBox.addItem(new GroupCombo(
-						App.utils.getGroup(group.getString("groupName")),
-						group.getString("name")
-						));
+				lightsGroupBtn.addItem(new GroupCombo(groups.getJSONArray(i), efctN));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		if(jumps != null)
+			for(int i = 0; i < jumps.length(); i++){
+				JSONObject jmp = jumps.getJSONObject(i);
+				groupsBtn.setJump(jmp.getInt("position"), jmp.getInt("loop"));
+			}
 	}
 	
-	private void loadPhaseList(JComboBox<PhaseCombo> phaseComboBox, JSONArray phases){
+	private void loadPhaseList(ButtonList phaseBtn, JSONArray phases, JSONArray jumps){
 		for(int i = 0; i < phases.length(); i++){
-			JSONObject phase = phases.getJSONObject(i);
-			phaseComboBox.addItem(new PhaseCombo(phase.getInt("start"), phase.getInt("end")));
+			phaseBtn.addItem(new PhaseCombo(phases.getJSONArray(i), efctN));
 		}
-		phaseComboBox.addItem(customPhaseCombo);
+		phaseBtn.addItem(customPhaseCombo);
+		phaseBtn.setJump(phaseBtn.length() - 2, 0);
+		if(jumps != null)
+			for(int i = 0; i < jumps.length(); i++){
+				JSONObject jmp = jumps.getJSONObject(i);
+				phaseBtn.setJump(jmp.getInt("position"), jmp.getInt("loop"));
+			}
 	}
 	
-	private void loadDirectionsList(JComboBox<CharacterZ> directionComboBox, JSONArray directions){
+	private void loadDirectionsList(ButtonList directionBtn, JSONArray directions, JSONArray jumps){
 		for(int i = 0; i < directions.length(); i++)
-			directionComboBox.addItem(new CharacterZ(directions.getString(i).charAt(0)));
-		directionComboBox.addItem(customDirection);
+			directionBtn.addItem(new CharacterZ(directions.getJSONArray(i), efctN));
+		directionBtn.addItem(customDirection);
+		directionBtn.setJump(directionBtn.length() - 2, 0);
+		if(jumps != null)
+			for(int i = 0; i < jumps.length(); i++){
+				JSONObject jmp = jumps.getJSONObject(i);
+				directionBtn.setJump(jmp.getInt("position"), jmp.getInt("loop"));
+			}
 	}
 	
-	private void loadNumbersList(JComboBox<Numbers> numbersComboBox, JSONArray array){
+	private void loadNumbersList(ButtonList numbersBtn, JSONArray array, JSONArray jumps){
 		for(int i = 0; i < array.length(); i++)
-			numbersComboBox.addItem(new Numbers(array.getInt(i)));
-		numbersComboBox.addItem(customNumbers);
+			numbersBtn.addItem(new Numbers(array.getJSONArray(i), efctN));
+		numbersBtn.addItem(customNumbers);
+		numbersBtn.setJump(numbersBtn.length() - 2, 0);
+		if(jumps != null)
+			for(int i = 0; i < jumps.length(); i++){
+				JSONObject jmp = jumps.getJSONObject(i);
+				numbersBtn.setJump(jmp.getInt("position"), jmp.getInt("loop"));
+			}
 	}
 }

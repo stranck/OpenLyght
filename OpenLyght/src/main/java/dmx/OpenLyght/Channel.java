@@ -5,10 +5,14 @@ import java.util.ArrayList;
 public class Channel {
 	
 	private int modifierIndex;
-	private boolean reloadReported = false;
+	private boolean reloadReported = false, invertValue = false;
 	private short originalValue = 0, previousValue, value = 0, tempValue;
 	private ArrayList<ChannelModifiers> modifiers = new ArrayList<ChannelModifiers>();
 	private String description = "";
+	
+	public Channel(String name){
+		description = name;
+	}
 	
 	public synchronized boolean reloadValue(){
 		if(reloadReported){
@@ -22,6 +26,7 @@ public class Channel {
 			}
 			//if(!description.isEmpty()) System.out.println("reloaded: " + description + "(" + hashCode() + ")" + "@" + value);
 			//System.out.println("reloaded: " + description + "(" + hashCode() + ")" + "@" + value);
+			if(invertValue) value = (short) (255 - value);
 			reloadReported = false;
 			return value != previousValue;
 		}
@@ -65,7 +70,13 @@ public class Channel {
 			//System.out.println(hashCode() + " Added channel modifier " + cm + " at: " + (modifiers.size() - 1));
 		}
 	}
+	public synchronized int getModifiersSize(){
+		return modifiers.size();
+	}
 	
+	public void setInvert(boolean invert){
+		invertValue = invert;
+	}
 	public void setDescription(String description){
 		this.description = description;
 	}

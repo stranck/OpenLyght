@@ -14,6 +14,7 @@ public class Variable {
 	}
 	
 	public String apply(String s){
+		//System.out.println(s.replaceAll("%" + name + "%", value));
 		return s.replaceAll("%" + name + "%", value);
 	}
 	

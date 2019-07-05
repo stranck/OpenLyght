@@ -2,10 +2,12 @@ package dmx.OpenLyght.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.awt.event.WindowStateListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -18,7 +20,6 @@ import org.json.JSONObject;
 
 import dmx.OpenLyght.App;
 
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.ActionMap;
@@ -27,40 +28,45 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
-public class MainWindow extends JFrame implements WindowListener {
+public class MainWindow extends JFrame implements WindowListener, WindowStateListener {
 
 	private ArrayList<Listener> listeners = new ArrayList<Listener>();
-	private JScrollPane scrollPane;
+	//private JScrollPane scrollPane;
 	private JPanel contentPane;
 	private JPanel panel = new JPanel();
 	private ActionMap action;
 	private InputMap input;
+	private int slot = 100, nPanels = 0;
 	
 	public MainWindow() throws Exception {
 		super("Open Lyght - " + App.utils.deafaultPath);
 		
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		addWindowListener(this);
-		setBounds(100, 100, 450, 300);
+		addWindowStateListener(this);
+		//setBounds(100, 100, 450, 300);
+		setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		setUndecorated(true);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		Dimension d = new Dimension(100, 100);
+		//Dimension d = new Dimension(100, 100);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		panel.setMinimumSize(d);
-		panel.setPreferredSize(d);
+		//panel.setMinimumSize(d);
+		//panel.setPreferredSize(d);
 		
-		scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		contentPane.add(scrollPane);
+		//scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		contentPane.add(panel);
 		
-		setVisible(true);
+		//setVisible(true);
 		action = contentPane.getActionMap();
 		input = contentPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-		loadElements();
+		
+		//panel.add(new JButton("asd"));
 	}
 	
-	private void loadElements() throws Exception {
+	public void loadElements() throws Exception {
 			JSONObject data = new JSONObject(App.utils.read(App.utils.deafaultPath + "guiElements.json"));
 			JSONArray effects = data.getJSONArray("effects");
 			System.out.println(effects.toString());
@@ -74,6 +80,7 @@ public class MainWindow extends JFrame implements WindowListener {
 				addPanel(
 						new GroupSelector(this, new JSONObject(
 								App.utils.read(App.utils.deafaultPath + groups.getString(i)))), "groupPanel" + i);
+			//reloadSize();
 	}
 	
 	public void addPanel(JPanel panel, String panelID){
@@ -81,7 +88,8 @@ public class MainWindow extends JFrame implements WindowListener {
 		jtf.setVisible(false);
 		panel.add(jtf, 0);
 		this.panel.add(panel);
-		scrollPane.validate();
+		//scrollPane.validate();
+		nPanels++;
 	}
 	
 	public JPanel getJPanel(String panelID){
@@ -103,6 +111,14 @@ public class MainWindow extends JFrame implements WindowListener {
 		return panel;
 	}
 	
+	public void keyClicked(int key){
+		for(Listener ls : listeners)
+			if(ls.getKeyCode() == key){
+				ls.actionPerformed(null);
+				return;
+			}
+	}
+	
 	public void addListener(Action listener, String keyName) throws Exception{
 		if(!keyName.equalsIgnoreCase("null")){
 			Listener l = null;
@@ -122,15 +138,36 @@ public class MainWindow extends JFrame implements WindowListener {
 		}
 	}
 	
+	public int getVerticalSlotSize(){
+		//System.out.println("VERTICAL SIZE: " + slot);
+		return slot;
+	}
+	
 	public void addListener(KeyListener listener){
 		setFocusable(true);
 		addKeyListener(listener);
 	}
 
+	public void reloadSize(){
+		ComponentListener[] cl = getComponentListeners();
+		slot = getHeight() / nPanels;
+		if(slot < 100) slot = 100;
+		//System.out.println(Arrays.toString(cl));
+		for(ComponentListener c : cl)
+			c.componentResized(new ComponentEvent(this, ComponentEvent.COMPONENT_RESIZED));
+		//scrollPane.validate();
+	}
+	
 	@Override
 	public void windowClosing(WindowEvent e) {
 		if(JOptionPane.showConfirmDialog(null, "Are you really sure to close Open Lyght?","Open Lyght",JOptionPane.YES_NO_OPTION)
 			== JOptionPane.YES_OPTION) System.exit(0);
+	}
+	
+	@Override
+	public void windowStateChanged(WindowEvent e){
+		System.out.println("STATE CHANGED: " + e);
+		reloadSize();
 	}
 	
 	@Override

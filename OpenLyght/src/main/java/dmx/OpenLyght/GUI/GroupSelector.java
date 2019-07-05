@@ -24,14 +24,14 @@ public class GroupSelector extends JPanel {
 	private ArrayList<Group> groups = new ArrayList<Group>();
 	private ArrayList<String> keys = new ArrayList<String>();
 	private ArrayList<JButton> buttons = new ArrayList<JButton>();
-	private final Color DISABLED = new Color(255, 0, 0);
-	private final Color ENABLED = new Color(0, 192, 0);
+	private static final Color DISABLED = new Color(255, 0, 0);
+	private static final Color ENABLED = new Color(0, 192, 0);
 	private boolean superGroupActive = false;
 	private JButton superGroupButton, keybutton;
 	private String groupName;
 	
 	public GroupSelector(MainWindow mw, JSONObject data) throws Exception {
-		setMaximumSize(new Dimension(Integer.MAX_VALUE, 100));
+		setMaximumSize(new Dimension(Integer.MAX_VALUE, App.utils.mainWindow.getVerticalSlotSize()));
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		groupName = data.getString("superGroupName");
 		
@@ -46,10 +46,15 @@ public class GroupSelector extends JPanel {
 		superGroupButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				superGroupActive = !superGroupActive;
-				setAllGroupsAndButtons(superGroupActive);
+				if(!superGroupActive){
+					//superGroupActive = !superGroupActive;
+					//setAllGroupsAndButtons(superGroupActive);
+					superGroupActive = true;
+					setAllGroupsAndButtons(true);
+				}
 			}
 		});
+		//ButtonList.addMouseListener(superGroupButton);
 		
 		JSONArray key = data.getJSONArray("keys");
 		for(int i = 0; i < key.length(); i++) keys.add(key.getString(i));
@@ -63,6 +68,7 @@ public class GroupSelector extends JPanel {
 			JButton groupButton = new JButton(g.getDescription());
 			groupButton.setFont(new Font("Tahoma", Font.BOLD, 24));
 			groupButton.setForeground(DISABLED);
+			//ButtonList.addMouseListener(groupButton);// ASDDDDDDDDDDDDDDDDDDDDDDDDd
 			groupPanel.add(groupButton);
 			buttons.add(groupButton);
 			
@@ -106,6 +112,21 @@ public class GroupSelector extends JPanel {
 			}
 			mw.addListener(a, keys.get(i));
 		}
+		
+		/*mw.addComponentListener(new ComponentListener() {
+			@Override
+			public void componentShown(ComponentEvent e) {}
+			@Override
+			public void componentMoved(ComponentEvent e) {}
+			@Override
+			public void componentHidden(ComponentEvent e) {}
+			@Override
+			public void componentResized(ComponentEvent e) {
+				setMaximumSize(new Dimension(Integer.MAX_VALUE, App.utils.mainWindow.getVerticalSlotSize()));
+				for(JButton b : buttons){
+				}
+			}
+		});*/
 	}
 
 	public void clear(){

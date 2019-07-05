@@ -87,6 +87,7 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 		requestReload = true;
 	}
 	public void setWings(int wings){
+		System.out.println(wings);
 		this.wings = wings;
 		requestReload = true;
 	}

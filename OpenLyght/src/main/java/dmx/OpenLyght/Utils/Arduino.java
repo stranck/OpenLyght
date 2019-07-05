@@ -61,7 +61,8 @@ public abstract class Arduino implements SerialPortEventListener {
 
 	public void writeData(String data) {
 		try {
-			output.write(data.getBytes());
+			if(output != null)
+				output.write(data.getBytes());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

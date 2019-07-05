@@ -36,6 +36,18 @@ public class Stuff {
     	new PathProjectSelector();
     }
     
+    public void start() throws Exception{
+    	reloadVariables();
+    	reloadGroups();
+    	reloadPlugins();
+    	mainWindow = new MainWindow();
+    	mainWindow.loadElements();
+    	sendPluginMessage("openlyght started");
+    	invertChannels();
+    	mainWindow.setVisible(true);
+    	mainWindow.reloadSize();
+    }
+    
     public String read(String path) throws Exception{
     	String s = new String(Files.readAllBytes(Paths.get(path)));
     	for(Variable v : variables)
@@ -48,14 +60,6 @@ public class Stuff {
     	System.out.println("Loading variables");
     	for(int i = 0; i < data.length(); i++)
     		variables.add(new Variable(data.getJSONObject(i)));
-    }
-    
-    public void start() throws Exception{
-    	reloadVariables();
-    	reloadGroups();
-    	reloadPlugins();
-    	mainWindow = new MainWindow();
-    	sendPluginMessage("openlyght started");
     }
     
     public void reloadPlugins() throws Exception {
@@ -115,15 +119,53 @@ public class Stuff {
         		}
         	if(c == null) {
         		System.out.println("Generating new virtual channel: " + name);
-        		c = new Channel();
-        		c.setDescription(name);
+        		c = new Channel(name);
+        		//c.setDescription(name);
         		virtualChannel.add(c);
         	}
     	} else {
     		if(channels[channelID] == null)
-    			channels[channelID] = new Channel();
+    			channels[channelID] = new Channel(name);
     		c = channels[channelID];
     		
+    	}
+    	return c;
+    }
+    
+    public ArrayList<Channel> getChannels(String name){
+    	ArrayList<Channel> c = new ArrayList<Channel>();
+    	if(name.charAt(0) == '$'){
+    		String[] args = name.substring(1).split("\\.");
+    		switch(args[0]){
+    			case "attrib" : {
+    				break;
+    			}
+    			case "group" : {
+    				break;
+    			}
+    		}
+    	} else {
+	    	int channelID = App.getInt(name);
+	    	if(channelID < 0) {
+	        	Channel channel = null;
+	    		for(Channel ch : virtualChannel)
+	        		if(ch.getDescription().equals(name)) {
+	        			channel = ch;
+	        			break;
+	        		}
+	        	if(channel == null) {
+	        		System.out.println("Generating new virtual channel: " + name);
+	        		channel = new Channel(name);
+	        		//channel.setDescription(name);
+	        		virtualChannel.add(channel);
+	        		c.add(channel);
+	        	}
+	    	} else {
+	    		if(channels[channelID] == null)
+	    			channels[channelID] = new Channel(name);
+	    		c.add(channels[channelID]);
+	    		
+	    	}
     	}
     	return c;
     }
@@ -181,6 +223,18 @@ public class Stuff {
 			e1.printStackTrace();
 		}
 		return e;
+	}
+	
+	private void invertChannels() throws Exception{
+		String p = deafaultPath + "inverted.json";
+		if(Files.exists(Paths.get(p))){
+			JSONArray data = new JSONArray(read(p));
+			for(int i = 0; i < data.length(); i++){
+				Channel c = getChannel(data.getString(i));
+				c.setInvert(true);
+				c.reportReload();
+			}
+		}
 	}
 	
 	public void sendPluginMessage(String message){

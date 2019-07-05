@@ -1,5 +1,9 @@
 package openLyghtPlugins.ButtonsUtils;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -13,7 +17,7 @@ public class Main implements Plugin {
 
 	private final String[] tags = { "buttons", "Input", "keyboard" };
 	private final String name = "ButtonsUtils";
-	public static SequencePanel sequencePanel = new SequencePanel();
+	public static MainPanel sequencePanel = new MainPanel();
 	public static ArrayList<Scene> scenes = new ArrayList<Scene>();
 	public static ArrayList<Sequence> sequences = new ArrayList<Sequence>();
 	public static Button[] buttons = new Button[12];
@@ -59,10 +63,11 @@ public class Main implements Plugin {
 		return s;
 	}
 	
+	@Override
 	public String getName() {
 		return name;
 	}
-
+	@Override
 	public String[] getTags() {
 		return tags;
 	}
@@ -71,19 +76,44 @@ public class Main implements Plugin {
 		if(message.equalsIgnoreCase("openlyght started")){
 			try{
 				System.out.println("Buttons utils: loading window panels");
+				sequencePanel.initDimension();
 				openLyght.mainWindow.addPanel(sequencePanel, "sequencePanel");
 				
 				File[] dir = new File(defaultPath + "sequences" + File.separator).listFiles(File::isFile);
 				for(File f : dir){
 					sequences.add(new Sequence(new JSONObject(openLyght.read(f.getAbsolutePath()))));
 				}
+				
+				openLyght.mainWindow.addComponentListener(new ComponentListener() {
+					@Override
+					public void componentShown(ComponentEvent e) {}
+					@Override
+					public void componentMoved(ComponentEvent e) {}
+					@Override
+					public void componentHidden(ComponentEvent e) {}
+					@Override
+					public void componentResized(ComponentEvent e) {
+						int v = openLyght.mainWindow.getVerticalSlotSize();
+						sequencePanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, v));
+						for(SequencePanel sp : sequencePanel.pages){
+							Component[] cmps = sp.getComponents();
+							Dimension d = new Dimension((int) ((e.getComponent().getSize().getWidth() - MainPanel.BUTTON_WIDTH) / cmps.length), v);
+							for(Component c : cmps){
+								c.setMinimumSize(d);
+								c.setMaximumSize(d);
+								c.setPreferredSize(d);
+							}
+							//resizePanel(reset, slotSize, 3);
+						}
+					}
+				});
 			} catch(Exception e){
 				e.printStackTrace();
 			}
 		}
 	}
 
-	public SequencePanel getSequencePanel(){
+	public MainPanel getSequencePanel(){
 		return sequencePanel;
 	}
 }

@@ -2,6 +2,7 @@ package openLyghtPlugins.DMXUtils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,7 +20,7 @@ public class Main implements Plugin, Runnable {
 	private final String name = "DMXUtils";
 	public static String defaultPath;
 	public static Stuff openLyght;
-	public static int faderPage = 0, buttonPage = 0, n;
+	public static int faderPage = 0, buttonPage = 0, n, syncTime;
 	public static String[] buttonKeys, faderKeys, resetKeys;
 	public static ArrayList<Input> faders = new ArrayList<Input>();
 	public static ArrayList<Master> masters = new ArrayList<Master>();
@@ -36,8 +37,8 @@ public class Main implements Plugin, Runnable {
 
 			JSONObject comPorts = new JSONObject(openLyght.read(defaultPath + "serialPorts.json"));	
 			
+			syncTime = comPorts.getInt("syncTime");
 			out = new DMXInput(comPorts.getString("sender"));
-			
 			in = new DMXInput(comPorts.getString("reciver")){
 				@Override
 				public void newData(ArrayList<Data> data){
@@ -57,13 +58,33 @@ public class Main implements Plugin, Runnable {
 			JSONObject keys = new JSONObject(openLyght.read(defaultPath + "keys.json"));
 			buttonKeys = loadKeys(keys.getJSONArray("buttons"));
 			faderKeys = loadKeys(keys.getJSONArray("faders"));
-			resetKeys =loadKeys(keys.getJSONArray("reset"));
+			resetKeys = loadKeys(keys.getJSONArray("reset"));
 			
 			new Thread(this).start();
+			if(comPorts.has("inputThread") && comPorts.getBoolean("inputThread")) inputThread();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	//@SuppressWarnings("unused")
+	private static void inputThread(){
+		new Thread(){
+			@Override
+			public void run(){
+				@SuppressWarnings("resource")
+				Scanner sc = new Scanner(System.in);
+				while(true){
+					try{
+						String[] sp = sc.nextLine().split("@"); //value@channel
+						faders.get(faderPage).setFaderStatus(Short.parseShort(sp[0]), Short.parseShort(sp[1]));
+					} catch (Exception e){
+						e.printStackTrace();
+					}
+				}
+			}
+		}.start();
 	}
 	
 	private static String[] loadKeys(JSONArray keys){
@@ -125,9 +146,11 @@ public class Main implements Plugin, Runnable {
 	public void run() {
 		String data = "";
 		boolean sendValues = false;
-		int i;
-		App.wait(2500);
+		int i, stats = 0;
+		App.wait(syncTime);
+		long delay = 0, bytesTrasmitted = 0, totalStart = System.currentTimeMillis(), start;
 		while(true){
+			start = System.currentTimeMillis();
 			openLyght.reloadVirtualChannels();
 			for(i = 0; i < 512; i++){
 				
@@ -138,10 +161,27 @@ public class Main implements Plugin, Runnable {
 			}
 			if(sendValues){
 				//System.out.println("SENDING: " + data);
+				//System.out.println("SENDING: " + Arrays.toString(data.getBytes()));
 				out.writeData(data);
+				bytesTrasmitted += data.getBytes().length;
 				data = "";
 				sendValues = false;
 			}
+			if(++stats > 8500){
+				totalStart = System.currentTimeMillis() - totalStart;
+				System.out.println("STATS:\t"
+						+ "avarageSpeed = " + 
+						String.format("%.3f", (double) bytesTrasmitted * 8 / (totalStart / 1000) / 1024)
+						+ "kbps (Total: " + bytesTrasmitted + "B in " + totalStart + "ms)\t"
+						+ "avarageTimeSlice = " + (delay / 8500) + "ms (Total: " + delay + "ms)");
+				stats = 0;
+				delay = 0;
+				bytesTrasmitted = 0;
+				totalStart = System.currentTimeMillis();
+			}
+			delay += System.currentTimeMillis() - start;
+			//System.out.println("reload time: " + (System.currentTimeMillis() - start));
+			App.wait(7);
 		}
 	}
 
@@ -157,8 +197,8 @@ public class Main implements Plugin, Runnable {
 						@Override
 						public void actionPerformed() {
 							System.out.println("Loading button page: " + i);
-							buttonPage = i;
-							PagePanel.buttonComboBox.setSelectedIndex(i);
+							//buttonPage = i;
+							PagePanel.setButtonIndex(i);
 						}
 					}, buttonKeys[n]);
 				} catch (Exception e1) {

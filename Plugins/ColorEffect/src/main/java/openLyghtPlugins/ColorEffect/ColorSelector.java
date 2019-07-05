@@ -1,7 +1,6 @@
 package openLyghtPlugins.ColorEffect;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,9 +38,32 @@ public class ColorSelector extends JPanel {
 				go();
 			}
 		});
-		Dimension d = new Dimension(100, 100);
+		/*Dimension d = new Dimension(100, 100);
 		btn.setMaximumSize(d);
-		btn.setPreferredSize(d);
+		btn.setPreferredSize(d);*/
+		
+		/*btn.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				System.out.println("RELEASED:\t" + btn.getText());
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("PRESSED:\t" + btn.getText());
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				System.out.println("EXITED:\t" + btn.getText());
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				System.out.println("ENTERED:\t" + btn.getText());
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("CLICKED:\t" + btn.getText());
+			}
+		});*/
 		
 		loadColors(data.getJSONArray("colors"));
 		go();
@@ -77,8 +99,12 @@ public class ColorSelector extends JPanel {
 		}, data.getString("go-Key"));
 		Main.openLyght.mainWindow.addListener(new Action(){
 			public void actionPerformed() {
-				index = -1;
-				btn.doClick();
+				new Thread(){
+					public void run(){
+						index = -1;
+						btn.doClick();
+					}
+				}.start();
 			}
 		}, data.getString("resetKey"));
 		data = null;

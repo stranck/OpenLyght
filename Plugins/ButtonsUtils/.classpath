@@ -12,7 +12,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_181">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -22,7 +22,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Cartelle varie/Programming/java/serci merda/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar"/>
-	<classpathentry kind="lib" path="D:/Cartelle varie/Programming/java/Open Lyght/OpenLyght.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_181/bin/RXTXcomm.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Luca/Desktop/Open Lyght/OpenLyght.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

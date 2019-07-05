@@ -9,18 +9,17 @@ public class Button {
 	
 	public static ArrayList<Scene> scenes = new ArrayList<Scene>();
 	private static int globalSelctedScene;
-	private int[] currentScenes;
 	
 	public Button() throws Exception {
 		File[] dir = new File(Main.defaultPath + "scenes" + File.separator).listFiles(File::isFile);
 		for(File f : dir){
 			System.out.println("Loading scene " + f.getAbsolutePath());
 			scenes.add(new Scene(f.getAbsolutePath()));
-			PagePanel.buttons.add(f.getName());
+			PagePanel.addButton(f.getName());
 		}
-		currentScenes = new int[scenes.size()];
+		/*currentScenes = new int[scenes.size()];
 		for(int i = 0; i < currentScenes.length; i++)
-			currentScenes[i] = 0;
+			currentScenes[i] = 0;*/
 	}
 	
 	public void buttonPressed(int value){
@@ -30,9 +29,9 @@ public class Button {
 			scene = globalSelctedScene;
 		else
 			globalSelctedScene = scene;
-		if(scene != currentScenes[Main.buttonPage]) {
-			currentScenes[Main.buttonPage] = scene;
-			scenes.get(Main.buttonPage).gotoStep(scene); 
-		}
+		//if(scene != currentScenes[Main.buttonPage]) {
+		//	currentScenes[Main.buttonPage] = scene;
+		scenes.get(Main.buttonPage).gotoStep(scene); 
+		//}
 	}
 }

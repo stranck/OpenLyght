@@ -13,8 +13,8 @@ public class DMXInput extends Arduino {
 
 	@Override
 	public synchronized void serialEvent(SerialPortEvent spEvent) {
-		if (spEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-			try {
+		try{
+			if (spEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 				String s = null;
 				while((s = super.input.readLine()) != null){
 					char[] in = s.toCharArray();
@@ -23,8 +23,8 @@ public class DMXInput extends Arduino {
 						data.add(new Data(Main.decodeInput(in, i + 0), Main.decodeInput(in, i + 2)));
 					newData(data);
 				}
-			} catch (Exception e) {}
-		}
+			}
+		} catch (Exception e) {}
 	}
 	
 	public void newData(ArrayList<Data> data){

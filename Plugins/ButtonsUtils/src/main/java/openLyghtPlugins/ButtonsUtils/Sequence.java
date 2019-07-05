@@ -1,11 +1,8 @@
 package openLyghtPlugins.ButtonsUtils;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -13,14 +10,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import dmx.OpenLyght.GUI.Action;
+import dmx.OpenLyght.GUI.ButtonList;
 
 public class Sequence {
 	
 	private ArrayList<ArrayList<Command>> commands = new ArrayList<ArrayList<Command>>();
 	private ArrayList<String> labels = new ArrayList<String>();
-	private JComboBox<String> comboBox;
+	private ButtonList button;
+	private JPanel panel;
 	private String name;
-	private int index;
 	
 	public Sequence(JSONObject sequence) throws Exception{
 		name = sequence.getString("name");
@@ -39,57 +37,60 @@ public class Sequence {
 		for(int i = 0; i < lbs.length(); i++)
 			labels.add(lbs.getString(i));
 		
-		gui();
+		gui(sequence.getInt("page"));
 		
 		Main.openLyght.mainWindow.addListener(new Action() {
 			@Override
 			public void actionPerformed() {
-				index++;
-				if(index >= commands.size()) index = 0;
-				comboBox.setSelectedIndex(index);
+				button.doClick();
 			}
 		}, sequence.getString("goKey"));
 		
 		Main.openLyght.mainWindow.addListener(new Action() {
 			@Override
 			public void actionPerformed() {
-				System.out.println("resetting");
-				index = 0;
-				comboBox.setSelectedIndex(0);
+				new Thread(){
+					public void run(){
+						System.out.println("resetting");
+						button.reset();
+					}
+				}.start();
 			}
 		}, sequence.getString("resetKey"));
 		
-		execute(commands.get(index));
+		button.reset();
+		execute(commands.get(button.getIndex()));
 	}
 	
-	public void gui(){
-		JPanel panel = new JPanel(new BorderLayout());
+	public void gui(int page){
+		panel = new JPanel(new BorderLayout());
 		panel.add(new JLabel(name + ":"), BorderLayout.NORTH);
 		
-		comboBox = new JComboBox<String>();
-		panel.add(comboBox, BorderLayout.CENTER);
+		button = new ButtonList();
+		panel.add(button, BorderLayout.CENTER);
 		for(String s : labels)
-			comboBox.addItem(s);
-		comboBox.addActionListener(new ActionListener() {
+			button.addItem(s);
+		button.addAction(new Action() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				index = comboBox.getSelectedIndex();
-				//System.out.println("Pressed: " + this);
-				execute(commands.get(index));
+			public void actionPerformed() {
+				execute(commands.get(button.getIndex()));
 			}
 		});
 		
-		Main.sequencePanel.addSequence(panel);
+		Main.sequencePanel.addSequence(panel, page);
 	}
 	
 	private void execute(ArrayList<Command> cmds){
 		for(Command c : cmds) c.execute(false);
 	}
 	
-	public JComboBox<String> getComboBox(){
-		return comboBox;
+	public ButtonList getButton(){
+		return button;
 	}
 	public String getName(){
 		return name;
+	}
+	public JPanel getPanel(){
+		return panel;
 	}
 }

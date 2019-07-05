@@ -1,9 +1,9 @@
 package openLyghtPlugins.ColorEffect;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+
+import javax.swing.JPanel;
 
 import org.json.JSONObject;
 
@@ -31,7 +31,7 @@ public class Main implements Plugin, Effect {
 			openLyght = ol;
 			defaultPath = ol.deafaultPath + "plugins" + File.separator + name + File.separator;
 			
-			JSONObject data = new JSONObject(new String(Files.readAllBytes(Paths.get(defaultPath + "config.json"))));
+			JSONObject data = new JSONObject(ol.read((defaultPath + "config.json")));
 			colorSelector = new ColorSelector(data);
 		} catch(Exception e){
 			e.printStackTrace();
@@ -59,7 +59,12 @@ public class Main implements Plugin, Effect {
 		if(message.equalsIgnoreCase("openlyght started")){
 			try{
 				System.out.println("ColorEffect: loading JPanel");
-				Main.openLyght.mainWindow.getJPanel("sequencePanel").add(colorSelector);
+				((JPanel)
+						((JPanel)
+								Main.openLyght.mainWindow.getJPanel("sequencePanel").getComponent(2))
+						.getComponent(0))
+				.add(colorSelector);
+				//((MainPanel)Main.openLyght.mainWindow.getJPanel("sequencePanel")).addSequence(colorSelector, 0);
 				colorSelector.loadKeyListeners();
 			} catch (Exception e) {
 				e.printStackTrace();

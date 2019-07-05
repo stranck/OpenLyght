@@ -10,7 +10,7 @@ public class Command {
 	private int originalStep;
 	private Command cmd;
 	private Scene scene;
-	private Button[] buttons;
+	private Button[] buttons = null;
 	private int command; //0 = goto; 1 = setStatus; 2 = button; 3 = fix; 4 = setCommand; 5 = gotoCue; 6 = wait;
 	private int step;
 	private boolean status;
@@ -41,6 +41,9 @@ public class Command {
 			case "goto" : {
 				this.command = 0;
 				step = Integer.parseInt(sp[1]);
+				//System.out.println(Arrays.toString(sp));
+				if(sp.length > 2)
+					buttons = new Button[]{Main.buttons[Integer.parseInt(sp[2])]};
 				break;
 			}
 			case "setStatus" : {
@@ -68,8 +71,7 @@ public class Command {
 			}
 			case "setCommand" : {
 				this.command = 4;
-				buttons = new Button[1];
-				buttons[0] = Main.buttons[Integer.parseInt(sp[1])];
+				buttons = new Button[]{Main.buttons[Integer.parseInt(sp[1])]};
 				status = sp[2].equalsIgnoreCase("true");
 				step = Integer.parseInt(sp[3]);
 				String[] newCommand = new String[sp.length - 4];
@@ -116,7 +118,10 @@ public class Command {
 			//System.out.println("Executing: " + originalCommand);
 			switch(command){
 				case 0:{
-					if(!fix) scene.gotoStep(step);
+					if(!fix) {
+						if(buttons == null) scene.gotoStep(step);
+						else buttons[0].getScene().gotoStep(step);
+					}
 					break;
 				}
 				case 1:{
@@ -138,7 +143,7 @@ public class Command {
 					break;
 				}
 				case 5:{
-					sequence.getComboBox().setSelectedIndex(step);
+					sequence.getButton().setIndex(step);
 					break;
 				}
 				case 6:{
@@ -146,7 +151,7 @@ public class Command {
 						@Override
 						public void run(){
 							App.wait(step);
-							if(sequence != null && sequence.getComboBox().getSelectedIndex() == originalStep)
+							if(sequence != null && sequence.getButton().getIndex() == originalStep)
 								cmd.execute(false);
 						}
 					}.start();

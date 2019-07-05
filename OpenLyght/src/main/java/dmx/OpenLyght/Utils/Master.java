@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import dmx.OpenLyght.*;
 
 public class Master implements ChannelModifiers {
-	
+
 	private int diff = 0xFF, min = 0, enableLimit = Integer.MIN_VALUE;
-	private int mode; //0 = absolute, 1 = relative, 2 = relative remove, 3 = relative add, 4 = add, 5 = remove, 6 = biggerThan, others = nothing
+	private int mode; 
 	private boolean invertValue;
 	private ArrayList<Channel> channels;
 	private Channel value;
@@ -46,6 +46,17 @@ public class Master implements ChannelModifiers {
 		diff = max - min;
 	}
 	
+	/*
+	 * 0 = absolute
+	 * 1 = relative
+	 * 2 = relative remove
+	 * 3 = relative add
+	 * 4 = add
+	 * 5 = remove
+	 * 6 = biggerThan
+	 * others = nothing
+	 */
+	
 	@Override
 	public short getChannelValue(short originalValue, int index, Channel ch) {
 		//newValue : diff = originalValue : 0xFF   
@@ -54,6 +65,7 @@ public class Master implements ChannelModifiers {
 		//System.out.println(originalValue + " " + masterValue);
 		try{
 			if(ch == this.value){
+				//System.out.println(ch.getValue());
 				for(Channel c : channels) {
 					//System.out.println("MASTER " + hashCode() + ": Reported reload for " + c.hashCode());
 					c.reportReload();
@@ -64,6 +76,7 @@ public class Master implements ChannelModifiers {
 				switch(mode){
 					case 0: {
 						val = (short) (masterValue * diff / 0xFF + min);
+						//System.out.println(masterValue + "\t" + val);
 						break;
 					}
 					case 1: {
