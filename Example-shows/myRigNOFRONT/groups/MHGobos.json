@@ -1,9 +1,0 @@
-{
-	"name" : "MH gobos",
-	"description" : "MH forms",
-	"defaultStatus" : true,
-	"channels" : [
-		"59",
-		"155"
-	]
-}

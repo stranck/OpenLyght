@@ -1,8 +1,0 @@
-{
-	"name" : "gobosFade",
-	"description" : "gobosFade",
-	"defaultStatus" : true,
-	"channels" : [
-		"gobosFade"
-	]
-}

@@ -1,13 +1,23 @@
 package dmx.OpenLyght;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class App {
 	
 	public static Stuff utils;
-	
+
     public static void main(String[] args) throws Exception{
+    	System.out.println(likeIgnoreCase("CiAo", "*.ia*"));
     	utils = new Stuff();
+    }
+	
+    public static <T> ArrayList<T> removeDuplicates(ArrayList<T> list){
+    	ArrayList<T> ret = new ArrayList<T>();
+    	for(T element : list)
+    		if(!ret.contains(element))
+    			ret.add(element);
+    	return ret;
     }
     
 	public static int getInt(String s){ //This function sucks
@@ -23,6 +33,13 @@ public class App {
 		} catch(Exception ex){
 		    Thread.currentThread().interrupt();
 		}
+	}
+	
+	public static boolean like(String original, String stringToMatch){
+		return original.matches(stringToMatch.replace("*", ".*"));
+	}
+	public static boolean likeIgnoreCase(String original, String stringToMatch){
+		return like(original.toUpperCase(), stringToMatch.toUpperCase());
 	}
 	
 	public static boolean checkForPluginType(Plugin p, String type){

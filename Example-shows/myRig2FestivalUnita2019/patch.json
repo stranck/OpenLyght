@@ -1,0 +1,147 @@
+[
+	{
+		"name":			"dim id:1 front",
+		"patch":		1,
+		"fixtureType":	"dimmer"
+	},
+	{
+		"name":			"dim id:2 front",
+		"patch":		2,
+		"fixtureType":	"dimmer"
+	},
+	{
+		"name":			"dim id:3 center",
+		"patch":		3,
+		"fixtureType":	"dimmer"
+	},
+	{
+		"name":			"dim id:4 center",
+		"patch":		4,
+		"fixtureType":	"dimmer"
+	},
+	{
+		"name":			"dim id:5 stage",
+		"patch":		5,
+		"fixtureType":	"dimmer"
+	},
+	{
+		"name":			"dim id:6 stage",
+		"patch":		6,
+		"fixtureType":	"dimmer"
+	},
+	{
+		"name":			"par56 id:1 pos:sx alt:0 rgb led",
+		"patch":		123,
+		"fixtureType":	"par56short"
+	},
+	{
+		"name":			"par56 id:2 pos:dx alt:1 rgb led",
+		"patch":		133,
+		"fixtureType":	"par56short"
+	},
+	{
+		"name":			"parShort64 id:1 pos:sx alt:0 rgb led",
+		"patch":		400,
+		"fixtureType":	"parSHORT64"
+	},
+	{
+		"name":			"parShort64 id:2 pos:dx alt:1 rgb led",
+		"patch":		415,
+		"fixtureType":	"parSHORT64"
+	},
+	{
+		"name":			"par64 id:1 pos:sx alt:0 rgb led symalt:0",
+		"patch":		143,
+		"fixtureType":	"par64"
+	},
+	{
+		"name":			"par64 id:2 pos:sx alt:1 rgb led symalt:1",
+		"patch":		150,
+		"fixtureType":	"par64"
+	},
+	{
+		"name":			"par64 id:3 pos:dx alt:0 rgb led symalt:1",
+		"patch":		157,
+		"fixtureType":	"par64"
+	},
+	{
+		"name":			"par64 id:4 pos:dx alt:1 rgb led symalt:0",
+		"patch":		164,
+		"fixtureType":	"par64"
+	},
+	{
+		"name":			"parCOB64 id:1 pos:sx alt:0 rgb led",
+		"patch":		283,
+		"fixtureType":	"parCOB64"
+	},
+	{
+		"name":			"parCOB64 id:2 pos:dx alt:1 rgb led",
+		"patch":		295,
+		"fixtureType":	"parCOB64"
+	},
+	{
+		"name":			"xs2 id:1 pos:dx alt:0 mh led beam symalt:0",
+		"patch":		349,
+		"fixtureType":	"XS-2"
+	},
+	{
+		"name":			"xs2 id:2 pos:dx alt:1 mh led beam symalt:1",
+		"patch":		357,
+		"fixtureType":	"XS-2"
+	},
+	{
+		"name":			"xs2 id:3 pos:sx alt:0 mh led beam symalt:1",
+		"patch":		445,
+		"fixtureType":	"XS-2"
+	},
+	{
+		"name":			"xs2 id:4 pos:sx alt:1 mh led beam symalt:0",
+		"patch":		453,
+		"fixtureType":	"XS-2"
+	},
+	{
+		"name":			"haze id:1",
+		"patch":		310,
+		"fixtureType":	"Z350haze"
+	},
+	{
+		"name":			"St35 id:1 pos:sx alt:0 mh led beam symalt:0",
+		"patch":		235,
+		"fixtureType":	"St35"
+	},
+	{
+		"name":			"St35 id:2 pos:sx alt:1 mh led beam symalt:1",
+		"patch":		247,
+		"fixtureType":	"St35"
+	},
+	{
+		"name":			"St35 id:3 pos:dx alt:0 mh led beam symalt:1",
+		"patch":		259,
+		"fixtureType":	"St35"
+	},
+	{
+		"name":			"St35 id:4 pos:dx alt:1 mh led beam symalt:0",
+		"patch":		271,
+		"fixtureType":	"St35"
+	},
+	{
+		"name":			"sl110 id:1 pos:sx alt:0 mh led rgb rgbw wash symalt:0",
+		"patch":		67,
+		"fixtureType":	"sl110"
+	},
+	{
+		"name":			"sl110 id:2 pos:sx alt:1 mh led rgb rgbw wash symalt:1",
+		"patch":		81,
+		"fixtureType":	"sl110"
+	},
+	{
+		"name":			"sl110 id:3 pos:dx alt:0 mh led rgb rgbw wash symalt:1",
+		"patch":		95,
+		"fixtureType":	"sl110"
+	},
+	{
+		"name":			"sl110 id:4 pos:dx alt:1 mh led rgb rgbw wash symalt:0",
+		"patch":		109,
+		"fixtureType":	"sl110"
+	},
+]

@@ -1,0 +1,14 @@
+{
+	"name": "parCOB64",
+	"channels": [
+		"general dimmer",
+		"general shutter",
+		"colors rgb red",
+		"colors rgb green",
+		"colors rgb blue",
+		"colors rgb white"
+	],
+	"attributes": {
+		"Attributes Color mode": 	"rgb"
+	}
+}

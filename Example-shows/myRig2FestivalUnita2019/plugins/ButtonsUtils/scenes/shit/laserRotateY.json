@@ -1,0 +1,46 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"laserRotateY"
+				]
+			}
+		],
+		[
+			{
+				"value" : 128,
+				"smooth" : false,
+				"channels" : [
+					"laserRotateY"
+				]
+			}
+		],
+		[
+			{
+				"value" : 165,
+				"smooth" : false,
+				"channels" : [
+					"laserRotateY"
+				]
+			}
+		],
+		[
+			{
+				"value" : 191,
+				"smooth" : false,
+				"channels" : [
+					"laserRotateY"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "virtChannels",
+	"absolute" : true,
+	"name" : "laserRotateY",
+	"defaultStatus" : true
+}

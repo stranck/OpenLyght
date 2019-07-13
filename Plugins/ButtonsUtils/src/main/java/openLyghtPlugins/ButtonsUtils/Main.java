@@ -38,8 +38,10 @@ public class Main implements Plugin {
 			
 			for(int i = 0; i < 12; i++)
 				buttons[i] = new Button();
-			for(int i = 0; i < 12; i++)
+			for(int i = 0; i < 12; i++){
+				System.out.println("Loading button: " + i);
 				buttons[i].load(new JSONObject(openLyght.read(defaultPath + "buttons" + File.separator + i + ".json")));
+			}
 			
 			JSONObject comPorts = new JSONObject(openLyght.read(defaultPath + "serialPorts.json"));
 			new ButtonInput(comPorts.getString("buttons")){
@@ -81,6 +83,7 @@ public class Main implements Plugin {
 				
 				File[] dir = new File(defaultPath + "sequences" + File.separator).listFiles(File::isFile);
 				for(File f : dir){
+					System.out.println("Loading sq: " + f.getName());
 					sequences.add(new Sequence(new JSONObject(openLyght.read(f.getAbsolutePath()))));
 				}
 				

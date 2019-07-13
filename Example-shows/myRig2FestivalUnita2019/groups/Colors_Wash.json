@@ -1,0 +1,8 @@
+{
+	"name" : "colors",
+	"description" : "Wash",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$*wash*"
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"channels" : [
+		"$f.*rgb*.general dimmer",
+	],
+	"limits" : {
+		"min" : 256,
+		"max" : 257
+	},
+	"source" : "blackOutSpeedChannel",
+	"mode" : 0
+}

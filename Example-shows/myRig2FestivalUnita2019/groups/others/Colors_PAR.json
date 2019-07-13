@@ -1,0 +1,16 @@
+{
+	"name" : "colors",
+	"description" : "Pars",
+	"defaultStatus" : false,
+	"channels" : [
+		"%redPar1%",
+		"%greenPar1%",
+		"%bluePar1%",
+		"%redPar2%",
+		"%greenPar2%",
+		"%bluePar2%",
+		"%redHTZC%",
+		"%greenHTZC%",
+		"%blueHTZC%"
+	]
+}

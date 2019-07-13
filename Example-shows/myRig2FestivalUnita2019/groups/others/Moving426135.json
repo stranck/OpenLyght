@@ -1,0 +1,13 @@
+{
+	"name" : "Moving162534",
+	"description" : "Moving162534",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"laserX",
+		"laserX2",
+		"$xs2 id:2*",
+		"$xs2 id:3*",
+		"$xs2 id:1*",
+		"$xs2 id:4*"
+	]
+}

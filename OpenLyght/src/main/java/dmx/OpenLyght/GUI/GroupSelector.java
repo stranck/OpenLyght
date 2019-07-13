@@ -26,7 +26,7 @@ public class GroupSelector extends JPanel {
 	private ArrayList<JButton> buttons = new ArrayList<JButton>();
 	private static final Color DISABLED = new Color(255, 0, 0);
 	private static final Color ENABLED = new Color(0, 192, 0);
-	private boolean superGroupActive = false;
+	private boolean superGroupActive = true;
 	private JButton superGroupButton, keybutton;
 	private String groupName;
 	
@@ -41,7 +41,7 @@ public class GroupSelector extends JPanel {
 		
 		superGroupButton = new JButton(data.getString("description"));
 		superGroupButton.setFont(new Font("Tahoma", Font.BOLD, 24));
-		superGroupButton.setForeground(DISABLED);
+		superGroupButton.setForeground(ENABLED);
 		superGroupPanel.add(superGroupButton);
 		superGroupButton.addActionListener(new ActionListener() {
 			@Override
@@ -67,7 +67,7 @@ public class GroupSelector extends JPanel {
 			
 			JButton groupButton = new JButton(g.getDescription());
 			groupButton.setFont(new Font("Tahoma", Font.BOLD, 24));
-			groupButton.setForeground(DISABLED);
+			groupButton.setForeground(ENABLED);
 			//ButtonList.addMouseListener(groupButton);// ASDDDDDDDDDDDDDDDDDDDDDDDDd
 			groupPanel.add(groupButton);
 			buttons.add(groupButton);

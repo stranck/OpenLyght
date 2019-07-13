@@ -1,9 +1,0 @@
-{
-	"name" : "effectSwitch",
-	"description" : "effectSwitch",
-	"defaultStatus" : true,
-	"channels" : [
-		"colorEffectSwitch",
-		"dimmerEffectAmount"
-	]
-}

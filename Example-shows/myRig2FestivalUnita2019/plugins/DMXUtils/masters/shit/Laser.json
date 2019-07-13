@@ -1,0 +1,11 @@
+{
+	"channels" : [
+		"$f.*laser*.general dimmer"
+	],
+	"limits" : {
+		"min" : 0,
+		"max" : 123
+	},
+	"source" : "LaserColors",
+	"mode" : 0
+}

@@ -1,0 +1,10 @@
+{
+	"channels" : [
+		"$f.*par*pos:sx*.colors rgb *"
+	],
+	"source" : "MasterDimmerEffectPar2",
+	"modifierSourceIndex" : 4,
+	"modifierIndex" : -1,
+	"invertValue" : false,
+	"mode" : 3
+}

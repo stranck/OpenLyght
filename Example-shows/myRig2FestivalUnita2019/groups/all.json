@@ -1,0 +1,12 @@
+{
+	"name" : "All",
+	"description" : "All",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$*rgb*",
+		"$*beam*",
+		"MasterDimmerEffectPar1",
+		"MasterDimmerEffectPar2",
+		"MasterDimmerPar"
+	]
+}

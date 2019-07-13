@@ -1,0 +1,726 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 128,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*alt:0*.movment pan"
+				]
+			},
+			{
+				"value" : 127,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*alt:1*.movment pan"
+				]
+            },
+            {
+				"value" : 40,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 85,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment pan"
+				]
+			},
+			{
+				"value" : 170,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment tilt"
+				]
+			},
+			{
+				"value" : 110,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment pan"
+				]
+			},
+			{
+				"value" : 180,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment tilt"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 147,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 108,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 147,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 108,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:4*.movment pan"
+				]
+            },
+            {
+				"value" : 40,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 105,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 65,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 105,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 65,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 170,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment tilt"
+				]
+			},
+			{
+				"value" : 130,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*alt:0*.movment pan"
+				]
+			},
+			{
+				"value" : 90,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*alt:1*.movment pan"
+				]
+			},
+			{
+				"value" : 180,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment tilt"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 108,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 147,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 108,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 147,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:4*.movment pan"
+				]
+            },
+            {
+				"value" : 40,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 65,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 105,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 65,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 98,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 170,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment tilt"
+				]
+			},
+			{
+				"value" : 90,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*alt:0*.movment pan"
+				]
+			},
+			{
+				"value" : 130,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*alt:1*.movment pan"
+				]
+			},
+			{
+				"value" : 180,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment tilt"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 115,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 100,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 155,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 140,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 40,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 104,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 98,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 72,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 66,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 170,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment tilt"
+				]
+			},
+			{
+				"value" : 123,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 129,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 91,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 97,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 180,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment tilt"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 128,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*alt:0*.movment pan"
+				]
+			},
+			{
+				"value" : 127,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*alt:1*.movment pan"
+				]
+            },
+            {
+				"value" : 60,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 85,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment pan"
+				]
+			},
+			{
+				"value" : 225,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment tilt"
+				]
+			},
+			{
+				"value" : 110,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment pan"
+				]
+			},
+			{
+				"value" : 200,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment tilt"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 130,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 105,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 150,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 125,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 60,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 87,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 105,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 65,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 83,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 225,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment tilt"
+				]
+			},
+			{
+				"value" : 112,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 132,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 88,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 108,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 200,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment tilt"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 115,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 100,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 155,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 140,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 20,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 104,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 98,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 72,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 66,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 150,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment tilt"
+				]
+			},
+			{
+				"value" : 123,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 129,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 91,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 97,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 160,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment tilt"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 145,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 160,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 95,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 110,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 70,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 68,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 53,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 117,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 102,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 235,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment tilt"
+				]
+			},
+			{
+				"value" : 93,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 68,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 142,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 127,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 220,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment tilt"
+				]
+			}
+        ]
+	],
+	"priority" : 0,
+	"maxSpeed" : 8000,
+	"speedChannel" : "fadeSpeed",
+	"group" : "positions",
+	"absolute" : true,
+	"defaultStatus" : true
+}

@@ -1,9 +1,0 @@
-{
-	"scene" : "alternateDimmer",
-	"onPress" : [
-		"goto 1"
-	],
-	"onRelease" : [
-		"goto 0"
-	]
-}

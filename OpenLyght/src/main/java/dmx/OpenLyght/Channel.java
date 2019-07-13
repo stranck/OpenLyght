@@ -6,9 +6,10 @@ public class Channel {
 	
 	private int modifierIndex;
 	private boolean reloadReported = false, invertValue = false;
-	private short originalValue = 0, previousValue, value = 0, tempValue;
+	private short originalValue = 0, previousValue, value = 0, dmxValue;
 	private ArrayList<ChannelModifiers> modifiers = new ArrayList<ChannelModifiers>();
 	private String description = "";
+	private Fixture origianlFx;
 	
 	public Channel(String name){
 		description = name;
@@ -19,16 +20,22 @@ public class Channel {
 			previousValue = value;
 			value = originalValue;
 			modifierIndex = 0;
+			//System.out.println("Start reload: " + description + "(" + hashCode() + ")" + "@" + value + " " + origianlFx/*+ cm.hashCode()*/);
 			for(ChannelModifiers cm : modifiers){
 				//if(!description.isEmpty()) System.out.println(value);
-				//System.out.println("Reloading: " + description + "(" + hashCode() + ")" + "@" + value + " " + cm + " " + cm.hashCode());
+				//System.out.println("Reloading: " + description + "(" + hashCode() + ")" + "@" + value + " " + cm + " " + origianlFx/*+ cm.hashCode()*/);
 				if(cm != null) value = cm.getChannelValue(value, modifierIndex++, this);
 			}
 			//if(!description.isEmpty()) System.out.println("reloaded: " + description + "(" + hashCode() + ")" + "@" + value);
-			//System.out.println("reloaded: " + description + "(" + hashCode() + ")" + "@" + value);
 			if(invertValue) value = (short) (255 - value);
 			reloadReported = false;
-			return value != previousValue;
+			//System.out.println("reloaded: " + description + "(" + hashCode() + ")" + "@" + value + ";" + dmxValue + " " + origianlFx);
+			if(value != previousValue){
+				dmxValue = value;
+				if(dmxValue < 0) dmxValue = 0;
+				if(dmxValue > 255) dmxValue = 255;
+				return true;
+			}
 		}
 		return false;
 	}
@@ -49,7 +56,6 @@ public class Channel {
 		if(index < 0){
 			modifiers.add(cm);
 			index = modifiers.size() - 1;
-			reloadReported = true;
 			//System.out.println(hashCode() + " Added channel modifier " + cm + " at: " + (modifiers.size() - 1));
 		}
 		reloadReported = true;
@@ -80,6 +86,9 @@ public class Channel {
 	public void setDescription(String description){
 		this.description = description;
 	}
+	public void setOriginalFixture(Fixture f){
+		origianlFx = f;
+	}
 	public void setOriginalValue(short n){
 		originalValue = n;
 		reloadReported = true;
@@ -90,10 +99,7 @@ public class Channel {
 	}
 	
 	public short getDMXValue(){
-		tempValue = this.value;
-		if(tempValue < 0) tempValue = 0;
-		if(tempValue > 255) tempValue = 255;
-		return tempValue;
+		return dmxValue;
 	}
 	
 	public short getValue(){
@@ -101,5 +107,13 @@ public class Channel {
 	}
 	public String getDescription(){
 		return description;
+	}
+	public Fixture getOriginalFixture(){
+		return origianlFx;
+	}
+	
+	@Override
+	public String toString(){
+		return "Channel: " + getDescription() + " @ " + hashCode(); 
 	}
 }

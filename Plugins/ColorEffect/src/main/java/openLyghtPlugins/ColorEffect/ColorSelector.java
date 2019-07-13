@@ -22,7 +22,7 @@ public class ColorSelector extends JPanel {
 	private JSONObject data; 
 	private JButton btn;
 	private int index = 0;
-	private int value;
+	private EffectColor selected;
 	
 	public ColorSelector(JSONObject data) throws Exception {
 		setLayout(new BorderLayout());
@@ -38,48 +38,21 @@ public class ColorSelector extends JPanel {
 				go();
 			}
 		});
-		/*Dimension d = new Dimension(100, 100);
-		btn.setMaximumSize(d);
-		btn.setPreferredSize(d);*/
-		
-		/*btn.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				System.out.println("RELEASED:\t" + btn.getText());
-			}
-			@Override
-			public void mousePressed(MouseEvent e) {
-				System.out.println("PRESSED:\t" + btn.getText());
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				System.out.println("EXITED:\t" + btn.getText());
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				System.out.println("ENTERED:\t" + btn.getText());
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("CLICKED:\t" + btn.getText());
-			}
-		});*/
 		
 		loadColors(data.getJSONArray("colors"));
 		go();
 	}
 
+	public EffectColor getSelected(){
+		return selected;
+	}
+	
 	private void go(){
 		EffectColor ec = colors.get(index);
-		btn.setForeground(ec.getColor());
+		btn.setForeground(ec.getColorLabel());
 		btn.setText(ec.toString());
-		value = ec.getValue();
+		selected = ec;
 	}
-	
-	public int getValue(){
-		return value;
-	}
-	
 	private void loadColors(JSONArray colors){
 		for(int i = 0; i < colors.length(); i++)
 			this.colors.add(new EffectColor(colors.getJSONObject(i)));

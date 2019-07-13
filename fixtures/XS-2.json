@@ -1,0 +1,29 @@
+{
+	"name": "XS-2",
+	"channels": [
+		"movment pan",
+		"null",
+		"movment tilt",
+		"null",
+		"colors colorWheel",
+		"beamEffect goboWheel",
+		"general dimmer",
+		"general shutter"
+	],
+	"attributes": {
+		"Effect AmountIncreaser amount movment pan": "192",
+		"Effect AmountIncreaser startSpeed movment pan": "250",
+		"Effect AmountIncreaser amount movment tilt": "232",
+		"Effect AmountIncreaser startSpeed movment tilt": "250",
+		
+		"Attributes Color mode": 	"colorWheel",
+		"Attributes Color red":		"60",
+		"Attributes Color green":	"72",
+		"Attributes Color blue":	"119",
+		"Attributes Color yellow":	"102",
+		"Attributes Color cyan": 	"40",
+		"Attributes Color magenta":	"86",
+		"Attributes Color white":	"0",
+		"Attributes Color orange":	"24"
+	}
+}

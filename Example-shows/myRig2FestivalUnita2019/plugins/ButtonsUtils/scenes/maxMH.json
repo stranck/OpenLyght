@@ -1,0 +1,19 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*beam*.general dimmer"
+				]
+			}
+		]
+	],
+	"priority" : 4,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "all",
+	"absolute" : true,
+	"name" : "maxMH",
+	"defaultStatus" : false
+}

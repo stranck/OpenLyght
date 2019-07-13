@@ -1,0 +1,13 @@
+{
+	"name": "parSHORT64",
+	"channels": [
+		"colors rgb red",
+		"colors rgb green",
+		"colors rgb blue",
+		"general dimmer",
+		"general shutter"
+	],
+	"attributes": {
+		"Attributes Color mode": 	"rgb"
+	}
+}

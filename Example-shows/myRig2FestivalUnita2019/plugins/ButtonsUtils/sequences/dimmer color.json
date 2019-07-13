@@ -1,0 +1,15 @@
+{
+	"name" : "5th effect",
+	"scene" : "5EffectSwitch",
+	"commands" : [
+		["goto 0"],
+		["goto 1"]
+	],
+	"labels" : [
+		"Dimmer",
+		"Color"
+	],
+	"goKey" : "NUMPAD9",
+	"resetKey" : "UNDEFINED",
+	"page" : 0
+}

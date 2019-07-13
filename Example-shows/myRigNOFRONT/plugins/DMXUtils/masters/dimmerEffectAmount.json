@@ -1,8 +1,0 @@
-{
-	"channels" : [
-		"dimmerEffectAmount"
-	],
-	"source" : "dimmerEffectSwitch",
-	"invertValue" : false,
-	"mode" : 1
-}

@@ -1,0 +1,21 @@
+{
+	"name" : "Alternate dimmer",
+	"scene" : "alternateDimmer",
+	"commands" : [
+		[
+			"goto 0 4",
+			"goto 0 3",
+		],
+		[
+			"goto 1 4",
+			"goto 1 3"
+		]
+	],
+	"labels" : [
+		"O--O",
+		"OO--"
+	],
+	"goKey" : "V",
+	"resetKey" : "null",
+	"page" : 0
+}

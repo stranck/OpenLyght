@@ -1,0 +1,28 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*fog*.general dimmer"
+				]
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*fog*.general dimmer"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "wDimSpeedChannel",
+	"group" : "fogMachine",
+	"absolute" : true,
+	"name" : "fog",
+	"defaultStatus" : true
+}

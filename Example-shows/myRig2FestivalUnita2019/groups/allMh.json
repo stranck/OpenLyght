@@ -1,0 +1,8 @@
+{
+	"name" : "allMh",
+	"description" : "allMh",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$*mh*",
+	]
+}

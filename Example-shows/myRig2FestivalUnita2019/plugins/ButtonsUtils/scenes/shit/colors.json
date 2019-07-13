@@ -1,0 +1,40 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"colorsFade"
+				]
+			}
+		],
+		[
+			{
+				"value" : 128,
+				"smooth" : false,
+				"channels" : [
+					"colorsFade"
+				]
+			}
+		],
+		[
+			{
+				"value" : 192,
+				"smooth" : false,
+				"channels" : [
+					"colorsFade"
+				]
+			}
+		]
+	],
+	"channels" : [
+		"colorsFade"
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "virtChannels",
+	"absolute" : true,
+	"name" : "colorsFade",
+	"defaultStatus" : true
+}

@@ -1,8 +1,0 @@
-{
-	"name" : "laserRotateY",
-	"description" : "laserRotateY",
-	"defaultStatus" : true,
-	"channels" : [
-		"laserRotateY"
-	]
-}

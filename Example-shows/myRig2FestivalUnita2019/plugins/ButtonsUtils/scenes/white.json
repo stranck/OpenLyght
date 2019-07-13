@@ -1,0 +1,62 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*rgb*.colors rgb *",
+					"$f.*wash*.colors rgb *",
+					"$f.*rgb*.general dimmer",
+					"MasterDimmerPar"
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"whiteStopShutter"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*beam*.general dimmer"
+				]
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*rgb*.colors rgb *",
+					"$f.*wash*.colors rgb *",
+					"$f.*rgb*.general dimmer",
+					"MasterDimmerPar"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"whiteStopShutter"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*beam*.general dimmer"
+				]
+			}
+		]
+	],
+	"priority" : 8,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "all;virtChannels",
+	"absolute" : true,
+	"name" : "white",
+	"defaultStatus" : false
+}

@@ -1,0 +1,73 @@
+[
+	[
+		{
+			"channelName" : "MasterDimmerPar",
+			"min" : 16,
+			"max" : 255
+		},
+		{
+			"channelName" : "$f.*par*.general dimmer",
+			"min" : 16,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "$f.*beam*.general dimmer",
+			"min" : 16,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "$f.*wash*.general dimmer",
+			"min" : 16,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "fadeSpeed",
+			"min" : 16,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "dimmerEffectAmount",
+			"min" : 16,
+			"max" : 16
+		},
+		{
+			"channelName" : "colorEffectAmount",
+			"min" : 16,
+			"max" : 16
+		},
+		{
+			"channelName" : "dimmerEffectSpeedMaster",
+			"min" : 16,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "movmentSpeedMaster",
+			"min" : 0,
+			"max" : 255
+		},
+	],
+	[
+		{
+			"channelName" : "movementPanAmount",
+			"min" : 0,
+			"max" : 255
+		}
+	],
+	[
+		{
+			"channelName" : "movementTiltAmount",
+			"min" : 0,
+			"max" : 255
+		}
+	],
+]

@@ -1,9 +1,0 @@
-{
-	"scene" : "white",
-	"onPress" : [
-		"setStatus true"
-	],
-	"onRelease" : [
-		"setStatus false"
-	]
-}

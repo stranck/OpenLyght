@@ -1,9 +1,0 @@
-{
-	"scene" : "alternatePositions",
-	"onPress" : [
-		"goto 1"
-	],
-	"onRelease" : [
-		"goto 0"
-	]
-}

@@ -11,6 +11,7 @@ public class Button {
 	private static int globalSelctedScene;
 	
 	public Button() throws Exception {
+		System.out.println("dmxutils is loading button scenes...");
 		File[] dir = new File(Main.defaultPath + "scenes" + File.separator).listFiles(File::isFile);
 		for(File f : dir){
 			System.out.println("Loading scene " + f.getAbsolutePath());

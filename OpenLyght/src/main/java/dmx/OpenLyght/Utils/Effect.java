@@ -1,8 +1,9 @@
 package dmx.OpenLyght.Utils;
 
+import java.util.ArrayList;
+
 import dmx.OpenLyght.BasicChannel;
 import dmx.OpenLyght.Channel;
-import dmx.OpenLyght.Group;
 
 public interface Effect {
 	
@@ -10,8 +11,9 @@ public interface Effect {
 	
 	public String getName();
 	
-	public void removeGroup(Group g);
-	public void setGroup(Group g);
+	public void removeGroup(ArrayList<Channel> activeGroup);
+	public void setGroup(ArrayList<Channel> activeGroup);
 	
 	public void setOriginalValue(short value, Channel ch);
+	public void setAmount(short amount);
 }

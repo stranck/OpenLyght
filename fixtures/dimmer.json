@@ -1,0 +1,8 @@
+{
+	"name": "dimmer",
+	"channels": [
+		"general dimmer"
+	],
+	"attributes": {
+	}
+}

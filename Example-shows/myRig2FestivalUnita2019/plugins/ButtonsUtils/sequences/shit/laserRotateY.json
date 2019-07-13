@@ -1,0 +1,19 @@
+{
+	"name" : "Laser Y",
+	"scene" : "laserRotateY",
+	"commands" : [
+		["goto 0"],
+		["goto 1"],
+		["goto 2"],
+		["goto 3"]
+	],
+	"labels" : [
+		"Static",
+		"> slow",
+		"> mid",
+		"> fast"
+	],
+	"goKey" : "X",
+	"resetKey" : "MINUS",
+	"page" : 0
+}

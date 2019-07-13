@@ -1,0 +1,36 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : true,
+				"channels" : [
+					"$f.*dim*stage*.general dimmer",
+					"$f.*dim*center*.general dimmer"
+				]
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true,
+				"channels" : [
+					"$f.*dim*stage*.general dimmer"
+				]
+			},
+			{
+				"value" : 100,
+				"smooth" : true,
+				"channels" : [
+					"$f.*dim*center*.general dimmer"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "wDimSpeedChannel",
+	"group" : "dim",
+	"absolute" : true,
+	"name" : "stageDim",
+	"defaultStatus" : true
+}

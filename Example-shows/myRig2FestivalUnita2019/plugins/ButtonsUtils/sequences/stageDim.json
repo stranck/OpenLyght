@@ -1,0 +1,19 @@
+{
+	"name" : "Stage dim",
+	"scene" : "stageDim",
+	"commands" : [
+		[
+			"goto 0"
+		],
+		[
+			"goto 1"
+		]
+	],
+	"labels" : [
+		"off",
+		"on"
+	],
+	"goKey" : "undefined",
+	"resetKey" : "undefined",
+	"page" : 0
+}

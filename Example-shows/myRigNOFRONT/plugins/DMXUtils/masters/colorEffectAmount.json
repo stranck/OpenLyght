@@ -1,8 +1,0 @@
-{
-	"channels" : [
-		"colorEffectAmount"
-	],
-	"source" : "colorEffectSwitch",
-	"invertValue" : false,
-	"mode" : 1
-}

@@ -1,0 +1,19 @@
+{
+	"name" : "White shutters",
+	"scene" : "white",
+	"commands" : [
+		[
+			"goto 0"
+		],
+		[
+			"goto 1"
+		]
+	],
+	"labels" : [
+		"off",
+		"on"
+	],
+	"goKey" : "N",
+	"resetKey" : "undefined",
+	"page" : 0
+}

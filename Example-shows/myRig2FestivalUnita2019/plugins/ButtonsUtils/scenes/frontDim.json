@@ -1,0 +1,28 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : true,
+				"channels" : [
+					"$f.*dim*front*.general dimmer"
+				]
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : true,
+				"channels" : [
+					"$f.*dim*front*.general dimmer"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "wDimSpeedChannel",
+	"group" : "dim",
+	"absolute" : true,
+	"name" : "frontDim",
+	"defaultStatus" : true
+}

@@ -490,7 +490,7 @@ public class EffectController extends JPanel {
 		GroupCombo gc = (GroupCombo) lightsGroupBtn.getSelectedItem();
 		//System.out.println(gc.getGroup().toString());
 		for(int i = 0; i < efctN; i++)
-			effect.get(i).setGroup(gc.getGroup(i));
+			effect.get(i).setGroup(gc.getGroup(i), gc.getChannelNames(i));
 		allowChangeListener = true;
 	}
 	

@@ -1,0 +1,255 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 115,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 100,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*mh*.general dimmer"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*par*.general dimmer",
+					"MasterDimmerPar"
+				]
+			},
+			{
+				"value" : 155,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 140,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 85,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 104,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 98,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 72,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 66,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 150,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment tilt"
+				]
+			},
+			{
+				"value" : 123,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 129,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 91,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 97,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 160,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment tilt"
+				]
+			}
+		],
+		[
+			{
+				"value" : 145,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 160,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*mh*.general dimmer"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*par*.general dimmer",
+					"MasterDimmerPar"
+				]
+			},
+			{
+				"value" : 95,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 110,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 15,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 68,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 53,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 117,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 102,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 235,
+				"smooth" : true,
+				"channels" : [
+					"$f.*St35*.movment tilt"
+				]
+			},
+			{
+				"value" : 93,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 68,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 142,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 127,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 220,
+				"smooth" : true,
+				"channels" : [
+					"$f.*sl110*.movment tilt"
+				]
+			}
+		],
+	],
+	"priority" : 1,
+	"speedChanelPriority" : 1,
+	"speedChannel" : "alternatePositionSpeed",
+	"group" : "all;virtChannels",
+	"name" : "alternatePositions",
+	"absolute" : true,
+	"defaultStatus" : false
+}

@@ -25,7 +25,9 @@ public class Stuff {
 	private ArrayList<Channel> virtualChannel = new ArrayList<Channel>();
 	public ArrayList<Variable> variables = new ArrayList<Variable>();
 	public ArrayList<Plugin> plugins = new ArrayList<Plugin>();
+	public ArrayList<Fixture> fixtures = new ArrayList<Fixture>();
 	private ArrayList<Group> groups = new ArrayList<Group>();
+	private ArrayList<Patch> fixtureTypes = new ArrayList<Patch>();
 	public Channel[] channels = new Channel[512];
 	public MainWindow mainWindow;
 	public String deafaultPath;
@@ -38,6 +40,8 @@ public class Stuff {
     
     public void start() throws Exception{
     	reloadVariables();
+    	reloadFixtureTypes();
+    	reloadFixtures();
     	reloadGroups();
     	reloadPlugins();
     	mainWindow = new MainWindow();
@@ -60,6 +64,23 @@ public class Stuff {
     	System.out.println("Loading variables");
     	for(int i = 0; i < data.length(); i++)
     		variables.add(new Variable(data.getJSONObject(i)));
+    }
+    
+    public void reloadFixtureTypes() throws Exception {
+    	System.out.println("Loading fixtur types");
+    	fixtureTypes.clear();
+    	File[] dir = new File("fixtures" + File.separator).listFiles(File::isFile);
+    	for(File f : dir)
+    		fixtureTypes.add(new Patch(new JSONObject(read(f.getAbsolutePath()))));
+    }
+    
+    public void reloadFixtures() throws Exception {
+    	System.out.println("Loading patch");
+    	fixtures.clear();
+    	JSONArray data = new JSONArray(new String(read(deafaultPath + "patch.json")));
+    	for(int i = 0; i < data.length(); i++)
+    		fixtures.add(new Fixture(data.getJSONObject(i)));
+    	System.out.println("loaded " + fixtures.size() + " fixtures");
     }
     
     public void reloadPlugins() throws Exception {
@@ -92,6 +113,7 @@ public class Stuff {
     }
     
     public void reloadGroups(){
+    	System.out.println("Reloading groups");
     	groups.clear();
     	File[] dir = new File(deafaultPath + "groups" + File.separator).listFiles(File::isFile);
     	for(File f : dir){
@@ -122,53 +144,39 @@ public class Stuff {
         		c = new Channel(name);
         		//c.setDescription(name);
         		virtualChannel.add(c);
+        		Fixture f = new Fixture(c);
+    			fixtures.add(f);
         	}
     	} else {
     		if(channels[channelID] == null)
     			channels[channelID] = new Channel(name);
     		c = channels[channelID];
-    		
     	}
     	return c;
     }
     
-    public ArrayList<Channel> getChannels(String name){
-    	ArrayList<Channel> c = new ArrayList<Channel>();
-    	if(name.charAt(0) == '$'){
-    		String[] args = name.substring(1).split("\\.");
-    		switch(args[0]){
-    			case "attrib" : {
-    				break;
-    			}
-    			case "group" : {
-    				break;
-    			}
-    		}
-    	} else {
-	    	int channelID = App.getInt(name);
-	    	if(channelID < 0) {
-	        	Channel channel = null;
-	    		for(Channel ch : virtualChannel)
-	        		if(ch.getDescription().equals(name)) {
-	        			channel = ch;
-	        			break;
-	        		}
-	        	if(channel == null) {
-	        		System.out.println("Generating new virtual channel: " + name);
-	        		channel = new Channel(name);
-	        		//channel.setDescription(name);
-	        		virtualChannel.add(channel);
-	        		c.add(channel);
-	        	}
-	    	} else {
-	    		if(channels[channelID] == null)
-	    			channels[channelID] = new Channel(name);
-	    		c.add(channels[channelID]);
-	    		
-	    	}
-    	}
-    	return c;
-    }
+	public ArrayList<Fixture> getFixtures(String name){
+		ArrayList<Fixture> fxs = new ArrayList<Fixture>();
+		boolean searchingFxt = false;
+		Channel c = null;
+		if(name.charAt(0) == '$'){
+			name = name.substring(1);
+			searchingFxt = true;
+		} else {
+			c = getChannel(name);
+			name = Fixture.DEFAULT_NAME + "*";
+		}
+		for(Fixture f : fixtures)
+			if(App.likeIgnoreCase(f.getName(), name) && (searchingFxt || f.has(c)))
+				fxs.add(f);
+		/*if(!searchingFxt && fxs.size() == 0){
+			System.out.println("Generating new wrapper fixture for " + c.getDescription());
+			Fixture f = new Fixture(c);
+			fixtures.add(f);
+			fxs.add(f);
+		}*/
+		return fxs;
+	}
    
     public void addGroup(Group g){
     	groups.add(g);
@@ -186,12 +194,17 @@ public class Stuff {
     			group.setStatus(status);
     }
     
-    public Group getGroup(String name){
-    	Group group = new Group(new ArrayList<Channel>(), name);
-    	for(Group g : groups)
-    		if(g.getName().equals(name) && g.getStatus())
-    			group.merge(g);
-    	return group;
+    public Group getGroup(String name, boolean ignoreStatus){
+    	//System.out.println("Requested group: " + name);
+    	Group group = new Group(new ArrayList<Fixture>(), name);
+    	String[] sp = name.split(";");
+    	for(String s : sp){
+        	for(Group g : groups)
+        		if(App.likeIgnoreCase(g.getName(), s) && (ignoreStatus || g.getStatus()))
+        			group.merge(g);
+    	}
+    	//System.out.println(group.size());
+    	return group.clearDuplicates();
     }
     
     public boolean isSuperGroupActive(String name){
@@ -217,20 +230,27 @@ public class Stuff {
 				break;
 			}
 
-		if(e == null) try {
-			e = (Effect) Class.forName("dmx.OpenLyght.Utils.Effects." + name).newInstance();
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
+		if(e == null)
+			try {
+				e = (Effect) Class.forName("dmx.OpenLyght.Utils.Effects." + name).newInstance();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		return e;
+	}
+	
+	public Patch getFixtureType(String name){
+		for(Patch p : fixtureTypes)
+			if(p.getName().equals(name))
+				return p;
+		return null;
 	}
 	
 	private void invertChannels() throws Exception{
 		String p = deafaultPath + "inverted.json";
 		if(Files.exists(Paths.get(p))){
-			JSONArray data = new JSONArray(read(p));
-			for(int i = 0; i < data.length(); i++){
-				Channel c = getChannel(data.getString(i));
+			ArrayList<Channel> chs = Fixture.getChannelsByFullNames(new JSONArray(read(p)), fixtures);
+			for(Channel c : chs){
 				c.setInvert(true);
 				c.reportReload();
 			}

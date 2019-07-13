@@ -1,8 +1,0 @@
-{
-	"name" : "colorsFade",
-	"description" : "colorsFade",
-	"defaultStatus" : true,
-	"channels" : [
-		"colorsFade"
-	]
-}

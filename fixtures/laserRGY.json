@@ -1,0 +1,19 @@
+{
+	"name": "laserRGY",
+	"channels": [
+		"general mode",
+		"beamEffect goboWheel",
+		"general dimmer",
+		"general shutter",
+		"beamEffect zoom",
+		"movment pan",
+		"movment tilt",
+		"movment laser y",
+		"movment laser x",
+		"movment laser z"
+		
+	],
+	"attributes": {
+		"Attributes Color mode": 	"laser"
+	}
+}

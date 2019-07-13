@@ -1,0 +1,15 @@
+{
+	"name": "par64",
+	"channels": [
+		"colors rgb red",
+		"colors rgb green",
+		"colors rgb blue",
+		"null",
+		"general shutter",
+		"null",
+		"general dimmer"
+	],
+	"attributes": {
+		"Attributes Color mode": 	"rgb"
+	}
+}

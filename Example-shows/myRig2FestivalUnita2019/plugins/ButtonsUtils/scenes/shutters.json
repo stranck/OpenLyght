@@ -1,0 +1,129 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels": [
+					"$f.*par*.general shutter",
+					"$f.*wash*.general shutter"
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels": [
+					"$f.*beam*.general shutter" 
+				]
+			}
+		],
+		[
+			{
+				"value" : 248,
+				"smooth" : false,
+				"channels": [
+					"$f.*par56*.general shutter" 
+				]
+			},
+			{
+				"value" : 210,
+				"smooth" : false,
+				"channels": [
+					"$f.*par64*.general shutter" 
+				]
+			},
+			{
+				"value" : 210,
+				"smooth" : false,
+				"channels": [
+					"$f.*parCOB64*.general shutter" 
+				]
+			},
+			{
+				"value" : 248,
+				"smooth" : false,
+				"channels": [
+					"$f.*parShort64*.general shutter" 
+				]
+			},
+			{
+				"value" : 70,
+				"smooth" : false,
+				"channels": [
+					"$f.*xs2*.general shutter" 
+				]
+			},
+			{
+				"value" : 210,
+				"smooth" : false,
+				"channels": [
+					"$f.*St35*.general shutter" 
+				]
+			},
+			{
+				"value" : 230,
+				"smooth" : false,
+				"channels": [
+					"$f.*sl110*.general shutter" 
+				]
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels": [
+					"$f.*par56*.general shutter"
+				]
+			},
+			{
+				"value" : 240,
+				"smooth" : false,
+				"channels": [
+					"$f.*par64*.general shutter" 
+				]
+			},
+			{
+				"value" : 240,
+				"smooth" : false,
+				"channels": [
+					"$f.*parCOB64*.general shutter" 
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels": [
+					"$f.*parShort64*.general shutter" 
+				]
+			},
+			{
+				"value" : 76,
+				"smooth" : false,
+				"channels": [
+					"$f.*xs2*.general shutter" 
+				]
+			},
+			{
+				"value" : 75,
+				"smooth" : false,
+				"channels": [
+					"$f.*St35*.general shutter" 
+				]
+			},
+			{
+				"value" : 135,
+				"smooth" : false,
+				"channels": [
+					"$f.*sl110*.general shutter" 
+				]
+			}
+		]
+	],
+	"priority" : 4,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "all",
+	"absolute" : true,
+	"name" : "shutters",
+	"defaultStatus" : true
+}

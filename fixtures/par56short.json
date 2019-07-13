@@ -1,0 +1,13 @@
+{
+	"name": "par56short",
+	"channels": [
+		"colors rgb red",
+		"colors rgb green",
+		"colors rgb blue",
+		"null",
+		"general shutter"
+	],
+	"attributes": {
+		"Attributes Color mode": 	"rgb"
+	}
+}

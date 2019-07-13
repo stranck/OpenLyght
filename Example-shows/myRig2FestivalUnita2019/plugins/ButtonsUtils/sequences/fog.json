@@ -1,0 +1,19 @@
+{
+	"name" : "Fog",
+	"scene" : "fog",
+	"commands" : [
+		[
+			"goto 0"
+		],
+		[
+			"goto 1"
+		]
+	],
+	"labels" : [
+		"off",
+		"on"
+	],
+	"goKey" : "undefined",
+	"resetKey" : "undefined",
+	"page" : 0
+}

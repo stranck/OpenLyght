@@ -1,0 +1,11 @@
+{
+	"channels" : [
+		"$f.*laser*id:1*.movment tilt"
+	],
+	"limits" : {
+		"min" : 32,
+		"max" : 95
+	},
+	"source" : "laserY",
+	"mode" : 0
+}

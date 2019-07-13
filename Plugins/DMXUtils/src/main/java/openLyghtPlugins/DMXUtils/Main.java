@@ -51,6 +51,7 @@ public class Main implements Plugin, Runnable {
 			loadMasters();
 			buttons = new Button();
 			
+			System.out.print("dmxUtils is loading faders");
 			File[] dir = new File(defaultPath + "faders" + File.separator).listFiles(File::isFile);
 			for(File f : dir)
 				faders.add(new Input(f));
@@ -98,28 +99,7 @@ public class Main implements Plugin, Runnable {
 		File[] dir = new File(defaultPath + "masters" + File.separator).listFiles(File::isFile);
 		for(File f : dir){
 			System.out.println("Loading master: " + f.getAbsolutePath());
-			JSONObject master = new JSONObject(openLyght.read(f.getAbsolutePath()));
-			JSONArray channels = master.getJSONArray("channels");
-			ArrayList<Channel> ch = new ArrayList<Channel>();
-			
-			for(int i = 0; i < channels.length(); i++){
-				ch.add(openLyght.getChannel(channels.getString(i)));
-			}
-			Master m = null;
-			if(master.has("modifierSourceIndex") && master.has("modifierIndex")) 
-				m = new Master(openLyght.getChannel(master.getString("source")),
-						ch, master.getInt("mode"),
-						master.getInt("modifierSourceIndex"),
-						master.getInt("modifierIndex"));
-			else 
-				m = new Master(openLyght.getChannel(master.getString("source")), ch, master.getInt("mode"));
-			if(master.has("limits")){
-				JSONObject limits = master.getJSONObject("limits");
-				m.setLimits(limits.getInt("min"), limits.getInt("max"));
-			}
-			if(master.has("enableLimit")) m.setEnableLimit(master.getInt("enableLimit"));
-			if(master.has("invertValue")) m.setInvertValue(master.getBoolean("invertValue"));
-			masters.add(m);
+			masters.add(new Master(new JSONObject(openLyght.read(f.getAbsolutePath()))));
 		}
 	}
 	

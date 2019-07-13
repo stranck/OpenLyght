@@ -1,0 +1,8 @@
+{
+	"name" : "dim",
+	"description" : "dim",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$*dim*",
+	]
+}

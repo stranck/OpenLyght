@@ -1,0 +1,8 @@
+{
+	"name" : "HTZCs",
+	"description" : "HTZCs",
+	"defaultStatus" : true,
+	"channels" : [
+		"$htzc*"
+	]
+}

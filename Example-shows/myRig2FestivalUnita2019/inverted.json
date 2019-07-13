@@ -1,0 +1,6 @@
+[
+	"$f.*sl110*pos:dx*.movment pan",
+	"$f.*sl110*.movment tilt",
+	"$f.*St35*pos:sx*.movment pan",
+	"$f.*St35*pos:dx*.movment tilt"
+]

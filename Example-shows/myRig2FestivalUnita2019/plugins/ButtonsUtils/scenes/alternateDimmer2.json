@@ -1,0 +1,46 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*mh*symalt:0*.general dimmer"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*mh*symalt:1*.general dimmer",
+					"MasterDimmerEffectPar2",
+					"MasterDimmerEffectPar1"
+				]
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*pos:sx*mh*.general dimmer",
+					"MasterDimmerEffectPar1"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*pos:dx*mh*.general dimmer",
+					"MasterDimmerEffectPar2"
+				]
+			}
+		]
+	],
+	"priority" : 6,
+	"speedChannel" : "alternateSpeed",
+	"group" : "all;virtChannels",
+	"absolute" : true,
+	"name" : "alternateDimmer2",
+	"defaultStatus" : false
+}

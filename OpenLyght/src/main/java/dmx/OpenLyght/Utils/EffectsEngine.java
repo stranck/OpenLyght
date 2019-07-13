@@ -5,39 +5,32 @@ import java.util.ArrayList;
 import org.json.JSONObject;
 
 import dmx.OpenLyght.App;
-import dmx.OpenLyght.BasicChannel;
 import dmx.OpenLyght.Channel;
 import dmx.OpenLyght.ChannelModifiers;
 import dmx.OpenLyght.Group;
 import dmx.OpenLyght.Utils.Effects.Off;
  
 public class EffectsEngine implements Runnable, ChannelModifiers {
-	private Group activeGroup;
-	private boolean relative, requestReload = true, reloadingGroup = false;
-	private Effect effect = new Off();
+	private EffectChannel[] channels = new EffectChannel[0];
 	private Channel speedChannel, amount, incAmount = null;
+	private ArrayList<Channel> activeGroup = new ArrayList<Channel>();
+	private Effect effect = new Off();
+	private boolean relative, requestReload = true, reloadingGroup = false, enableAmountIncreaser;
 	private char direction; //>, <, s (>), S (<)
-	private short diff, mid, min, startIncSpeed = 256, incInterval, incAmountSpeed, outValue;
-	private int startPhase, endPhase, currentPhase, width, groups, blocks, wings, minSpeed, inc;
+	private short diff, mid, min, outValue;
+	private int startPhase, endPhase, currentPhase, width, groups, blocks, wings, minSpeed;
 	private int[] basePhase;
-	private BasicChannel[] channels = new BasicChannel[0];
 	
 	public EffectsEngine(JSONObject data, Channel speed, Channel amount){
 		min = (short) data.getInt("min");
 		int max = data.getInt("max");
 		mid = (short) ((max + min) / 2);
-		diff = (short) (max - mid);
+		diff = (short) Math.abs(Math.abs(max) - Math.abs(mid));
 		
 		width = data.getInt("width");
 		minSpeed = data.getInt("minSpeed");
 		relative = data.getBoolean("relative");
-		
-		if(data.has("amountIncreaser")){
-			JSONObject increaser = data.getJSONObject("amountIncreaser");
-			incAmountSpeed = (short) increaser.getInt("amount");
-			startIncSpeed = (short) increaser.getInt("startSpeed");
-			incInterval = (short) (255 - startIncSpeed);
-		}
+		enableAmountIncreaser = data.getBoolean("amountIncreaser");
 		
 		if(data.has("incAmountChannel")) {
 			incAmount = App.utils.getChannel(data.getString("incAmountChannel"));
@@ -55,10 +48,11 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 		currentPhase = 0;
 	}
 	
-	public void setGroup(Group g){
+	public void setGroup(Group g, ArrayList<String> name){
+		System.out.println("SIZE " + g.size());
+		activeGroup = g.getChannelsByNames(name);
 		effect.removeGroup(activeGroup);
-		effect.setGroup(g);
-		activeGroup = g;
+		effect.setGroup(activeGroup);
 		reloadingGroup = true;
 		requestReload = true;
 	}
@@ -94,15 +88,15 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 	
 	public void reloadEffect(){
 		if(reloadingGroup){
-			for(BasicChannel bc : channels)
+			System.out.println("RELOADING GROUP");
+			for(EffectChannel bc : channels)
 				bc.getChannel().removeChannelModifier(this);
 			
-			ArrayList<Channel> ch = activeGroup.getChannels();
-			channels = new BasicChannel[ch.size()];
+			channels = new EffectChannel[activeGroup.size()];
 			for(int i = 0; i < channels.length; i++){
-				Channel c = ch.get(i);
+				Channel c = activeGroup.get(i);
 				c.addChannelModifier(this);
-				channels[i] = new BasicChannel(0, true, c);
+				channels[i] = new EffectChannel(0, true, c);
 			}
 			
 			reloadingGroup = false;
@@ -137,26 +131,24 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 	@Override
 	public void run() {
 		currentPhase = 0;
-		BasicChannel bc;
+		EffectChannel bc;
 		int i, n, phase;
-		short speed, value;
+		short speed;
 		
 		while(!Thread.interrupted()) {
 			try{
 				if(requestReload) reloadEffect();
 				speed = speedChannel.getValue();
-				value = amount.getValue();
-				if(startIncSpeed < 256 && speed > startIncSpeed && value > 0)//(speed - start) : incInterval = inc : incAmount
-					inc = (speed - startIncSpeed) * incAmountSpeed / incInterval * value / 0xFF;
-				else inc = 0;
-				//System.out.println(inc + " " + speed + " " + startIncSpeed);
 				
 				for(i = 0; i < basePhase.length; i++){
 					bc = channels[i];
+					if(enableAmountIncreaser)
+						bc.updateIncAmount(speed, amount.getValue());
 					
 					phase = (currentPhase + basePhase[i]) % 360;
 					if(phase < 0) phase += 360;
 					
+					//System.out.println(effect.getValue(width * phase / 360, bc) + " " + diff + " " + mid + " " + phase);
 					if(phase > width) bc.setValue(min); //newPhase : width = phase : 360
 						else bc.setValue((short) (effect.getValue(width * phase / 360, bc) * diff + mid));
 					bc.getChannel().reportReload();
@@ -196,10 +188,14 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 	public short getChannelValue(short originalValue, int index, Channel ch) {
 		outValue = originalValue;
 		effect.setOriginalValue(originalValue, ch);
+		short amt = amount.getValue();
+		effect.setAmount(amt);
 		try{
-			outValue = (short) (App.getBasicChannel(channels, ch).getValue() * (amount.getValue() + inc) / 0xFF);
+			EffectChannel ec = (EffectChannel) App.getBasicChannel(channels, ch);
+			outValue = (short) (ec.getValue() * (amt + ec.getInc()) / 0xFF);
 		}catch(Exception e) {}
 		//System.out.println("Channel: " + value + " " + originalValue + " " + App.getBasicChannel(channels, ch).getValue() + " " + amount.getValue() + " " + ch.hashCode());
+		//System.out.println(outValue + " " + originalValue);
 		if(relative) outValue += originalValue;
 		return outValue;
 	}
@@ -226,8 +222,8 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 	
 	private int[] applyWings(int value, int[] phase){
 		int segmentLength = phase.length / Math.abs(value);
-		int i = 0;
-		while(segmentLength > 0 && i < phase.length){
+		//while(segmentLength > 0 && i < phase.length){
+		for(int i = 0; i < phase.length; i += segmentLength){
 			
 			//System.out.println("A" + segmentLength + " " + i + phase.length);
 			for(int position = 0; position < segmentLength && i + position < phase.length; position++){
@@ -242,8 +238,6 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 					phase[destinationIndex] = phase[i + position] + phaseModifier;
 				}
 			}
-			
-			i += segmentLength;
 		}
 		//System.out.println("WINGS=" + value + Arrays.toString(phase));
 		return phase;

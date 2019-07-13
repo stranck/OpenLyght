@@ -1,5 +1,7 @@
 package openLyghtPlugins.ButtonsUtils;
 
+import java.util.Arrays;
+
 import dmx.OpenLyght.App;
 import dmx.OpenLyght.Utils.Scene;
 
@@ -37,6 +39,7 @@ public class Command {
 	}
 	
 	private void analyze(String[] sp){
+		//System.out.println(Arrays.toString(Main.buttons));
 		switch(sp[0]){
 			case "goto" : {
 				this.command = 0;
@@ -55,9 +58,11 @@ public class Command {
 				this.command = 2;
 				buttons = new Button[sp.length - 2];
 				status = sp[1].equalsIgnoreCase("true");
+				System.out.println(Arrays.toString(Main.buttons));
 				for(int i = 2; i < sp.length; i++){
 					buttons[i - 2] = Main.buttons[Integer.parseInt(sp[i])];
 				}
+				System.out.println(Arrays.toString(buttons));
 				break;
 			}
 			case "fix" : {
@@ -118,6 +123,7 @@ public class Command {
 			//System.out.println("Executing: " + originalCommand);
 			switch(command){
 				case 0:{
+					//System.out.println("GOTO: " + step + " " + fix + " " + scene);
 					if(!fix) {
 						if(buttons == null) scene.gotoStep(step);
 						else buttons[0].getScene().gotoStep(step);
@@ -155,6 +161,7 @@ public class Command {
 								cmd.execute(false);
 						}
 					}.start();
+					break;
 				}
 			}
 		} catch(Exception e){

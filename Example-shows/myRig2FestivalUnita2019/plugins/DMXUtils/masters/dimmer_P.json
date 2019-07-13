@@ -1,0 +1,8 @@
+{
+	"channels" : [
+		"$f.*par56*.colors rgb *",
+	],
+	"source" : "MasterDimmerPar",
+	"mode" : 1,
+	"modifierIndex" : 10
+}

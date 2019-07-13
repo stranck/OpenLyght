@@ -1,8 +1,9 @@
 package dmx.OpenLyght.Utils.Effects;
 
+import java.util.ArrayList;
+
 import dmx.OpenLyght.BasicChannel;
 import dmx.OpenLyght.Channel;
-import dmx.OpenLyght.Group;
 import dmx.OpenLyght.Utils.Effect;
 
 public class OnOff implements Effect {
@@ -20,9 +21,11 @@ public class OnOff implements Effect {
 	}
 
 	@Override
-	public void setGroup(Group g) {}
+	public void setGroup(ArrayList<Channel> activeGroup) {}
 	@Override
-	public void removeGroup(Group g) {}
+	public void removeGroup(ArrayList<Channel> activeGroup) {}
 	@Override
 	public void setOriginalValue(short value, Channel ch) {}
+	@Override
+	public void setAmount(short amount) {}
 }

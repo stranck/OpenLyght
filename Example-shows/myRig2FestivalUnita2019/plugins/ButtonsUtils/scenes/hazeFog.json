@@ -1,0 +1,55 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*haze*.fog fog"
+				]
+			}
+		],
+		[
+			{
+				"value" : 64,
+				"smooth" : false,
+				"channels" : [
+					"$f.*haze*.fog fog"
+				]
+			}
+		],
+		[
+			{
+				"value" : 128,
+				"smooth" : false,
+				"channels" : [
+					"$f.*haze*.fog fog"
+				]
+			}
+		],
+		[
+			{
+				"value" : 192,
+				"smooth" : false,
+				"channels" : [
+					"$f.*haze*.fog fog"
+				]
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*haze*.fog fog"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "fogMachine",
+	"absolute" : true,
+	"name" : "hazeFog",
+	"defaultStatus" : true
+}

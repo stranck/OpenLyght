@@ -1,0 +1,8 @@
+{
+	"name" : "laser",
+	"description" : "laser",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$laser*"
+	]
+}

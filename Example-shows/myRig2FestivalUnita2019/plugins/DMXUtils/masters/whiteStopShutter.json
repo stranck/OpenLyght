@@ -1,0 +1,9 @@
+{
+	"channels" : [
+		"$f.*rgb*.general shutter"
+	],
+	"modifierIndex" : 10,
+	"modifierSourceIndex" : 10,
+	"source" : "whiteStopShutter",
+	"mode" : 3
+}

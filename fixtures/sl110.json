@@ -1,0 +1,34 @@
+{
+	"name": "sl110",
+	"channels": [
+		"movment pan",
+		"null",
+		"movment tilt",
+		"null",
+		"null",
+		"general dimmer",
+		"colors rgb red",
+		"colors rgb green",
+		"colors rgb blue",
+		"colors rgb white",
+		"colors rgb temperature",
+		"null",
+		"general shutter"
+	],
+	"attributes": {
+		"Effect AmountIncreaser amount movment pan": "0",
+		"Effect AmountIncreaser startSpeed movment pan": "250",
+		"Effect AmountIncreaser amount movment tilt": "0",
+		"Effect AmountIncreaser startSpeed movment tilt": "250",
+		
+		"Attributes Color mode": 	"rgb",
+		"Attributes Color red":		"60",
+		"Attributes Color green":	"72",
+		"Attributes Color blue":	"119",
+		"Attributes Color yellow":	"102",
+		"Attributes Color cyan": 	"40",
+		"Attributes Color magenta":	"86",
+		"Attributes Color white":	"0",
+		"Attributes Color orange":	"24"
+	}
+}

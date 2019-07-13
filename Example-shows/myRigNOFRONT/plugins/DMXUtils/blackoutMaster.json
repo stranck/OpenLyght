@@ -1,9 +1,0 @@
-{
-	"channels" : [
-		"MasterDimmerPar",
-		"MasterDimmerMH",
-		"LaserColors"
-	],
-	"source" : "MasterDimmerMH",
-	"mode" : 0
-}

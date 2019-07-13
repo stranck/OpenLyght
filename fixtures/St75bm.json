@@ -1,0 +1,33 @@
+{
+	"name": "St35",
+	"channels": [
+		"movment pan",
+		"movment tilt",
+		"null",
+		"null",
+		"null",
+		"colors colorWheel",
+		"general shutter",
+		"general dimmer",
+		"beamEffect goboWheel",
+		"null",
+		"null",
+		"beamEffect prism"
+	],
+	"attributes": {
+		"Effect AmountIncreaser amount movment pan": "0",
+		"Effect AmountIncreaser startSpeed movment pan": "250",
+		"Effect AmountIncreaser amount movment tilt": "0",
+		"Effect AmountIncreaser startSpeed movment tilt": "250",
+		
+		"Attributes Color mode": 	"colorWheel",
+		"Attributes Color red":		"30",
+		"Attributes Color green":	"25",
+		"Attributes Color blue":	"60",
+		"Attributes Color yellow":	"10",
+		"Attributes Color cyan": 	"40",
+		"Attributes Color magenta":	"15",
+		"Attributes Color white":	"0",
+		"Attributes Color orange":	"50"
+	}
+}

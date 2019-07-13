@@ -1,0 +1,20 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"MasterDimmerPar",
+					"$f.*par*.general dimmer"
+				]
+			}
+		]
+	],
+	"priority" : 4,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "all;virtChannels",
+	"absolute" : true,
+	"name" : "maxPars",
+	"defaultStatus" : false
+}

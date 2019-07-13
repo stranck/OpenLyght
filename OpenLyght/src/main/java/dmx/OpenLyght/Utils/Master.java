@@ -2,10 +2,11 @@ package dmx.OpenLyght.Utils;
 
 import java.util.ArrayList;
 
+import org.json.JSONObject;
+
 import dmx.OpenLyght.*;
 
 public class Master implements ChannelModifiers {
-
 	private int diff = 0xFF, min = 0, enableLimit = Integer.MIN_VALUE;
 	private int mode; 
 	private boolean invertValue;
@@ -13,6 +14,35 @@ public class Master implements ChannelModifiers {
 	private Channel value;
 	
 	private short val, masterValue;
+	
+	public Master(JSONObject master){
+		this.channels = Fixture.getChannelsByFullNames(master.getJSONArray("channels"), App.utils.fixtures);
+		
+		value = App.utils.getChannel(master.getString("source"));
+		mode = master.getInt("mode");
+		int sourceIndex = 0;
+		if(master.has("modifierSourceIndex")){
+			sourceIndex = master.getInt("modifierSourceIndex");
+			value.addChannelModifier(this, sourceIndex);
+		} else {
+			sourceIndex = value.addChannelModifier(this);
+		}
+		if(master.has("modifierIndex")){
+			int modifierIndex = master.getInt("modifierIndex");
+			for(Channel c : this.channels)
+				c.addChannelModifier(this, modifierIndex);
+		} else {
+			for(Channel c : this.channels)
+				c.addChannelModifier(this);
+		}
+		System.out.println("Creating master. Source index: " + sourceIndex + " id: " + hashCode());
+		if(master.has("limits")){
+			JSONObject limits = master.getJSONObject("limits");
+			setLimits(limits.getInt("min"), limits.getInt("max"));
+		}
+		if(master.has("enableLimit")) setEnableLimit(master.getInt("enableLimit"));
+		if(master.has("invertValue")) setInvertValue(master.getBoolean("invertValue"));
+	}
 	
 	public Master(Channel sourceValue, ArrayList<Channel> channels, int mode){
 		this.channels = channels;
@@ -46,7 +76,7 @@ public class Master implements ChannelModifiers {
 		diff = max - min;
 	}
 	
-	/*
+	/**
 	 * 0 = absolute
 	 * 1 = relative
 	 * 2 = relative remove
@@ -54,6 +84,7 @@ public class Master implements ChannelModifiers {
 	 * 4 = add
 	 * 5 = remove
 	 * 6 = biggerThan
+	 * 7 = relative inverted
 	 * others = nothing
 	 */
 	
@@ -107,6 +138,10 @@ public class Master implements ChannelModifiers {
 						if(v > val) val = (short) v;
 						break;
 					}
+					case 7: {
+						val = (short) (originalValue * -masterValue / 0xFF * diff / 0xFF + min);
+						break;
+					}
 				}
 				//System.out.println("MASTER: " + value + " " + originalValue + " " + masterValue + " " + mode + " " + ch.hashCode() + " " + hashCode());
 			} //else System.out.println("MASTER under enable limit: " + value + " " + enableLimit + " " + hashCode() + " " + ch.hashCode());
@@ -115,5 +150,10 @@ public class Master implements ChannelModifiers {
 		}
 		//System.out.println("MASTER DONE " + mode + " " + hashCode() + " " + ch.hashCode());
 		return val;
+	}
+	
+	@Override
+	public String toString(){
+		return "Master: " + value.getDescription() + " @ " + hashCode(); 
 	}
 }

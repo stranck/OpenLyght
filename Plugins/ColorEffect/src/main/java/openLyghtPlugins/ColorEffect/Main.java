@@ -9,7 +9,6 @@ import org.json.JSONObject;
 
 import dmx.OpenLyght.BasicChannel;
 import dmx.OpenLyght.Channel;
-import dmx.OpenLyght.Group;
 import dmx.OpenLyght.Plugin;
 import dmx.OpenLyght.Stuff;
 import dmx.OpenLyght.Utils.Effect;
@@ -20,10 +19,11 @@ public class Main implements Plugin, Effect {
 	private final String[] tags = { "effect", "colors" };
 	private final String name = "ColorEffect";
 	private double value;
-	private ArrayList<BasicChannel> channels = new ArrayList<BasicChannel>();
+	private ArrayList<ColorChannel> channels = new ArrayList<ColorChannel>();
 	public static ColorSelector colorSelector;
 	public static String defaultPath;
 	public static Stuff openLyght;
+	public static int amount;
 	
 	public Main(Stuff ol){
 		try {
@@ -39,12 +39,17 @@ public class Main implements Plugin, Effect {
 	}
 	
 	public double getValue(int phase, BasicChannel bc) {
-		if(phase < 180){
-			value = (double)(colorSelector.getValue() - getBasicChannel(bc.getChannel()).getValue()) / 0xFF;
+		Channel ch = bc.getChannel();
+		ColorChannel cc = getColorChannel(ch);
+		boolean condition = phase < 180;
+		cc.setStatus(condition);
+		if(condition){
+			value = (double)(cc.getFinalValue(ch) - cc.getValue()) / 0xFF;
 			//System.out.println(phase + " " + colorSelector.getValue() + " " + bc.getChannel().getDMXValue() + " "
 			//	+ value + " " + (255 / 255) + "\t\t\t" + bc.hashCode());
-		} else
+		} else {
 			value = 0;
+		}
 		return value;
 	}
 	
@@ -69,13 +74,12 @@ public class Main implements Plugin, Effect {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-				
 		}
 	}
 	
-	private BasicChannel getBasicChannel(Channel ch){
-		BasicChannel ret = null;
-		for(BasicChannel bc : channels)
+	private ColorChannel getColorChannel(Channel ch){
+		ColorChannel ret = null;
+		for(ColorChannel bc : channels)
 			if(bc.isThisChannel(ch)) {
 				ret = bc;
 				break;
@@ -83,26 +87,34 @@ public class Main implements Plugin, Effect {
 		return ret;
 	}
 
-	public void removeGroup(Group g) {
-		if(g != null){
-			ArrayList<Channel> ch = g.getChannels();
+	public void removeGroup(ArrayList<Channel> ch) {
+		if(ch != null){
 			for(Channel c : ch)
-				for(int i = 0; i < channels.size(); i++)
-					if(channels.get(i).isThisChannel(c))
+				for(int i = 0; i < channels.size(); i++){
+					ColorChannel cc = channels.get(i);
+					if(cc.isThisChannel(c)){
+						cc.removeChannelModifiers();
 						channels.remove(i);
+					}
+				}
 		}
 	}
-	public void setGroup(Group g) {
-		if(g != null){
-			ArrayList<Channel> ch = g.getChannels();
-			for(Channel c : ch)
-				channels.add(new BasicChannel(c.getDMXValue(), false, c));
+	public void setGroup(ArrayList<Channel> ch) {
+		if(ch != null){
+			for(Channel c : ch){
+				channels.add(new ColorChannel(c.getDMXValue(), false, c, colorSelector));
+			}
 		}
 	}
 	public void setOriginalValue(short value, Channel ch) {
 		if(value < 0) value = 0;
 		if(value > 255) value = 255;
-		BasicChannel bc = getBasicChannel(ch);
+		ColorChannel bc = getColorChannel(ch);
 		if(bc != null) bc.setValue(value);
+	}
+
+	@Override
+	public void setAmount(short amount) {
+		Main.amount = amount;
 	}
 }
