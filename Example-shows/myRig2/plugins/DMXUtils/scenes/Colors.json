@@ -1,0 +1,249 @@
+{
+	"steps" : [
+		[
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb red"
+				]
+			},
+			{
+				"value": 0,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb green"
+				]
+			},
+			{
+				"value": 0,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb blue"
+				]
+			},
+			{
+				"value": "$a.Attributes Color red",
+				"smooth": false,
+				"channels": [
+					"$f.*beam*.colors colorWheel"
+				]
+			}
+		],
+		[
+			{
+				"value": 0,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb red"
+				]
+			},
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb green"
+				]
+			},
+			{
+				"value": 0,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb blue"
+				]
+			},
+			{
+				"value": "$a.Attributes Color green",
+				"smooth": true,
+				"channels": [
+					"$f.*beam*.colors colorWheel"
+				]
+			}
+		],
+		[
+			{
+				"value": 0,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb red"
+				]
+			},
+			{
+				"value": 0,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb green"
+				]
+			},
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb blue"
+				]
+			},
+			{
+				"value": "$a.Attributes Color blue",
+				"smooth": false,
+				"channels": [
+					"$f.*beam*.colors colorWheel"
+				]
+			}
+		],
+		[
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb red"
+				]
+			},
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb green"
+				]
+			},
+			{
+				"value": 0,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb blue"
+				]
+			},
+			{
+				"value": "$a.Attributes Color yellow",
+				"smooth": false,
+				"channels": [
+					"$f.*beam*.colors colorWheel"
+				]
+			}
+		],
+		[
+			{
+				"value": 0,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb red"
+				]
+			},
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb green"
+				]
+			},
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb blue"
+				]
+			},
+			{
+				"value": "$a.Attributes Color cyan",
+				"smooth": false,
+				"channels": [
+					"$f.*beam*.colors colorWheel"
+				]
+			}
+		],
+		[
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb red"
+				]
+			},
+			{
+				"value": 0,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb green"
+				]
+			},
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb blue"
+				]
+			},
+			{
+				"value": "$a.Attributes Color magenta",
+				"smooth": false,
+				"channels": [
+					"$f.*beam*.colors colorWheel"
+				]
+			}
+		],
+		[
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb red"
+				]
+			},
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb green"
+				]
+			},
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb blue"
+				]
+			},
+			{
+				"value": "$a.Attributes Color white",
+				"smooth": false,
+				"channels": [
+					"$f.*beam*.colors colorWheel"
+				]
+			}
+		],
+		[
+			{
+				"value": 255,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb red"
+				]
+			},
+			{
+				"value": 32,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb green"
+				]
+			},
+			{
+				"value": 0,
+				"smooth": true,
+				"channels": [
+					"$f.*rgb*.colors rgb blue"
+				]
+			},
+			{
+				"value": "$a.Attributes Color orange",
+				"smooth": false,
+				"channels": [
+					"$f.*beam*.colors colorWheel"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "fadeSpeed",
+	"group" : "colors",
+	"absolute" : true,
+	"defaultStatus" : true
+}

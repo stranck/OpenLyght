@@ -1,0 +1,20 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*led*.general dimmer",
+					"MasterDimmerPar"
+				]
+			}
+		]
+	],
+	"priority" : 4,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "all;virtChannels",
+	"absolute" : true,
+	"name" : "blackoutScene",
+	"defaultStatus" : false
+}

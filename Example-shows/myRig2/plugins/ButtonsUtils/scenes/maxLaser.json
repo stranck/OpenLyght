@@ -1,0 +1,19 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"LaserColors"
+				]
+			}
+		]
+	],
+	"priority" : 4,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "virtChannels",
+	"absolute" : true,
+	"name" : "maxLaser",
+	"defaultStatus" : false
+}

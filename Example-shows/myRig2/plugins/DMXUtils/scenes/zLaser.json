@@ -1,0 +1,137 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 45,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			},
+			{
+				"value" : 45,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 60,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			},
+			{
+				"value" : 60,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 125,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			},
+			{
+				"value" : 125,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 155,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			},
+			{
+				"value" : 155,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 195,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			},
+			{
+				"value" : 195,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 235,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			},
+			{
+				"value" : 235,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*laser*.beamEffect goboWheel"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "laser",
+	"absolute" : true,
+	"defaultStatus" : true
+}

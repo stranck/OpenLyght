@@ -1,0 +1,25 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"MasterDimmerPar",
+					"$f.*beam*.general dimmer",
+					"LaserColors"
+				],
+			},
+		]
+	],
+	"channels" : [
+		"MasterDimmerPar",
+		"MasterDimmerMH",
+		"LaserColors"
+	],
+	"priority" : 1,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "all;virtChannels",
+	"absolute" : true,
+	"defaultStatus" : false
+}

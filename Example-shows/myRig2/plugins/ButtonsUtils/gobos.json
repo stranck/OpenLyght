@@ -1,0 +1,16 @@
+{
+	"name" : "Gobos wheel",
+	"scene" : "gobosFade",
+	"commands" : [
+		"goto 0",
+		"goto 1",
+		"goto 2"
+	],
+	"labels" : [
+		"Static",
+		">",
+		"<"
+	],
+	"goKey" : "X",
+	"resetKey" : "SHIFT"
+}

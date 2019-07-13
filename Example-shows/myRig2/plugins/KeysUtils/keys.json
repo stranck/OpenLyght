@@ -1,0 +1,7 @@
+[
+	{"keys" : ["MINUS"],				"name" : "Reset lasers"},
+	{"keys" : ["Z", "X", "C"],			"name" : "Go lasers S"},
+	{"keys" : ["Z", "X", "C"],			"name" : "Go lasers AS",				"wait" : 100},
+	{"keys" : ["UNDEFINED"],			"name" : "Reset color + dimmer"},
+	{"keys" : ["NUMPAD7"],				"name" : "Go- color"}
+]

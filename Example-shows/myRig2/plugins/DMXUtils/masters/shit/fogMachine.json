@@ -1,0 +1,11 @@
+{
+	"channels" : [
+		"%fogMachine%"
+	],
+	"limits" : {
+		"min" : 0,
+		"max" : 255
+	},
+	"source" : "FogMachineMaster",
+	"mode" : 6
+}

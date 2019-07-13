@@ -1,0 +1,85 @@
+{
+	"effects" : [
+		[{
+			"effectName" : "ColorEffect",
+			"name" : "ColorEffect"
+		}]
+	],
+	"lightsGroups" : [
+		[{
+			"groupName" : "allNoLaser",
+			"channelNames" : [
+				"$f.*par56*id:1*.colors rgb red",
+				"$f.*xs2*id:2*.colors colorWheel",
+				"$f.*xs2*id:1*.colors colorWheel",
+				"$f.*xs2*id:4*.colors colorWheel",
+				"$f.*xs2*id:3*.colors colorWheel",
+				"$f.*par56*id:2*.colors rgb red"
+			],
+			"name" : "1234"
+		}],
+		[{
+			"groupName" : "allNoLaser",
+			"channelNames" : [
+				"$f.*par56*id:1*.colors rgb red",
+				"$f.*par56*id:2*.colors rgb red",
+				"$f.*xs2*id:4*.colors colorWheel",
+				"$f.*xs2*id:2*.colors colorWheel",
+				"$f.*xs2*id:1*.colors colorWheel",
+				"$f.*xs2*id:3*.colors colorWheel"
+			],
+			"name" : "531246"
+		}]
+	],
+	"phases" : [
+		[{
+			"start" : 120,
+			"end" : 240
+		}],
+		[{
+			"start" : 0,
+			"end" : 360
+		}]
+	],
+	"directions" : [
+		["<"],
+		["S"]
+	],
+	"groups" : [
+		[0],
+		[1],
+		[2]
+	],
+	"blocks" : [
+		[0],
+		[2]
+	],
+	"wings" : [
+		[0],
+		[2]
+	],
+	"keys" : {
+		"effectKey" : "Q",
+		"lightsGroupKey": "U",
+		"phaseKey" : "W",
+		"directionKey" : "E",
+		"groupsKey" : "R",
+		"blocksKey" : "T",
+		"wingsKey" : "Y",
+		"resetKey" : "UNDEFINED"
+	},
+	"channels" : [{
+		"speedChannelName" : "dimmerEffectSpeed",
+		"amountChannelName" : "colorEffectAmount"
+	}],
+	"effectData" : [
+		{
+			"min" : -255,
+			"max" : 255,
+			"width" : 360,
+			"minSpeed" : 3,
+			"relative" : true,
+			"amountIncreaser" : false
+		}
+	]
+}

@@ -1,0 +1,8 @@
+{
+	"name" : "pars56",
+	"description" : "pars56",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$par56*"
+	]
+}

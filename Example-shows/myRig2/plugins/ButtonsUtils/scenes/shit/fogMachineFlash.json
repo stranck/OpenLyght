@@ -1,0 +1,25 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false
+			}
+		]
+	],
+	"channels" : [
+		"%fogMachine%"
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "fogMachine",
+	"absolute" : true,
+	"name" : "fogMachineFlash",
+	"defaultStatus" : true
+}

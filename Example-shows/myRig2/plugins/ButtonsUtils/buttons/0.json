@@ -1,0 +1,9 @@
+{
+	"scene" : "maxPars",
+	"onPress" : [
+		"setStatus true"
+	],
+	"onRelease" : [
+		"setStatus false"
+	]
+}

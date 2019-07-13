@@ -1,0 +1,82 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*xs2*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 12,
+				"smooth" : false,
+				"channels" : [
+					"$f.*xs2*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 30,
+				"smooth" : false,
+				"channels" : [
+					"$f.*xs2*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 35,
+				"smooth" : false,
+				"channels" : [
+					"$f.*xs2*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 40,
+				"smooth" : false,
+				"channels" : [
+					"$f.*xs2*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 50,
+				"smooth" : false,
+				"channels" : [
+					"$f.*xs2*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 55,
+				"smooth" : false,
+				"channels" : [
+					"$f.*xs2*.beamEffect goboWheel"
+				]
+			}
+		],
+		[
+			{
+				"value" : 60,
+				"smooth" : false,
+				"channels" : [
+					"$f.*xs2*.beamEffect goboWheel"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "beam",
+	"maxEnable" : 63,
+	"absolute" : true,
+	"defaultStatus" : true
+}

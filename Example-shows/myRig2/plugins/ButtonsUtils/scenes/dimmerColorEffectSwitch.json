@@ -1,0 +1,42 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"dimmerEffectSwitch"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"colorEffectSwitch"
+				]
+			}
+		],
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"dimmerEffectSwitch"
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"colorEffectSwitch"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "virtChannels",
+	"absolute" : true,
+	"name" : "5EffectSwitch",
+	"defaultStatus" : true
+}

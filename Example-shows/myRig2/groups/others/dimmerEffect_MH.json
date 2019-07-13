@@ -1,0 +1,11 @@
+{
+	"name" : "dimmerEffect Movingheads",
+	"description" : "MovingHeads",
+	"defaultStatus" : true,
+	"channels" : [
+		"MasterDimmerEffectMH2",
+		"MasterDimmerEffectMH1",
+		"MasterDimmerEffectMH4",	
+		"MasterDimmerEffectMH3"
+	]
+}

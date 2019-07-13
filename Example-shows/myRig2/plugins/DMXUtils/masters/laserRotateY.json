@@ -1,0 +1,14 @@
+{
+	"channels" : [
+		"$f.*laser*.movment laser y"
+	],
+	"limits" : {
+		"min" : 0,
+		"max" : 63
+	},
+	"source" : "laserRotateY",
+	"modifierSourceIndex" : 1,
+	"modifierIndex" : -1,
+	"invertValue" : false,
+	"mode" : 4
+}

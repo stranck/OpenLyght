@@ -1,0 +1,55 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*htzc*.beamEffect zoom"
+				]
+			}
+		],
+		[
+			{
+				"value" : 64,
+				"smooth" : false,
+				"channels" : [
+					"$f.*htzc*.beamEffect zoom"
+				]
+			}
+		],
+		[
+			{
+				"value" : 128,
+				"smooth" : false,
+				"channels" : [
+					"$f.*htzc*.beamEffect zoom"
+				]
+			}
+		],
+		[
+			{
+				"value" : 192,
+				"smooth" : false,
+				"channels" : [
+					"$f.*htzc*.beamEffect zoom"
+				]
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*htzc*.beamEffect zoom"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "htzc",
+	"absolute" : true,
+	"name" : "zoomHTZC",
+	"defaultStatus" : true
+}

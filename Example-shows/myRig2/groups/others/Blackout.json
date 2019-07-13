@@ -1,0 +1,10 @@
+{
+	"name" : "blackout",
+	"description" : "Blackout",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"MasterDimmerPar",
+		"MasterDimmerMH",
+		"LaserColors"
+	]
+}

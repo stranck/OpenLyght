@@ -1,0 +1,11 @@
+{
+	"name" : "colorsEffectBeam",
+	"description" : "colorsEffectBeam",
+	"defaultStatus" : true,
+	"channels" : [
+		"%colorXS2.1.2%",
+		"%colorXS2.1.1%",
+		"%colorXS2.2.2%",
+		"%colorXS2.2.1%"
+	]
+}

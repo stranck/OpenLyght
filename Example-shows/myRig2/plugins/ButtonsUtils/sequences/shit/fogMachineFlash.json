@@ -1,0 +1,19 @@
+{
+	"name" : "Fog-flash",
+	"scene" : "fogMachineFlash",
+	"commands" : [
+		[
+			"goto 0"
+		],
+		[
+			"goto 1",
+			"wait 1000 gotoCue Fog-flash 0"
+		],
+	],
+	"labels" : [
+		"Flash fog OFF",
+		"Flash fog ON!"
+	],
+	"goKey" : "N",
+	"resetKey" : "UNDEFINED"
+}

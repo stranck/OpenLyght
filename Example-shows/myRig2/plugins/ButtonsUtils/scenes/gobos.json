@@ -1,0 +1,37 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"gobosFade"
+				]
+			}
+		],
+		[
+			{
+				"value" : 128,
+				"smooth" : false,
+				"channels" : [
+					"gobosFade"
+				]
+			}
+		],
+		[
+			{
+				"value" : 192,
+				"smooth" : false,
+				"channels" : [
+					"gobosFade"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "virtChannels",
+	"absolute" : true,
+	"name" : "gobosFade",
+	"defaultStatus" : true
+}

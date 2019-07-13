@@ -1,0 +1,10 @@
+{
+	"channels" : [
+		"$f.*par56 id:1*.colors rgb *"
+	],
+	"source" : "MasterDimmerEffectPar1",
+	"modifierSourceIndex" : 4,
+	"modifierIndex" : -1,
+	"invertValue" : false,
+	"mode" : 3
+}

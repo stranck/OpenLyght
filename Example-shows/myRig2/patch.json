@@ -1,0 +1,52 @@
+[
+	{
+		"name":			"par56 id:1 pos:sx alt:0 rgb led symalt:0",
+		"patch":		1,
+		"fixtureType":	"par56short"
+	},
+	{
+		"name":			"par56 id:2 pos:dx alt:1 rgb led symalt:0",
+		"patch":		17,
+		"fixtureType":	"par56short"
+	},
+	{
+		"name":			"htzc id:1 rgbw rgb led",
+		"patch":		24,
+		"fixtureType":	"sg-HTZLEDC"
+	},
+	{
+		"name":			"laser id:1 pos:sx alt:0 led",
+		"patch":		33,
+		"fixtureType":	"laserRGY"
+	},
+	{
+		"name":			"laser id:2 pos:dx alt:1 led",
+		"patch":		129,
+		"fixtureType":	"laserRGY"
+	},
+	{
+		"name":			"xs2 id:1 pos:sx alt:0 mh led beam symalt:0",
+		"patch":		49,
+		"fixtureType":	"XS-2"
+	},
+	{
+		"name":			"xs2 id:2 pos:sx alt:1 mh led beam symalt:1",
+		"patch":		57,
+		"fixtureType":	"XS-2"
+	},
+	{
+		"name":			"xs2 id:3 pos:dx alt:0 mh led beam symalt:1",
+		"patch":		145,
+		"fixtureType":	"XS-2"
+	},
+	{
+		"name":			"xs2 id:4 pos:dx alt:1 mh led beam symalt:0",
+		"patch":		153,
+		"fixtureType":	"XS-2"
+	},
+	{
+		"name":			"haze id:1",
+		"patch":		100,
+		"fixtureType":	"Z350haze"
+	}
+]

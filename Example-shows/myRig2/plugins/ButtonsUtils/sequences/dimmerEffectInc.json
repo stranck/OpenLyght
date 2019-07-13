@@ -1,0 +1,17 @@
+{
+	"name" : "Dimmer Effect",
+	"scene" : "dimmerEffectIncAmount",
+	"commands" : [
+		["goto 0"],
+		["goto 1"],
+		["goto 2"]
+	],
+	"labels" : [
+		"1",
+		"2",
+		"4"
+	],
+	"goKey" : "B",
+	"resetKey" : "null",
+	"page" : 0
+}

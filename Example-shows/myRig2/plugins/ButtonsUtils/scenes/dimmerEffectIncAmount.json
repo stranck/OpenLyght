@@ -1,0 +1,37 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 1,
+				"smooth" : false,
+				"channels" : [
+					"dimmerEffectIncAmount"
+				]
+			}
+		],
+		[
+			{
+				"value" : 2,
+				"smooth" : false,
+				"channels" : [
+					"dimmerEffectIncAmount"
+				]
+			}
+		],
+		[
+			{
+				"value" : 4,
+				"smooth" : false,
+				"channels" : [
+					"dimmerEffectIncAmount"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "virtChannels",
+	"absolute" : true,
+	"name" : "dimmerEffectIncAmount",
+	"defaultStatus" : true
+}

@@ -1,0 +1,115 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 115,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 100,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*mh*.general dimmer"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*rgb*.general dimmer",
+					"MasterDimmerPar"
+				]
+			},
+			{
+				"value" : 155,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 140,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 85,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			}
+		],
+		[
+			{
+				"value" : 145,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 160,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*mh*.general dimmer"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*rgb*.general dimmer",
+					"MasterDimmerPar"
+				]
+			},
+			{
+				"value" : 95,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 110,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2 id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 15,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			}
+		],
+	],
+	"priority" : 1,
+	"speedChanelPriority" : 1,
+	"speedChannel" : "alternatePositionSpeed",
+	"group" : "all;virtChannels",
+	"name" : "alternatePositions",
+	"absolute" : true,
+	"defaultStatus" : false
+}

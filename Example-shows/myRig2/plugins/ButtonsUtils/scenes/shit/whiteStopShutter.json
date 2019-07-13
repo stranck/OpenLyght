@@ -1,0 +1,33 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			},
+			{
+				"value" : 0,
+				"smooth" : false
+			}
+		]
+	],
+	"channels" : [
+		"%shuttersPar1%",
+		"%shuttersPar2%",
+		"%shutterHTZC%",
+		"%shutterXS2.1.1%",
+		"%shutterXS2.1.2%",
+		"%shutterXS2.2.1%",
+		"%shutterXS2.2.2%"
+	],
+	"priority" : 0,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "zoomHTZC",
+	"absolute" : true,
+	"name" : "zoomHTZC",
+	"defaultStatus" : true
+}

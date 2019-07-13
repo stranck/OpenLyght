@@ -1,0 +1,11 @@
+{
+	"name" : "All",
+	"description" : "All",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$laser*",
+		"$par56*",
+		"$htzc*",
+		"$xs2*"
+	]
+}

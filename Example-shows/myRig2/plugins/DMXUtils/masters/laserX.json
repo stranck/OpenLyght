@@ -1,0 +1,11 @@
+{
+	"channels" : [
+		"$f.*laser*id:1*.movment pan"
+	],
+	"limits" : {
+		"min" : 32,
+		"max" : 95
+	},
+	"source" : "laserX",
+	"mode" : 0
+}

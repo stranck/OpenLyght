@@ -1,0 +1,11 @@
+{
+	"channels" : [
+		"alternatePositionSpeed",
+	],
+	"limits" : {
+		"min" : 15,
+		"max" : 16
+	},
+	"source" : "blackOutSpeedChannel",
+	"mode" : 0
+}

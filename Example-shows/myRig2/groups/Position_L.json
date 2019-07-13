@@ -1,0 +1,11 @@
+{
+	"name" : "positions",
+	"description" : "Laser",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"laserX",
+		"laserY",
+		"laserX2",
+		"laserY2"
+	]
+}

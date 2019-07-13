@@ -1,0 +1,72 @@
+{
+	"effects" : [
+		{
+			"effectName" : "Sin",
+			"name" : "Sin"
+		}
+	],
+	"lightsGroups" : [
+		{
+			"groupName" : "Tilt123456",
+			"name" : "mhl TILT: 123 456"
+		},
+		{
+			"groupName" : "Tilt162534",
+			"name" : "mhl TILT: 162 534"
+		},
+		{
+			"groupName" : "Tilt-1234-",
+			"name" : "mhl TILT: -12 34-"
+		}
+	],
+	"phases" : [
+		{
+			"start" : 0,
+			"end" : 360
+		},
+		{
+			"start" : 0,
+			"end" : 180
+		}
+	],
+	"directions" : [
+		">",
+		"<"
+	],
+	"groups" : [
+		0,
+		2,
+		1
+	],
+	"blocks" : [
+		0,
+		2
+	],
+	"wings" : [
+		2,
+		0
+	],
+	"keys" : {
+		"lightsGroupKey": "1",
+		"effectKey" : "2",
+		"phaseKey" : "3",
+		"directionKey" : "4",
+		"groupsKey" : "5",
+		"blocksKey" : "6",
+		"wingsKey" : "7",
+		"resetKey" : "BACK_SPACE"
+	},
+	"speedChannelName" : "movmentSpeed",
+	"amountChannelName" : "movementTiltAmount",
+	"effectData" : {
+		"min" : -35,
+		"max" : 35,
+		"width" : 360,
+		"minSpeed" : 4,
+		"relative" : true,
+		"amountIncreaser" : {
+			"amount" : 232,
+			"startSpeed" : 250
+		}
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"name" : "htzc",
+	"description" : "htzc",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$htzc*"
+	]
+}

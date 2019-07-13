@@ -1,0 +1,11 @@
+{
+	"name" : "positions",
+	"description" : "Laser",
+	"defaultStatus" : false,
+	"channels" : [
+		"laserX",
+		"laserY",
+		"laserX2",
+		"laserY2"
+	]
+}

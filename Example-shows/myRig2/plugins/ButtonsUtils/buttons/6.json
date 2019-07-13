@@ -1,0 +1,11 @@
+{
+	"scene" : "shutters",
+	"onPress" : [
+		"button false 7",
+		"goto 2"
+	],
+	"onRelease" : [
+		"goto 0",
+		"fix false 6 7"
+	]
+}

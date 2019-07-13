@@ -1,0 +1,8 @@
+{
+	"name" : "positions",
+	"description" : "Beams",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$xs2*"
+	]
+}

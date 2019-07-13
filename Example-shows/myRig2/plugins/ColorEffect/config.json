@@ -1,0 +1,87 @@
+{
+	"go+Key" : "NUMPAD8",
+	"go-Key" : "NUMPAD7",
+	"resetKey" : "UNDEFINED",
+	"colors" : [
+		{
+			"label" : "Red",
+			"value" : 60,
+			"rgb" : "0xff0000",
+			"labelColor" : {
+				"red" : 255,
+				"green" :0,
+				"blue" : 0
+			}
+		},
+		{
+			"label" : "Green",
+			"value" : 72,
+			"rgb" : "0x00ff00",
+			"labelColor" : {
+				"red" : 0,
+				"green" :192,
+				"blue" : 0
+			}
+		},
+		{
+			"label" : "Blue",
+			"value" : 119,
+			"rgb" : "0x0000ff",
+			"labelColor" : {
+				"red" : 0,
+				"green" :0,
+				"blue" : 255
+			}
+		},
+		{
+			"label" : "Yellow",
+			"value" : 102,
+			"rgb" : "0xffff00",
+			"labelColor" : {
+				"red" : 255,
+				"green" :192,
+				"blue" : 0
+			}
+		},
+		{
+			"label" : "Cyan",
+			"value" : 40,
+			"rgb" : "0x00ffff",
+			"labelColor" : {
+				"red" : 0,
+				"green" :192,
+				"blue" : 192
+			}
+		},
+		{
+			"label" : "Magenta",
+			"value" : 86,
+			"rgb" : "0xff00ff",
+			"labelColor" : {
+				"red" : 255,
+				"green" :0,
+				"blue" : 255
+			}
+		},
+		{
+			"label" : "White",
+			"value" : 0,
+			"rgb" : "0xffffff",
+			"labelColor" : {
+				"red" : 0,
+				"green" : 0,
+				"blue" : 0
+			}
+		},
+		{
+			"label" : "Orange",
+			"value" : 24,
+			"rgb" : "0xff4000",
+			"labelColor" : {
+				"red" : 255,
+				"green" :64,
+				"blue" : 0	
+			}
+		},
+	]
+}

@@ -1,0 +1,9 @@
+{
+	"name" : "laser gobos",
+	"description" : "laser forms",
+	"defaultStatus" : true,
+	"channels" : [
+		"%GobosLaser1%",
+		"%GobosLaser2%"
+	]
+}

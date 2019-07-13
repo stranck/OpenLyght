@@ -1,0 +1,8 @@
+{
+	"name" : "fogMachine",
+	"description" : "fogMachine",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$haze*"
+	]
+}

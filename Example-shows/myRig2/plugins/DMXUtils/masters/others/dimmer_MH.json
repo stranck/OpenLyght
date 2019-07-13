@@ -1,0 +1,10 @@
+{
+	"channels" : [
+		"%dimmerXS2.1.1%",
+		"%dimmerXS2.1.2%",
+		"%dimmerXS2.2.1%",
+		"%dimmerXS2.2.2%"
+	],
+	"source" : "MasterDimmerMH",
+	"mode" : 0
+}

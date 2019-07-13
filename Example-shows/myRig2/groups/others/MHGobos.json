@@ -1,0 +1,11 @@
+{
+	"name" : "MH gobos",
+	"description" : "MH forms",
+	"defaultStatus" : true,
+	"channels" : [
+		"%gobosXS2.1.1%",
+		"%gobosXS2.1.2%",
+		"%gobosXS2.2.1%",
+		"%gobosXS2.2.2%",
+	]
+}

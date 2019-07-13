@@ -1,0 +1,13 @@
+{
+	"name" : "laserBeam",
+	"description" : "laserBeam",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"laserX",
+		"laserY",
+		"$*beam*",
+		"laserX2",
+		"laserY2",
+		"$*laser*"
+	]
+}

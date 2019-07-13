@@ -1,0 +1,8 @@
+{
+	"name" : "colors",
+	"description" : "Beams",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$xs2*"
+	]
+}

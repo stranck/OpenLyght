@@ -1,0 +1,17 @@
+{
+	"name" : "Fan level",
+	"scene" : "hazeFan",
+	"commands" : [
+		["goto 0"],
+		["goto 1"],
+		["goto 2"]
+	],
+	"labels" : [
+		"FAN: low",
+		"FAN: mid",
+		"FAN: max"
+	],
+	"goKey" : "H",
+	"resetKey" : "null",
+	"page" : 1
+}

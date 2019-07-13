@@ -1,0 +1,10 @@
+{
+	"name" : "colors",
+	"description" : "Pars",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$par56 id:1*",
+		"$htzc id:1*",
+		"$par56 id:2*",
+	]
+}

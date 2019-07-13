@@ -1,0 +1,76 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*rgb*.colors rgb *",
+					"MasterDimmerPar"
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"whiteStopShutter"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*beam*.general dimmer",
+					"LaserColors"
+				]
+			}
+		],
+		[
+			{
+				"value" : 255,
+				"smooth" : false,
+				"channels" : [
+					"$f.*rgb*.colors rgb *",
+					"MasterDimmerPar"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"whiteStopShutter"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : false,
+				"channels" : [
+					"$f.*beam*.general dimmer",
+					"LaserColors"
+				]
+			}
+		]
+	],
+	"channels" : [
+		"%redPar1%",
+		"%greenPar1%",
+		"%bluePar1%",
+		"%redPar2%",
+		"%greenPar2%",
+		"%bluePar2%",
+		"%redHTZC%",
+		"%greenHTZC%",
+		"%blueHTZC%",
+		"%whiteHTZC%",
+		"MasterDimmerPar",
+		"whiteStopShutter",
+		"MasterDimmerMH",
+		"LaserColors"
+	],
+	"priority" : 8,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "all;virtChannels",
+	"absolute" : true,
+	"name" : "white",
+	"defaultStatus" : false
+}

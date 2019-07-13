@@ -1,0 +1,9 @@
+{
+	"channels" : [
+		"$f.*par*.colors rgb *",
+		"$f.*htzc*.general dimmer"
+	],
+	"source" : "MasterDimmerPar",
+	"mode" : 1,
+	"modifierIndex" : 10
+}
