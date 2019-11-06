@@ -15,15 +15,19 @@ Taking a cue from the grandMa's engines _(the top tier of the lighting consolle 
 
 Make sure to subscribe on my [Telegram channel](https://t.me/Stranck) to receive all the poject's updates!
 
-![A screenshot from my showfile](https://i.imgur.com/TGXK6ft.png)
+![A screenshot from my showfile](https://ftp.stranck.ovh/OpenLyght.png)
 
-### Demo videos:
+### Cool demo videos:
+
+- _\[21/07/2019]_ [Livestream of a whole rock concert with a mid-small rig](https://www.facebook.com/stranck/videos/2368347353245669/)
+- _\[21/04/2018]_ [Live stream with general EDM dj-set by Christian Jackson](https://www.facebook.com/stranck/videos/1711742565572821)
+
+#### Other demo videos:
 - _\[24/12/2017]_ [First livestream. Some random music](https://www.facebook.com/stranck/videos/1588491717897907)
 - _\[25/12/2017]_ [Debut of OpenLyght in a real show. Christmas conert. Mainly rock version of cartoon's opening](https://youtu.be/tTs-XiNoE8I)
 - _\[25/12/2017]_ [A clip of the previous show. Rock version of Daitarn 3's opening](https://www.facebook.com/stranck/videos/1592069637540115)
 - _\[10/02/2018]_ [New movingheads and laser in my rig. Carnival conert. Mainly rock version of cartoon's opening](https://youtu.be/w89VZXAX3Yk)
 - _\[10/02/2018]_ [Some clips of the previous show](https://www.facebook.com/stranck/videos/1663682173712194)
-- _\[21/04/2018]_ [Live stream with general EDM dj-set by Christian Jackson](https://www.facebook.com/stranck/videos/1711742565572821)
 - _\[21/04/2018]_ [A clip from the previous live stream](https://twitter.com/LStranck/status/987823769644302336)
 - _\[27/05/2018]_ [First outdoor show. Mainly rock version of cartoon's opening](https://youtu.be/JpoVJbuO4jA)
 - _\[27/05/2018]_ [A clip of the previous show. Rock version of Dragonball's opening](https://www.facebook.com/stranck/videos/1749767935103617)
