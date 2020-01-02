@@ -15,7 +15,7 @@ Taking a cue from the grandMa's engines _(the top tier of the lighting consolle 
 
 Make sure to subscribe on my [Telegram channel](https://t.me/Stranck) to receive all the poject's updates!
 
-![A screenshot from my showfile](https://ftp.stranck.ovh/OpenLyght.png)
+![A screenshot from my showfile](https://ftp.stranck.ovh/OpenLyght2.png)
 
 ### Cool demo videos:
 
