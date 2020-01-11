@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import dmx.OpenLyght.Utils.Action;
+
 public class Group {
+	private ArrayList<Action> usedActions = new ArrayList<Action>();
 	private ArrayList<Fixture> fixture = new ArrayList<Fixture>();
 	private String name, description;
 	private boolean status = false;
@@ -74,6 +77,23 @@ public class Group {
 	}
 	public ArrayList<Channel> getChannelsByName(String name){
 		return Fixture.getChannelsByFullName(name, fixture);
+	}
+	
+	public void subscribeToUsedGroup(ArrayList<Action> a){
+		usedActions.addAll(a);
+	}
+	public void subscribeToUsedGroup(Action a){
+		usedActions.add(a);
+	}
+	public void unsubscribeFromUsedGroup(Action a){
+		usedActions.remove(a);
+	}
+	public void usedGroup(){
+		for(Action a : usedActions)
+			a.actionPerformed();
+	}
+	public ArrayList<Action> getUsedGroupListeners(){
+		return usedActions;
 	}
 	
 	public ArrayList<Fixture> getFixtures(){

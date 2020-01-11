@@ -19,8 +19,8 @@ public class Scene implements ChannelModifiers {
 	private ArrayList<FadeEngine> fe = new ArrayList<FadeEngine>();
 	private String groupName, name = this.toString();
 	private Channel speedChannel;
-	private Step currentStep;
-	private boolean absolute, status;
+	private Step currentValues, currentStep;
+	private boolean absolute, status, notTracking;
 	private int priority, speedChanelPriority, maxEnable = Integer.MAX_VALUE, maxSpeed = 4000;
 	
 	public Scene(String path) {
@@ -35,6 +35,7 @@ public class Scene implements ChannelModifiers {
 			groupName = data.getString("group");
 			status = data.getBoolean("defaultStatus");
 			absolute = data.getBoolean("absolute");
+			if(data.has("tracking")) notTracking = !data.getBoolean("tracking");
 			if(data.has("maxSpeed")) maxSpeed = data.getInt("maxSpeed");
 			if(data.has("name")) name = data.getString("name");
 			if(data.has("maxEnable")) maxEnable = data.getInt("maxEnable");
@@ -50,9 +51,12 @@ public class Scene implements ChannelModifiers {
 			channels = g.getChannelsByNames(App.removeDuplicates(chNames));
 			for(Channel c : channels)
 				if(priority != 0) c.addChannelModifier(this, priority);
+			g.usedGroup();
 			
-			currentStep = new Step(this.channels);
+			currentValues = currentStep = new Step(this.channels);
 			gotoStep(0);
+			for(Step s : this.steps)
+				System.out.println(s);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -61,24 +65,35 @@ public class Scene implements ChannelModifiers {
 	public synchronized void gotoStep(int step){
 		//System.out.println(step + " " + previousStep);
 		for(FadeEngine fe : this.fe) fe.getThread().interrupt();
-		groupChannels = App.utils.getGroup(groupName, false).getFixtures();
+		Group g = App.utils.getGroup(groupName, false);
+		groupChannels = g.getFixtures();
+		g.usedGroup();
 		Step nextStep = steps.get(step);
+		if(notTracking)
+			currentStep = nextStep;
 		fe.clear();
 
-		System.out.println("step: " + step + " channel size: " + channels.size());	
+		//System.out.println("step: " + step + " channel size: " + channels.size());
+		//System.out.println("Next " + nextStep + "\nCurr " + currentStep);
+		//System.out.println(groupChannels);
 		for(Channel c : channels){
 			try{
+				//Fixture.asd = true;
+				//System.out.println("CH: " + c + " " + c.getOriginalFixture());
 				if(groupChannels.contains(c.getOriginalFixture())) {
-					BasicChannel nextBc = nextStep.getBasicChannel(c), curBc = currentStep.getBasicChannel(c);
+					//Fixture.asd = false;
+					BasicChannel nextBc = nextStep.getBasicChannel(c), curBc = currentValues.getBasicChannel(c);
 					if(nextBc != null && curBc != null){
 						boolean pr = priority == 0;
-						//System.out.println("SC: " + nextBc.getValue() + " " + nextBc.getChannel().getOriginalFixture());
+						//System.out.println("SC: " + nextBc.getValue() + " " + nextBc.getChannel().getOriginalFixture() + " " + nextBc.getChannel());
 						if(nextBc.getSmooth()){
-							fe.add(new FadeEngine(maxSpeed * speedChannel.getValue() / 255,
+							fe.add(new FadeEngine(
+									maxSpeed * speedChannel.getValue() / 255,
 									curBc,
 									nextBc,
 									c,
-									pr));
+									pr
+								));
 						} else {
 							if(pr)
 								c.setOriginalValue(nextBc.getValue());
@@ -90,6 +105,7 @@ public class Scene implements ChannelModifiers {
 
 					}
 				}
+				//Fixture.asd = false;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -115,8 +131,8 @@ public class Scene implements ChannelModifiers {
 			//System.out.println("PREVAL " + value + status + groupChannels.contains(ch) + groupChannels.size() + " " + maxEnable);
 			//System.out.println("GETVALUE " + ch + " " + currentStep.getBasicChannel(ch) + "\n" + status + " " + originalValue + " " + maxEnable + " " + groupChannels.contains(ch));
 			if(status && originalValue < maxEnable && groupChannels.contains(ch.getOriginalFixture()) && currentStep.contains(ch)){
-				if(absolute) value = currentStep.getBasicChannel(ch).getValue();
-				else value = (short) (originalValue * currentStep.getBasicChannel(ch).getValue() / 0xFF);
+				if(absolute) value = currentValues.getBasicChannel(ch).getValue();
+				else value = (short) (originalValue * currentValues.getBasicChannel(ch).getValue() / 0xFF);
 			}
 		} else {
 			try{

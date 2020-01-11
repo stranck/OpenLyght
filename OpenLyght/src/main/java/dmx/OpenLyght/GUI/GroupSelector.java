@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import dmx.OpenLyght.App;
 import dmx.OpenLyght.Group;
+import dmx.OpenLyght.Utils.Action;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -21,12 +22,14 @@ import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class GroupSelector extends JPanel {
+	public static final long LIMIT_MULTISELECT_TIME = 30 * 1000;
+	public static final Color DISABLED = new Color(255, 0, 0);
+	public static final Color ENABLED = new Color(0, 192, 0);
 	private ArrayList<Group> groups = new ArrayList<Group>();
 	private ArrayList<String> keys = new ArrayList<String>();
 	private ArrayList<JButton> buttons = new ArrayList<JButton>();
-	private static final Color DISABLED = new Color(255, 0, 0);
-	private static final Color ENABLED = new Color(0, 192, 0);
 	private boolean superGroupActive = true;
+	private long lastClicked;
 	private JButton superGroupButton, keybutton;
 	private String groupName;
 	
@@ -52,6 +55,7 @@ public class GroupSelector extends JPanel {
 					superGroupActive = true;
 					setAllGroupsAndButtons(true);
 				}
+				lastClicked = 0;
 			}
 		});
 		//ButtonList.addMouseListener(superGroupButton);
@@ -59,6 +63,12 @@ public class GroupSelector extends JPanel {
 		JSONArray key = data.getJSONArray("keys");
 		for(int i = 0; i < key.length(); i++) keys.add(key.getString(i));
 		
+		Action sub = new Action(){
+			@Override
+			public void actionPerformed() {
+				lastClicked = 0;
+			}
+		};
 		groups = App.utils.getSuperGroupObjects(groupName);
 		for(Group g : groups) {
 			JPanel groupPanel = new JPanel();
@@ -75,7 +85,19 @@ public class GroupSelector extends JPanel {
 			groupButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					long rn = System.currentTimeMillis();
 	        		boolean newStatus = !g.getStatus();
+					
+		        	if(superGroupActive || rn - lastClicked > LIMIT_MULTISELECT_TIME) {
+		        		superGroupActive = false;
+		        		newStatus = true;
+		        		setAllGroupsAndButtons(false);
+		        	}
+
+				    groupButton.setForeground(newStatus ? ENABLED : DISABLED);
+			        g.setStatus(newStatus);
+				    lastClicked = rn;
+					/*boolean newStatus = !g.getStatus();
 					
 		        	if(superGroupActive) {
 		        		superGroupActive = false;
@@ -86,9 +108,11 @@ public class GroupSelector extends JPanel {
 				        	setAllGroupsAndButtons(false);
 				        	groupButton.setForeground(ENABLED);
 				        	g.setStatus(true);
-				    }
+				    }*/
+
 				}
 			});
+			g.subscribeToUsedGroup(sub);
 		}
 		
 		for(int i = 0; i < keys.size(); i++){
