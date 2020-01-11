@@ -8,8 +8,8 @@ public class Selection implements ChannelModifiers {
 	private short updatedValue;
 	private Channel channel;
 
-	public Selection(String channelName){
-		channel = Main.openLyght.getChannel(channelName);
+	public Selection(Channel ch){
+		channel = ch;
 		updatedValue = channel.getValue();
 	}
 	

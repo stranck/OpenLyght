@@ -2,6 +2,9 @@ package openLyghtPlugins.commandLine;
 
 import java.util.ArrayList;
 
+import dmx.OpenLyght.Channel;
+import dmx.OpenLyght.Fixture;
+
 public class Programmer {
 	public static ArrayList<Selection> active = new ArrayList<Selection>();
 	
@@ -40,17 +43,19 @@ public class Programmer {
 				s.changeMode(b);
 	}
 	
-	public static Selection getSelection(String name, boolean canGenerate){
-		Selection s = null;
+	public static ArrayList<Selection> getSelection(String name, boolean canGenerate){
+		ArrayList<Selection> s = new ArrayList<Selection>();
 		name = Selection.convertName(name);
 		for(Selection sel : active)
 			if(sel.isThisSelection(name)){
-				s = sel;
-				break;
+				s.add(sel);
 			}
-		if(s == null && canGenerate){
-			s = new Selection(name);
-			active.add(s);
+		if(s.size() == 0 && canGenerate){
+			ArrayList<Channel> chs = Fixture.getChannelsByFullName(name, Main.openLyght.fixtures);
+			for(Channel c : chs){
+				s = new Selection(c);
+				active.add(s);
+			}
 		}
 		return s;
 	}
