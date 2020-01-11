@@ -1,8 +1,0 @@
-{
-	"name" : "beam",
-	"description" : "Beam",
-	"defaultStatus" : true,
-	"fixtures" : [
-		"$*beam*",
-	]
-}

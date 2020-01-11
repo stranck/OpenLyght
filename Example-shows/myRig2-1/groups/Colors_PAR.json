@@ -1,0 +1,8 @@
+{
+	"name" : "colors",
+	"description" : "Pars",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$*rgb*front*"
+	]
+}

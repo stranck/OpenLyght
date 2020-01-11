@@ -1,0 +1,179 @@
+{
+	"effects" : [
+		[
+			{
+				"effectName" : "Cos",
+				"name" : "Circle"
+			},
+			{
+				"effectName" : "Sin",
+				"name" : "Circle"
+			}
+		],
+		[
+			{
+				"effectName" : "Sin",
+				"name" : "Cross >"
+			},
+			{
+				"effectName" : "Sin",
+				"name" : "Cross >"
+			}
+		],
+		[
+			{
+				"effectName" : "Sin",
+				"name" : "Cross <"
+			},
+			{
+				"effectName" : "Sin180",
+				"name" : "Cross <"
+			}
+		]
+	],
+	"lightsGroups" : [
+		[
+			{
+				"groupName" : "laserBeam",
+				"channelNames" : [
+					"laserX",
+					"$f.*xs2*id:2*.movment pan",
+					"$f.*xs2*id:1*.movment pan",
+					"$f.*xs2*id:4*.movment pan",
+					"$f.*xs2*id:3*.movment pan",
+					"laserX2"
+				],
+				"name" : "P 123 456"
+			},
+			{
+				"groupName" : "laserBeam",
+				"channelNames" : [
+					"laserY",
+					"$f.*xs2*id:2*.movment tilt",
+					"$f.*xs2*id:1*.movment tilt",
+					"$f.*xs2*id:4*.movment tilt",
+					"$f.*xs2*id:3*.movment tilt",
+					"laserY2"
+				],
+				"name" : "T 123 456"
+			}
+		],
+		[
+			{
+				"groupName" : "laserBeam",
+				"channelNames" : [
+					"laserX",
+					"laserX2",
+					"$f.*xs2*id:2*.movment pan",
+					"$f.*xs2*id:3*.movment pan",
+					"$f.*xs2*id:1*.movment pan",
+					"$f.*xs2*id:4*.movment pan"
+				],
+				"name" : "P 162 534"
+			},
+			{
+				"groupName" : "laserBeam",
+				"channelNames" : [
+					"laserY",
+					"laserY2",
+					"$f.*xs2*id:2*.movment tilt",
+					"$f.*xs2*id:3*.movment tilt",
+					"$f.*xs2*id:1*.movment tilt",
+					"$f.*xs2*id:4*.movment tilt"
+				],
+				"name" : "T 162 534"
+			}
+		],
+		[
+			{
+				"groupName" : "movinghead",
+				"name" : "P -12 34-",
+				"channelNames" : [
+					"$f.*xs2*id:2*.movment pan",
+					"$f.*xs2*id:1*.movment pan",
+					"$f.*xs2*id:4*.movment pan",
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"groupName" : "movinghead",
+				"channelNames" : [
+					"$f.*xs2*id:2*.movment tilt",
+					"$f.*xs2*id:1*.movment tilt",
+					"$f.*xs2*id:4*.movment tilt",
+					"$f.*xs2*id:3*.movment tilt"
+				],
+				"name" : "T -12 34-"
+			}
+		]
+	],
+	"phases" : [
+		[
+			{
+				"start" : 0,
+				"end" : 360
+			}
+		],
+		[
+			{
+				"start" : 0,
+				"end" : 180
+			}
+		]
+	],
+	"directions" : [
+		[">"],
+		["<"]
+	],
+	"groups" : [
+		[0],
+		[2],
+		[1]
+	],
+	"blocks" : [
+		[0],
+		[2]
+	],
+	"wings" : [
+		[-2, 2],
+		[0]
+	],
+	"keys" : {
+		"lightsGroupKey": "1",
+		"effectKey" : "2",
+		"phaseKey" : "3",
+		"directionKey" : "4",
+		"groupsKey" : "5",
+		"blocksKey" : "6",
+		"wingsKey" : "7",
+		"resetKey" : "BACK_SPACE"
+	},
+	"channels" : [
+		{
+			"speedChannelName" : "movmentSpeed",
+			"amountChannelName" : "movementPanAmount"
+		},
+		{
+			"speedChannelName" : "movmentSpeed",
+			"amountChannelName" : "movementTiltAmount"
+		}
+	],
+	"effectData" : [
+		{
+			"min" : -35,
+			"max" : 35,
+			"width" : 360,
+			"minSpeed" : 4,
+			"relative" : true,
+			"amountIncreaser" : true
+		},
+		{
+			"min" : -35,
+			"max" : 35,
+			"width" : 360,
+			"minSpeed" : 4,
+			"relative" : true,
+			"amountIncreaser" : true
+		}
+	]
+}

@@ -1,0 +1,440 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 128,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*alt:0*.movment pan"
+				]
+			},
+			{
+				"value" : 127,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*alt:1*.movment pan"
+				]
+            },
+            {
+				"value" : 55,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 128,
+				"smooth" : true,
+				"channels" : [
+					"laserX"
+				]
+			},
+			{
+				"value" : 128,
+				"smooth" : true,
+				"channels" : [
+					"laserX2"
+				]
+			},
+			{
+				"value" : 128,
+				"smooth" : true,
+				"channels" : [
+					"laserY",
+					"laserY2"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 147,
+				"smooth" : true,
+				"channels" : [
+					"$f.*alt:0*beam*.movment pan"
+				]
+			},
+			{
+				"value" : 108,
+				"smooth" : true,
+				"channels" : [
+					"$f.*alt:1*beam*.movment pan"
+				]
+            },
+            {
+				"value" : 55,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 96,
+				"smooth" : true,
+				"channels" : [
+					"LaserX"
+				]
+			},
+			{
+				"value" : 160,
+				"smooth" : true,
+				"channels" : [
+					"LaserX2"
+				]
+			},
+			{
+				"value" : 128,
+				"smooth" : true,
+				"channels" : [
+					"LaserY",
+					"LaserY2"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 108,
+				"smooth" : true,
+				"channels" : [
+					"$f.*alt:0*beam*.movment pan"
+				]
+			},
+			{
+				"value" : 147,
+				"smooth" : true,
+				"channels" : [
+					"$f.*alt:1*beam*.movment pan"
+				]
+            },
+            {
+				"value" : 55,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 160,
+				"smooth" : true,
+				"channels" : [
+					"LaserX"
+				]
+			},
+			{
+				"value" : 96,
+				"smooth" : true,
+				"channels" : [
+					"LaserX2"
+				]
+			},
+			{
+				"value" : 128,
+				"smooth" : true,
+				"channels" : [
+					"LaserY",
+					"LaserY2"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 115,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 100,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 64,
+				"smooth" : true,
+				"channels" : [
+					"LaserX"
+				]
+			},
+			{
+				"value" : 155,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 140,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 55,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 192,
+				"smooth" : true,
+				"channels" : [
+					"LaserX2"
+				]
+			},
+			{
+				"value" : 110,
+				"smooth" : true,
+				"channels" : [
+					"LaserY",
+					"LaserY2"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 128,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*alt:0*.movment pan"
+				]
+			},
+			{
+				"value" : 127,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*alt:1*.movment pan"
+				]
+            },
+            {
+				"value" : 20,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 128,
+				"smooth" : true,
+				"channels" : [
+					"LaserX"
+				]
+			},
+			{
+				"value" : 127,
+				"smooth" : true,
+				"channels" : [
+					"LaserX2"
+				]
+			},
+			{
+				"value" : 192,
+				"smooth" : true,
+				"channels" : [
+					"LaserY",
+					"LaserY2"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 130,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 105,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 100,
+				"smooth" : true,
+				"channels" : [
+					"LaserX"
+				]
+			},
+			{
+				"value" : 150,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 125,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 20,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 155,
+				"smooth" : true,
+				"channels" : [
+					"LaserX2"
+				]
+			},
+			{
+				"value" : 192,
+				"smooth" : true,
+				"channels" : [
+					"LaserY",
+					"LaserY2"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 115,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 100,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : true,
+				"channels" : [
+					"LaserX"
+				]
+			},
+			{
+				"value" : 155,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 140,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 85,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : true,
+				"channels" : [
+					"LaserX2"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : true,
+				"channels" : [
+					"LaserY",
+					"LaserY2"
+				]
+			}
+        ],
+        [
+			{
+				"value" : 145,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:1*.movment pan"
+				]
+			},
+			{
+				"value" : 160,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:2*.movment pan"
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : true,
+				"channels" : [
+					"LaserX"
+				]
+			},
+			{
+				"value" : 95,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:3*.movment pan"
+				]
+			},
+			{
+				"value" : 110,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*id:4*.movment pan"
+				]
+			},
+			{
+				"value" : 15,
+				"smooth" : true,
+				"channels" : [
+					"$f.*xs2*.movment tilt"
+				]
+			},
+			{
+				"value" : 0,
+				"smooth" : true,
+				"channels" : [
+					"LaserX2"
+				]
+			},
+			{
+				"value" : 255,
+				"smooth" : true,
+				"channels" : [
+					"LaserY",
+					"LaserY2"
+				]
+			}
+        ],
+	],
+	"channels" : [
+		"%panXS2.1.1%",
+		"%tiltXS2.1.1%",
+		"%panXS2.1.2%",
+		"%tiltXS2.1.2%",
+		"laserX",
+		"laserY",
+		"%panXS2.2.1%",
+		"%tiltXS2.2.1%",
+		"%panXS2.2.2%",
+		"%tiltXS2.2.2%",
+		"laserX2",
+		"laserY2"
+	],
+	"priority" : 0,
+	"maxSpeed" : 8000,
+	"speedChannel" : "fadeSpeed",
+	"group" : "positions",
+	"absolute" : true,
+	"defaultStatus" : true
+}

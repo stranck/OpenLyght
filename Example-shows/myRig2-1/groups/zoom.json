@@ -1,0 +1,8 @@
+{
+	"name" : "zoom",
+	"description" : "zoom",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$*zoom*"
+	]
+}

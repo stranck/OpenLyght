@@ -1,0 +1,10 @@
+{
+	"sender" : "COM8",
+	"reciver" : "COM9",
+	"syncTimeOUT" : 10000,
+	"syncTimeIN" : 7500,
+	"waitLoad" : 3000,
+	"port" : 57172,
+	"timeout" : 3,
+	"maxTries" : 2
+}

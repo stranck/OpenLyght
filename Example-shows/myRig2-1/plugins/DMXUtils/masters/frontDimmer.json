@@ -1,0 +1,10 @@
+{
+	"channels" : [
+		"$f.*front*.general dimmer"
+	],
+	"source" : "frontDimMaster",
+	"modifierSourceIndex" : 1,
+	"modifierIndex" : -1,
+	"invertValue" : false,
+	"mode" : 1
+}

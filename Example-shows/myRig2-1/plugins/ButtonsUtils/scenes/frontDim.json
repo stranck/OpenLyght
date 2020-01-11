@@ -1,0 +1,28 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : 255,
+				"smooth" : true,
+				"channels" : [
+					"frontDimMaster"
+				]
+			}
+		],
+		[
+			{
+				"value" : 0,
+				"smooth" : true,
+				"channels" : [
+					"frontDimMaster"
+				]
+			}
+		]
+	],
+	"priority" : 0,
+	"speedChannel" : "wDimSpeedChannel",
+	"group" : "virtChannels",
+	"absolute" : true,
+	"name" : "frontDim",
+	"defaultStatus" : true
+}

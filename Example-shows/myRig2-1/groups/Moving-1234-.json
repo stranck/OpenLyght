@@ -1,0 +1,8 @@
+{
+	"name" : "movinghead",
+	"description" : "Movinghead",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$*mh*"
+	]
+}

@@ -1,0 +1,10 @@
+{
+	"name" : "All",
+	"description" : "All",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$laser*",
+		"$*rgb*",
+		"$*mh*"
+	]
+}

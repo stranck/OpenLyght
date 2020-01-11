@@ -1,0 +1,8 @@
+{
+	"name" : "colors",
+	"description" : "MovingHeads",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$*mh*"
+	]
+}

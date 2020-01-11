@@ -1,0 +1,19 @@
+{
+	"name" : "Front dim",
+	"scene" : "frontDim",
+	"commands" : [
+		[
+			"goto 0"
+		],
+		[
+			"goto 1"
+		]
+	],
+	"labels" : [
+		"on",
+		"off"
+	],
+	"goKey" : "undefined",
+	"resetKey" : "undefined",
+	"page" : 0
+}

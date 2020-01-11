@@ -1,9 +1,0 @@
-{
-	"name" : "allNoLaser",
-	"description" : "allNoLaser",
-	"defaultStatus" : true,
-	"fixtures" : [
-		"$*rgb*",
-		"$*mh*",
-	]
-}

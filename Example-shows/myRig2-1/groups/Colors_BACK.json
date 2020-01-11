@@ -1,0 +1,8 @@
+{
+	"name" : "colors",
+	"description" : "Back",
+	"defaultStatus" : true,
+	"fixtures" : [
+		"$*rgb*back*"
+	]
+}

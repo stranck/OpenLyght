@@ -1,0 +1,37 @@
+{
+	"steps" : [
+		[
+			{
+				"value" : "$a.Attributes Shutter none",
+				"smooth" : false,
+				"channels": [
+					"$f.*.general shutter"
+				]
+			}
+		],
+		[
+			{
+				"value" : "$a.Attributes Shutter rand",
+				"smooth" : false,
+				"channels": [
+					"$f.*.general shutter"
+				]
+			}
+		],
+		[
+			{
+				"value" : "$a.Attributes Shutter fast",
+				"smooth" : false,
+				"channels": [
+					"$f.*.general shutter"
+				]
+			}
+		]
+	],
+	"priority" : 4,
+	"speedChannel" : "blackOutSpeedChannel",
+	"group" : "allNoLaser",
+	"absolute" : true,
+	"name" : "shutters",
+	"defaultStatus" : true
+}
