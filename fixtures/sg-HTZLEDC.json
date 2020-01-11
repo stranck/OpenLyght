@@ -10,6 +10,9 @@
 		"beamEffect zoom"
 	],
 	"attributes": {
-		"Attributes Color mode": 	"rgb"
+		"Attributes Color mode": 	"rgb",
+		"Attributes Shutter none": "0",
+		"Attributes Shutter fast": "254",
+		"Attributes Shutter rand": "130"
 	}
 }

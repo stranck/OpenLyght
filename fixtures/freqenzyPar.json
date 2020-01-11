@@ -1,16 +1,18 @@
 {
-	"name": "par56short",
+	"name": "freqenzyPar",
 	"channels": [
 		"colors rgb red",
 		"colors rgb green",
 		"colors rgb blue",
 		"null",
-		"general shutter"
+		"general shutter",
+		"null",
+		"general dimmer",
 	],
 	"attributes": {
 		"Attributes Color mode": 	"rgb",
 		"Attributes Shutter none": "0",
-		"Attributes Shutter fast": "254",
-		"Attributes Shutter rand": "248"
+		"Attributes Shutter fast": "242",
+		"Attributes Shutter rand": "228"
 	}
 }

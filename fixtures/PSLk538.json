@@ -1,0 +1,15 @@
+{
+	"name": "PSLk538",
+	"channels": [
+		"general dimmer",
+		"colors rgb red",
+		"colors rgb green",
+		"colors rgb blue",
+		"colors rgb white",
+		"null",
+		"general shutter"
+	],
+	"attributes": {
+		"Attributes Color mode": 	"rgb"
+	}
+}

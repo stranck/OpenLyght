@@ -1,16 +1,15 @@
 {
-	"name": "par56short",
+	"name": "LEDstripSLC",
 	"channels": [
 		"colors rgb red",
 		"colors rgb green",
 		"colors rgb blue",
-		"null",
 		"general shutter"
 	],
 	"attributes": {
 		"Attributes Color mode": 	"rgb",
 		"Attributes Shutter none": "0",
 		"Attributes Shutter fast": "254",
-		"Attributes Shutter rand": "248"
+		"Attributes Shutter rand": "250"
 	}
 }

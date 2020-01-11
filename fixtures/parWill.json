@@ -1,0 +1,13 @@
+{
+	"name": "parWill",
+	"channels": [
+		"general dimmer",
+		"colors rgb red",
+		"colors rgb green",
+		"colors rgb blue",
+		"general shutter"
+	],
+	"attributes": {
+		"Attributes Color mode": 	"rgb"
+	}
+}

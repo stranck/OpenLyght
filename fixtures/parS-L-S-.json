@@ -1,0 +1,14 @@
+{
+	"name": "parS-L-S-",
+	"channels": [
+		"general dimmer",
+		"colors rgb red",
+		"colors rgb green",
+		"colors rgb blue",
+		"colors rgb white",
+		"general shutter"
+	],
+	"attributes": {
+		"Attributes Color mode": 	"rgb"
+	}
+}

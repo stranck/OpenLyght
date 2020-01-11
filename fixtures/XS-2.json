@@ -24,6 +24,10 @@
 		"Attributes Color cyan": 	"40",
 		"Attributes Color magenta":	"86",
 		"Attributes Color white":	"0",
-		"Attributes Color orange":	"24"
+		"Attributes Color orange":	"24",
+
+		"Attributes Shutter none": "255",
+		"Attributes Shutter fast": "76",
+		"Attributes Shutter rand": "70"
 	}
 }
