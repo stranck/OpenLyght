@@ -5,6 +5,9 @@ public class BasicChannel {
 	private boolean smooth;
 	private Channel ch;
 	
+	public BasicChannel(Channel ch){
+		this.ch = ch;
+	}
 	public BasicChannel(int value, boolean smooth, Channel ch){
 		//System.out.println("BC: " + value + " " + ch + " " + ch.getOriginalFixture() + " " + hashCode());
 		this.value = (short) value;
@@ -12,6 +15,9 @@ public class BasicChannel {
 		this.ch = ch;
 	}
 	
+	public void setSmooth(boolean smooth){
+		this.smooth = smooth;
+	}
 	public void setValue(short value){
 		this.value = value;
 	}

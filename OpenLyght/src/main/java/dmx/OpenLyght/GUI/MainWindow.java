@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import dmx.OpenLyght.App;
+import dmx.OpenLyght.Utils.Action;
 
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
@@ -119,6 +120,9 @@ public class MainWindow extends JFrame implements WindowListener, WindowStateLis
 			}
 	}
 	
+	/*public void addListener(dmx.OpenLyght.GUI.Action listener, String keyName) throws Exception{
+		addListener((dmx.OpenLyght.Utils.Action) listener, keyName);
+	}*/
 	public void addListener(Action listener, String keyName) throws Exception{
 		if(!keyName.equalsIgnoreCase("null")){
 			Listener l = null;
@@ -161,7 +165,10 @@ public class MainWindow extends JFrame implements WindowListener, WindowStateLis
 	@Override
 	public void windowClosing(WindowEvent e) {
 		if(JOptionPane.showConfirmDialog(null, "Are you really sure to close Open Lyght?","Open Lyght",JOptionPane.YES_NO_OPTION)
-			== JOptionPane.YES_OPTION) System.exit(0);
+			== JOptionPane.YES_OPTION) {
+			App.utils.sendPluginMessage("openlyght shuttingdown");
+			System.exit(0);
+		}
 	}
 	
 	@Override

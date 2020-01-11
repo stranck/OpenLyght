@@ -74,4 +74,12 @@ public class Step {
 	public BasicChannel getBasicChannel(Channel ch){
 		return App.getBasicChannel(bc, ch);
 	}
+	
+	@Override
+	public String toString(){
+		String s = "Step@" + hashCode() + ":\t";
+		for(BasicChannel b : bc)
+			s += b.getValue() + "\t";
+		return s;
+	}
 }

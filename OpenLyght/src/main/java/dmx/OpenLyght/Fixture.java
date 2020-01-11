@@ -5,14 +5,19 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import dmx.OpenLyght.Utils.Master;
+
 public class Fixture {
 	public static final String DEFAULT_NAME = "channel wrapper;";
+	public static final String DIMMER_CH_NAME = "general dimmer";
 	@SuppressWarnings("unused")
 	private static final int METHOD_NAME = 0;
 	private static final int FP_NAME = 1;
 	private static final int CHANNEL_NAME = 2;
 	
 	private ArrayList<Channel> channels = new ArrayList<Channel>();
+	@SuppressWarnings("unused")
+	private Master virtualDim;
 	private Patch fixture;
 	private String name;
 	
@@ -32,10 +37,19 @@ public class Fixture {
 			if(s != null){
 				Channel c = App.utils.getChannel("" + i);
 				c.setOriginalFixture(this);
-				c.setDescription(s);
+				c.setDescription(fixture + ":" + name + ":" + s);
 				channels.add(c);
 			}
 			i++;
+		}
+		String colorMode = fixture.getAttributeByName("Attributes Color mode");
+		if(colorMode != null && colorMode.equals("rgb") && getChannelsByName(DIMMER_CH_NAME).size() == 0){
+			System.out.println("Generating virtual dimmer channel and master");
+			Channel c = App.utils.getChannel(fixture + ":" + name + ":" + DIMMER_CH_NAME);
+			c.setOriginalFixture(this);
+			channels.add(c);
+			
+			virtualDim = new Master(c, getChannelsByName("colors rgb*"), 1, -1, 10);
 		}
 	}
 	
@@ -44,6 +58,7 @@ public class Fixture {
 	}
 	public ArrayList<Channel> getChannelsByName(String name){
 		ArrayList<Channel> chs = new ArrayList<Channel>();
+		name = fixture + ":" + this.name + ":" + name;
 		for(Channel c : channels){
 			if(App.likeIgnoreCase(c.getDescription(), name))
 				chs.add(c);
@@ -107,5 +122,11 @@ public class Fixture {
 	@Override
 	public String toString(){
 		return "Fx: " + name + " @ " + hashCode();
+	}
+	//public static boolean asd = false;
+	@Override
+	public boolean equals(Object f){
+		//if(asd) System.out.println("eq: '" + ((Fixture)f).name + "'\t'" + name + "'\t" + (name.equals(((Fixture)f).name)));
+		return f instanceof Fixture ? name.equalsIgnoreCase(((Fixture)f).name) : false;
 	}
 }

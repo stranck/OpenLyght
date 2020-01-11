@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 
+import dmx.OpenLyght.Utils.Action;
+
 @SuppressWarnings("serial")
 public class Listener extends AbstractAction {
 	

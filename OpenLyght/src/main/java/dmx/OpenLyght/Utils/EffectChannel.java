@@ -16,9 +16,10 @@ public class EffectChannel extends BasicChannel {
 		if(f != null){
 			Patch p = f.getPatch();
 			if(p != null){
-				String amount = p.getAttributeByName("Effect AmountIncreaser amount " + ch.getDescription());
-				String startSpeed = p.getAttributeByName("Effect AmountIncreaser startSpeed " + ch.getDescription());
+				String amount = p.getAttributeByName("Effect AmountIncreaser amount " + ch.getChannelFinalName());
+				String startSpeed = p.getAttributeByName("Effect AmountIncreaser startSpeed " + ch.getChannelFinalName());
 				if(amount != null && startSpeed != null){
+					System.out.println("AmountIncreaser (" + ch.getDescription() + "):\t" + amount + "\t" + startSpeed);
 					incAmountSpeed = Short.parseShort(amount);
 					startIncSpeed = Short.parseShort(startSpeed);
 					incInterval = (short) (255 - startIncSpeed);

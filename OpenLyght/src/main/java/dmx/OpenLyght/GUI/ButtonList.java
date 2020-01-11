@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
+import dmx.OpenLyght.Utils.Action;
+
 @SuppressWarnings("serial")
 public class ButtonList extends JButton {
 	
@@ -77,6 +79,7 @@ public class ButtonList extends JButton {
 						}
 					} else {
 						setIndex(loaded);
+						setForeground(DEFAULT_COLOR);
 						loaded = -1;
 					}
 				}
@@ -125,7 +128,6 @@ public class ButtonList extends JButton {
 	}
 	public void setIndex(int i){
 		index = i;
-		setForeground(DEFAULT_COLOR);
 		setText(labels.get(i).toString());
 	}
 	

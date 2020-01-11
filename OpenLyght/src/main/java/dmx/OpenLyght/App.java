@@ -1,7 +1,10 @@
 package dmx.OpenLyght;
 
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class App {
 	
@@ -25,14 +28,6 @@ public class App {
 			return Integer.parseInt(s);
 		} catch (Exception e){}
 		return -1;
-	}
-	
-	public static void wait(int ms){
-		try{
-		    Thread.sleep(ms);
-		} catch(Exception ex){
-		    Thread.currentThread().interrupt();
-		}
 	}
 	
 	public static boolean like(String original, String stringToMatch){
@@ -62,5 +57,39 @@ public class App {
 	
     public static int getKeyEvent(String st) throws Exception {
         return KeyEvent.class.getField("VK_" + st.toUpperCase()).getInt(null);
+    }
+    
+    public static String time(String format) {
+		SimpleDateFormat sdfDate = new SimpleDateFormat(format);
+		Date now = new Date();
+		String strDate = sdfDate.format(now);
+		return strDate;	
+	}
+    
+    @Deprecated
+	public static void wait(int ms){
+		try{
+		    Thread.sleep(ms);
+		} catch(Exception ex){
+		    Thread.currentThread().interrupt();
+		}
+	}
+    
+    public static boolean execute(String command, int timeout) throws Exception {
+		boolean success = true;
+		Process p = execute(command);
+		if(!p.waitFor(timeout, TimeUnit.SECONDS)){
+			System.out.println("Process timed out. Killing it gently");
+			success = false;
+			p.destroy();
+			if(!p.waitFor(15, TimeUnit.SECONDS)){
+				System.out.println("Nvm fuck it. SIGTERM IT NOW");
+				p.destroyForcibly();
+			}
+		}
+		return success;
+	}
+    public static Process execute(String command) throws Exception {
+    	return Runtime.getRuntime().exec(command);
     }
 }

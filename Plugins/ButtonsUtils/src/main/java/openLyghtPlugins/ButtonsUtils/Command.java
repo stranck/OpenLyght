@@ -2,8 +2,8 @@ package openLyghtPlugins.ButtonsUtils;
 
 import java.util.Arrays;
 
-import dmx.OpenLyght.App;
 import dmx.OpenLyght.Utils.Scene;
+import dmx.OpenLyght.Utils.Wait;
 
 public class Command {
 
@@ -156,7 +156,7 @@ public class Command {
 					new Thread(){
 						@Override
 						public void run(){
-							App.wait(step);
+							Wait.wait(step);
 							if(sequence != null && sequence.getButton().getIndex() == originalStep)
 								cmd.execute(false);
 						}

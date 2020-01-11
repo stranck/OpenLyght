@@ -108,6 +108,10 @@ public class Channel {
 	public String getDescription(){
 		return description;
 	}
+	public String getChannelFinalName(){
+		String sp[] = description.split(":");
+		return sp[sp.length - 1];
+	}
 	public Fixture getOriginalFixture(){
 		return origianlFx;
 	}

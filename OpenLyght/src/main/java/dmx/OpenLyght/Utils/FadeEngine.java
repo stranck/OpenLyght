@@ -1,6 +1,5 @@
 package dmx.OpenLyght.Utils;
 
-import dmx.OpenLyght.App;
 import dmx.OpenLyght.BasicChannel;
 import dmx.OpenLyght.Channel;
 
@@ -36,6 +35,7 @@ public class FadeEngine implements Runnable {
 	@Override
 	public void run() {
 		boolean b = !Thread.interrupted();
+		Wait w = new Wait();
 		while(waitTime > 0 && currentStep.getValue() != nextStep.getValue() && b){
 			if(currentStep.getValue() < nextStep.getValue()) currentStep.addValue((short) 1);
 				else currentStep.addValue((short) -1);
@@ -43,7 +43,7 @@ public class FadeEngine implements Runnable {
 			if(priority) referredChannel.setOriginalValue(currentStep.getValue());
 			referredChannel.reportReload();
 
-			App.wait(waitTime);
+			w.sleep(waitTime);
 			b = !Thread.interrupted();
 		}
 

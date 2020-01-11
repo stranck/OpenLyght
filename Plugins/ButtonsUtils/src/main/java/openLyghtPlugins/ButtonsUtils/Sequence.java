@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import dmx.OpenLyght.GUI.Action;
+import dmx.OpenLyght.Utils.Action;
 import dmx.OpenLyght.GUI.ButtonList;
 
 public class Sequence {

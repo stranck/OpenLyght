@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import dmx.OpenLyght.App;
 import dmx.OpenLyght.GUI.MainWindow;
+import dmx.OpenLyght.Utils.Wait;
 
 public class Key {
 	private static final Font FONT = new Font("Tahoma", Font.BOLD, 18);
@@ -51,7 +52,7 @@ public class Key {
 						for(int i : keys){
 							mw.keyClicked(i);
 							if(waitTime > 0)
-								App.wait(waitTime);
+								Wait.wait(waitTime);
 						}
 					}
 				}.start();

@@ -37,6 +37,9 @@ public class Stuff {
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
     	new PathProjectSelector();
     }
+    public Stuff(String path){
+    	deafaultPath = path;
+    }
     
     public void start() throws Exception{
     	reloadVariables();
@@ -48,6 +51,7 @@ public class Stuff {
     	mainWindow.loadElements();
     	sendPluginMessage("openlyght started");
     	invertChannels();
+    	sendPluginMessage("openlyght run");
     	mainWindow.setVisible(true);
     	mainWindow.reloadSize();
     }
@@ -135,7 +139,7 @@ public class Stuff {
     	int channelID = App.getInt(name);
     	if(channelID < 0) {
         	for(Channel ch : virtualChannel)
-        		if(ch.getDescription().equals(name)) {
+        		if(ch.getDescription().equalsIgnoreCase(name)) {
         			c = ch;
         			break;
         		}
@@ -200,8 +204,10 @@ public class Stuff {
     	String[] sp = name.split(";");
     	for(String s : sp){
         	for(Group g : groups)
-        		if(App.likeIgnoreCase(g.getName(), s) && (ignoreStatus || g.getStatus()))
+        		if(App.likeIgnoreCase(g.getName(), s) && (ignoreStatus || g.getStatus())){
         			group.merge(g);
+        			group.subscribeToUsedGroup(g.getUsedGroupListeners());
+        		}
     	}
     	//System.out.println(group.size());
     	return group.clearDuplicates();

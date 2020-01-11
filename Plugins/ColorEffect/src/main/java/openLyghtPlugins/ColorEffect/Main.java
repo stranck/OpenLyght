@@ -94,7 +94,7 @@ public class Main implements Plugin, Effect {
 					ColorChannel cc = channels.get(i);
 					if(cc.isThisChannel(c)){
 						cc.removeChannelModifiers();
-						channels.remove(i);
+						channels.remove(i--);
 					}
 				}
 		}

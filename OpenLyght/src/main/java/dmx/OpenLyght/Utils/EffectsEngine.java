@@ -11,6 +11,7 @@ import dmx.OpenLyght.Group;
 import dmx.OpenLyght.Utils.Effects.Off;
  
 public class EffectsEngine implements Runnable, ChannelModifiers {
+	private Wait wait;
 	private EffectChannel[] channels = new EffectChannel[0];
 	private Channel speedChannel, amount, incAmount = null;
 	private ArrayList<Channel> activeGroup = new ArrayList<Channel>();
@@ -42,6 +43,7 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 		
 		speedChannel = speed;
 		this.amount = amount;
+		wait = new Wait();
 	}
 	
 	public void reset(){
@@ -50,8 +52,9 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 	
 	public void setGroup(Group g, ArrayList<String> name){
 		System.out.println("SIZE " + g.size());
-		activeGroup = g.getChannelsByNames(name);
 		effect.removeGroup(activeGroup);
+		activeGroup = g.getChannelsByNames(name);
+		g.usedGroup();
 		effect.setGroup(activeGroup);
 		reloadingGroup = true;
 		requestReload = true;
@@ -177,7 +180,7 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 					}
 				}
 
-				App.wait(256 + minSpeed - speed);
+				wait.sleep(256 + minSpeed - speed);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -227,15 +230,12 @@ public class EffectsEngine implements Runnable, ChannelModifiers {
 			
 			//System.out.println("A" + segmentLength + " " + i + phase.length);
 			for(int position = 0; position < segmentLength && i + position < phase.length; position++){
-				int destinationIndex = 2 * segmentLength + i - position;
-				if(phase.length % 2 == 0) destinationIndex--;
+				int destinationIndex = 2 * segmentLength + i - position - 1 + phase.length % 2;
+				//if(phase.length % 2 == 0) destinationIndex--;
 				//System.out.println("B" + destinationIndex + " " + phase.length);
 				
 				if(destinationIndex < phase.length){
-					int phaseModifier = 0;
-					if(value < 0) phaseModifier = 180;
-					//System.out.println("C" + destinationIndex + " " + i + " " + position);
-					phase[destinationIndex] = phase[i + position] + phaseModifier;
+					phase[destinationIndex] = phase[i + position] + (value < 0 ? 180 : 0);
 				}
 			}
 		}
