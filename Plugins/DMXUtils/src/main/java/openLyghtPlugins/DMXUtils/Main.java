@@ -7,15 +7,15 @@ import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import dmx.OpenLyght.App;
 import dmx.OpenLyght.Channel;
 import dmx.OpenLyght.Plugin;
 import dmx.OpenLyght.Stuff;
-import dmx.OpenLyght.GUI.Action;
+import dmx.OpenLyght.Utils.Action;
 import dmx.OpenLyght.Utils.Master;
+import dmx.OpenLyght.Utils.Wait;
+import openLyghtPlugins.DMXUtils.ext.ArduinoExt;
 
-public class Main implements Plugin, Runnable {
-
+public class Main implements Plugin, Runnable {	
 	private final String[] tags = { "dmx", "IO" };
 	private final String name = "DMXUtils";
 	public static String defaultPath;
@@ -26,7 +26,7 @@ public class Main implements Plugin, Runnable {
 	public static ArrayList<Master> masters = new ArrayList<Master>();
 	public static Button buttons;
 	public static Channel[] channels;
-	public static DMXInput in, out;
+	public static DMXInput in/*, out*/;
 	
 	public Main(Stuff ol){	
 		try{
@@ -37,8 +37,10 @@ public class Main implements Plugin, Runnable {
 
 			JSONObject comPorts = new JSONObject(openLyght.read(defaultPath + "serialPorts.json"));	
 			
-			syncTime = comPorts.getInt("syncTime");
-			out = new DMXInput(comPorts.getString("sender"));
+			syncTime = comPorts.getInt("syncTimeOUT");
+			//waitLoad = comPorts.getInt("waitLoad");
+			boolean dmxClientAlreadyStarted = ArduinoExt.initClient(comPorts);
+			//out = new DMXInput(comPorts.getString("sender"));
 			in = new DMXInput(comPorts.getString("reciver")){
 				@Override
 				public void newData(ArrayList<Data> data){
@@ -48,6 +50,7 @@ public class Main implements Plugin, Runnable {
 					}
 				}
 			};
+			syncTime = getActualSyncTime(comPorts.getInt("syncTimeIN"), syncTime, dmxClientAlreadyStarted);
 			loadMasters();
 			buttons = new Button();
 			
@@ -61,9 +64,7 @@ public class Main implements Plugin, Runnable {
 			faderKeys = loadKeys(keys.getJSONArray("faders"));
 			resetKeys = loadKeys(keys.getJSONArray("reset"));
 			
-			new Thread(this).start();
 			if(comPorts.has("inputThread") && comPorts.getBoolean("inputThread")) inputThread();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -113,6 +114,17 @@ public class Main implements Plugin, Runnable {
 		return data;
 	}
 	
+	private static int getActualSyncTime(int in, int out, boolean outAlreadyStarted){
+		int ret = in;
+		if(outAlreadyStarted){
+			System.out.println("Dmx out process already started. Skipping out syncing time");
+			out = 0;
+		}
+		if(out > in)
+			ret = out;
+		return ret;
+	}
+	
 	@Override
 	public String getName() {
 		return name;
@@ -124,15 +136,36 @@ public class Main implements Plugin, Runnable {
 
 	@Override
 	public void run() {
-		String data = "";
 		boolean sendValues = false;
-		int i, stats = 0;
-		App.wait(syncTime);
+		int i, sent, stats = 0;
+		//App.wait(waitLoad);
 		long delay = 0, bytesTrasmitted = 0, totalStart = System.currentTimeMillis(), start;
+		Wait w = new Wait();
+		//String data = "";
+		
+		System.out.println("Waiting sync time (" + syncTime + "ms)");
+		w.sleep(syncTime);
 		while(true){
 			start = System.currentTimeMillis();
 			openLyght.reloadVirtualChannels();
+			
 			for(i = 0; i < 512; i++){
+				
+				if(channels[i] != null && channels[i].reloadValue()){
+					ArduinoExt.values[i] = channels[i].getDMXValue();
+					sendValues = true;
+				}					
+			}
+			if(sendValues){
+				//System.out.println("SENDING: " + data);
+				//System.out.println("SENDING: " + Arrays.toString(data.getBytes()));
+				sent = ArduinoExt.send();
+				if(sent >= 0){
+					bytesTrasmitted += sent;
+					sendValues = false;
+				}
+			}
+			/*for(i = 0; i < 512; i++){
 				
 				if(channels[i] != null && channels[i].reloadValue()){
 					data += codeOutput((short) (i)) + codeOutput(channels[i].getDMXValue());
@@ -144,9 +177,11 @@ public class Main implements Plugin, Runnable {
 				//System.out.println("SENDING: " + Arrays.toString(data.getBytes()));
 				out.writeData(data);
 				bytesTrasmitted += data.getBytes().length;
+				System.out.println("'" + data + "'");
 				data = "";
 				sendValues = false;
-			}
+			}*/
+
 			if(++stats > 8500){
 				totalStart = System.currentTimeMillis() - totalStart;
 				System.out.println("STATS:\t"
@@ -161,7 +196,7 @@ public class Main implements Plugin, Runnable {
 			}
 			delay += System.currentTimeMillis() - start;
 			//System.out.println("reload time: " + (System.currentTimeMillis() - start));
-			App.wait(7);
+			w.sleep(7);
 		}
 	}
 
@@ -214,6 +249,12 @@ public class Main implements Plugin, Runnable {
 					e1.printStackTrace();
 				}
 			}
+		} else if(message.equalsIgnoreCase("openlyght shuttingdown")){
+			System.out.println("Shutting down arduino connector");
+			ArduinoExt.destroyClient();
+		} else if(message.equalsIgnoreCase("openlyght run")){
+			System.out.println("Starting dmx out thread");
+			new Thread(this).start();
 		}
 	}
 
