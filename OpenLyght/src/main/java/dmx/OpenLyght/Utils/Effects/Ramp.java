@@ -6,16 +6,16 @@ import dmx.OpenLyght.BasicChannel;
 import dmx.OpenLyght.Channel;
 import dmx.OpenLyght.Utils.Effect;
 
-public class Sin180 implements Effect {
+public class Ramp implements Effect {
 
 	@Override
 	public double getValue(int phase, BasicChannel bc) {
-		return -Math.sin(Math.toRadians(phase));
+		return phase / 180 - 1; //2 : 360 = x : phase
 	}
 
 	@Override
 	public String getName() {
-		return "Sin180";
+		return "Ramp";
 	}
 	
 	@Override
